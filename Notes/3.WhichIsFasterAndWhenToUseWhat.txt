@@ -1,0 +1,22 @@
+SQL vs NoSQL: Which is Faster? When to choose what?
+
+Neither is universally faster than the other. It depends on the use case / requirement
+
+NoSQL databases can offer faster performance in certain scenarios:
+------------------------------------------------------------------
+- High write throughput and large datasets
+- You need to handle large, unstructured data sets, like social media data or logs
+- The application requires horizontal scalability to accommodate high traffic and big data
+- Simple read/write operations (key-value) storage
+- Real-time applications and caching (In-memory NoSQL databases like Redis offer extremely 
+  low latency for caching and real-time data access.)
+- You are dealing with applications requiring frequent changes in data structures.
+
+When to Choose SQL?
+--------------------
+- Data consistency and transactional integrity are critical (e.g., banking systems, 
+  customer relationship management).
+- The application needs a well-defined schema and structured data.
+- Complex queries and relational data are involved.
+- Applications requiring multi-row transactions (such as inventory management) 
+  benefit from SQL’s robust features.

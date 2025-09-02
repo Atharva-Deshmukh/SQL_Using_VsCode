@@ -1,0 +1,6 @@
+                        Relational Database Management System (RDBMS)
+                        ---------------------------------------------
+
+- Data is represented in the form of tables (also called relations).
+- Rows = Records (Tuples) → represent individual entries.
+- Columns = Fields (Attributes) → represent properties of the data.
