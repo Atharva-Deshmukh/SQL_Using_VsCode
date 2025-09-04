@@ -1,0 +1,20 @@
+The SQL language varies across different database systems.
+
+All of them are based on the SQL standard (ANSI/ISO SQL), but each vendor extends it differently, 
+adds proprietary features, and sometimes interprets parts of the standard in their own way.
+
+1. Core SQL (Mostly Same Everywhere)
+
+    Things like:
+
+    SELECT, INSERT, UPDATE, DELETE
+    WHERE, ORDER BY, GROUP BY, JOIN
+    CREATE TABLE, DROP TABLE
+    Basic data types (INT, VARCHAR, DATE)
+
+    ➡ These are almost identical across MySQL, PostgreSQL, Oracle, SQL Server.
+
+    ------------------------------------------------------------------------
+
+ANSI SQL → ; is the official statement terminator (especially for multiple statements).
+MySQL → Required in CLI, optional in Workbench for single statements, required for multiple.
