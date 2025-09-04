@@ -1,0 +1,130 @@
+                                            Quick Analogy
+                                            -------------
+
+Imagine a notebook (database):
+
+    DDL → Design the notebook (add pages, remove pages, change layout).
+    DML → Write or erase notes on the pages.
+    DQL → Read/search your notes.
+    DCL → Decide who can read or write in your notebook.
+    TCL → Undo/redo your edits before making them final.
+
+
+Now, in terms of DBMS, 
+
+                                DDL (Data Definition Language)
+                                -----------------------------
+Use:
+- Sets up the blueprint of your database.
+- Defines and modifies the structure of the database (create or change tables, schemas, etc.)
+- DDL (Data Definition Language) commands are about defining or modifying the structure of the database.
+
+That includes:
+- Schemas (the logical container of tables, views, etc.)
+- Tables (the actual structures holding rows of data)
+- Other objects (indexes, views, sequences, etc.)
+
+So in general → DDL modifies both schemas and tables (and other structural objects too).
+
+Commands: 
+- CREATE 
+- DROP
+- ALTER
+- TRUNCATE
+- RENAME
+
+
+                                DML (Data Manipulation Language)
+                                --------------------------------
+Use:
+- Works with the data inside the tables.
+- Think of it as: Filling in or changing the rows inside your tables.
+- DML works only on tables (and views), not schemas.
+- This is true in general SQL and also in MySQL.
+- Schemas are managed by DDL (create/alter/drop), while data inside tables is handled by DML.
+
+Commands: 
+- INSERT
+- UPDATE
+- DELETE
+- CALL
+- LOCK
+
+                        DRL/DQL (Data Retrival Language / Data Query Language)
+                        ------------------------------------------------------
+Use:
+- Retrieves data from the database.
+- Think of it as: Asking questions from your database.
+- Since data lives in tables (and views) → SELECT works on those.
+- A schema (database in MySQL) is just a container of objects.
+- You don’t SELECT from a schema — you SELECT from objects inside it.
+
+Commands: 
+- SELECT
+
+Ex: 
+    SELECT * FROM school.students;
+    Here school = schema, students = table.
+    The query targets the table, not the schema itself.
+
+                                TCL (Transaction Control Language)
+                                ----------------------------------
+
+What are Transactions?
+- Transaction = group of SQL statements executed as a single logical unit with ACID properties.
+- Either all statements succeed (commit) → permanent changes in DB
+- Or all fail (rollback) → DB returns to its previous state
+
+Ex:
+
+    START TRANSACTION;
+
+    UPDATE accounts SET balance = balance - 500 WHERE id = 1;
+    UPDATE accounts SET balance = balance + 500 WHERE id = 2;
+
+    COMMIT;  -- or ROLLBACK;
+
+   Here, money transfer happens only if both updates succeed.
+
+Transactions ensure ACID properties:
+
+    ATOMICITY:
+    - a transaction is all-or-nothing either all its operations succeed, or none are applied. 
+    - If any part fails, the entire transaction is rolled back to keep the database consistent.
+
+    CONSISTENCY:
+    - Consistency in transactions means that the DB must remain in a valid state before and after a transaction.
+    - If a transaction violates any of these rules, it is rolled back to prevent corrupt or invalid data.
+
+    ISOLATION:
+    - Isolation ensures that transactions run independently without affecting each other.
+    - Changes made by one transaction are not visible to others until they are committed. 
+
+    DURABILITY:
+    - Durability ensures that once a transaction is committed, its changes are permanently saved, 
+      even if the system fails. 
+    - The data is stored in non-volatile memory, so the database can recover to its last committed 
+      state without losing data.
+
+
+Use:
+- Manages changes in transactions (a group of SQL statements executed together).
+- Think of it as: Undo/redo options in your database.
+
+Commands: 
+- COMMIT
+- SAVEPOINT
+- ROLLBACK
+- SET Transaction
+- GET Transaction
+
+
+                                    DCL (Data Control Language)
+                                    ---------------------------
+Use:
+- Controls who can do what in the database (permissions).
+- Think of it as: Security guards of your database.
+
+Commands: 
+- GRANT
+- REVOKE
