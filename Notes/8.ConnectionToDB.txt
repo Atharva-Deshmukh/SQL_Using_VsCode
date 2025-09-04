@@ -27,3 +27,10 @@ SELECT * FROM orders;
 So → Connections in MySQL are not bound permanently to a schema. They just have a starting/default schema.
 
 This behaviour varies as per the DB
+
+--------------------------------------------------------------------------
+
+After creating a connection, we get 3 default schemas
+world
+sys 
+sakila
