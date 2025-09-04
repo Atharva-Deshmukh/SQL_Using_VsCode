@@ -1,0 +1,4 @@
+SQL was initially developed at IBM by 
+Donald D. Chamberlin and Raymond F. Boyce 
+after learning about the relational model from Edgar F. Codd in the early 1970s.
+This version, initially called SEQUEL (Structured English Query Language),
