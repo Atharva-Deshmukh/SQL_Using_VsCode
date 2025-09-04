@@ -1,0 +1,67 @@
+                                            What is a DB?
+                                            -------------
+
+- The structured organization of data of related data that is stored and accessed electronically. 
+- It is designed to store large amounts of information in such a way that allows 
+  for efficient retrieval and manipulation.
+
+- Includes schemas, records, and constraints
+- MANAGED USING DML (Data Manipulation Language) for operations like adding and updating data.
+
+Advantages of a Database:
+-------------------------
+- Efficient Data Management
+- Scalability: Databases are designed to handle large amounts of data and can grow as the data volume increases.
+- Data Security: Many databases provide built-in security features like access control.
+- Data Integrity: DBMS help maintain data consistency, ensuring the accuracy of stored information.
+
+
+Disadvantages of a Database:
+---------------------------
+- Complexity: Setting up and managing a database system can be complex, requiring specialized knowledge.
+- Cost: Enterprise-level database solutions can be expensive due to hardware, software, and maintenance costs.
+
+----------------------------------------------------------------------------------------------------------------
+
+                                            What is Schema?
+                                            ---------------
+
+- The structural design or blueprint of a database. It defines how data is organized within the database, 
+   including the tables, fields, relationships, and constraints. 
+- Essentially, a schema provides a logical view of the database.
+
+- Specified by DDL (Data Definition Language).
+
+Advantages of Schema:
+-------------------------
+- Organization: A schema provides a clear and organized structure for how data is stored, making it easier to Management
+- Consistency: Once a schema is defined, it ensures consistency in the format and structure of data entered into the database.
+
+
+Disadvantages of Schema:
+---------------------------
+- Limited Flexibility: Once a schema is defined, it can be difficult to modify.
+- Dependency on DDL (Data Definition Language): Any changes to the schema require updates to the DDL, 
+  which can be time-consuming and complex.
+
+  ----------------------------------------------------------------------------------------------------------------
+
+                                    SCHEMAS AND DBs Differ as per the server
+                                    ----------------------------------------
+
+- In MySQL, schema = database. They are synonyms.
+
+Example:
+
+CREATE SCHEMA school;
+CREATE DATABASE school;   -- Same thing
+
+
+When you say separate schemas, in MySQL it literally means separate databases inside the same 
+MySQL server instance.
+
+Unlike Oracle (where schema ≠ database, and schemas are under a single DB), 
+MySQL treats them interchangeably.
+
+
+  
