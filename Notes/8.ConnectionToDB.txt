@@ -1,0 +1,29 @@
+                                            What is a connection?
+                                            --------------------
+
+- A connection is simply a communication channel between a MySQL client (like Workbench, VS Code extension, 
+  application, or CLI) and the MySQL server.
+- Each connection usually uses TCP/IP (default port 3306)
+
+In MySQL, schema = database (they are synonyms).
+
+A connection is made to a server instance (on host/port), not to a schema.
+
+When you create a new connection in Workbench, it asks for a Default Schema.
+That doesn’t mean the connection is restricted to that schema.
+
+It just means:
+When you open the connection, Workbench will automatically USE <schema_name>; for you.
+That schema will be expanded in the left panel so you can immediately see its tables.
+
+But you can still query other schemas by prefixing them (other_db.table_name) or by switching with USE other_db;.
+
+USE hr;
+SELECT * FROM employees;
+USE sales;
+SELECT * FROM orders;
+
+
+So → Connections in MySQL are not bound permanently to a schema. They just have a starting/default schema.
+
+This behaviour varies as per the DB
