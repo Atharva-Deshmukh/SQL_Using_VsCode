@@ -1,0 +1,16 @@
+Every DB consists of 2 components:
+- Client => Used for interaction
+- Server => Used for storing actual data
+
+In most of the use cases:
+- Client = Windows
+- Server = Linux/Unix due to security
+
+
+In Enterprises, teams install only client on their local
+Server is not installed on local because its very data-heavy and costly
+
+Clients are of two types:
+- GUI
+- Command line
+
