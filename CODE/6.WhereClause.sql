@@ -18,9 +18,10 @@ SELECT * FROM Persons WHERE FirstName = 'Raj';
 -- This query doesn’t output anything because Address = NULL is always unknown, never true.
 -- Because in SQL, NULL means unknown.
 -- Any comparison with NULL (= NULL, <> NULL, etc.) is also unknown, not true.
+-- Also, we can't apply arithmetic operations on NULL.
 SELECT * FROM Persons WHERE Address = NULL;
 
--- Correct way
+-- Correct way is to use IS operator or IS NOT operator
 SELECT * FROM Persons WHERE Address is null;
 SELECT * FROM Persons WHERE Address is not null;
 
@@ -39,4 +40,17 @@ SELECT * FROM Persons WHERE FirstName LIKE 'R_';  -- NO MATCH since we needed so
 
 -- Matches using regexp, any word that starts with R and ends with J
 SELECT * FROM Persons WHERE FirstName REGEXP '^r.*j$'; 
+
+-- ----------------------------------------------------------------------
+
+-- Unique records/rows are printed based on unique PersonId
+SELECT DISTINCT PersonId FROM Persons;
+
+-- Here DISTINCT applies to the entire row (all columns selected).
+-- A row is considered duplicate only if every column’s value is identical.
+-- If even one column differs (say Address or City), both rows are kept.
+-- DISTINCT does not check priority of columns — it always considers the whole selected set of columns.
+-- So two rows with the same PersonId but different City are not duplicates under DISTINCT *.
+SELECT DISTINCT * FROM Persons;
+
 
