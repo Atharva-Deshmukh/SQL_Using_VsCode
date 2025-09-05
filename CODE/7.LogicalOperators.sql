@@ -43,3 +43,14 @@ FirstName LIKE 'a%' OR City = 'Pune';
 ---------------------------------NOT operator--------------------------------------
 -- It negates a condition
 SELECT * FROM Persons WHERE NOT City = 'Pune';
+
+---------------------------------BETWEEN and NOT BETWEEN operator--------------------------------------
+
+SELECT * FROM Persons WHERE PersonID BETWEEN 3 and 6;
+SELECT * FROM Persons WHERE PersonID NOT BETWEEN 3 and 6;
+
+---------------------------------IN and NOT IN operator--------------------------------------
+ -- Chooses any value from the options
+SELECT * FROM Persons WHERE PersonID IN (1, 4); 
+SELECT * FROM Persons WHERE Address IN ('Kothrud', 'B-Lane'); 
+SELECT * FROM Persons WHERE PersonID NOT IN (1, 4); 
