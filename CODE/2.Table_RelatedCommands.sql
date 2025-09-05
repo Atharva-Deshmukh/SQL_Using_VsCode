@@ -28,6 +28,12 @@ INSERT INTO Persons (PersonID, FirstName, LastName) VALUES (2, 'Raj', 'Thakre');
 -- Later we can update those values using UPDATE command
 INSERT INTO Persons (PersonID, FirstName, LastName, Address) VALUES (3, 'Rahul', 'Dravid', NULL);
 
+-- We can insert multiple rows in one query
+INSERT INTO Persons VALUES
+(4, 'Radha', 'Rai', 'Baner', 'Pune'),
+(4, 'Avadh', 'Oza', 'Kothrud', 'Pune'),
+(5, 'Vikas', 'Kirti', 'Arrah', 'Bihar');
+
 -- Check the inserted data
 SELECT * FROM Persons;
 -- OR => SELECT * FROM mydb.persons;
