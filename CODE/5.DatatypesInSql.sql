@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS Persons (
     PersonID INT(12) NOT NULL,        -- Numeric
+    PersonID INT(12) UNSIGNED,        -- Restrict negative values
     FirstName VARCHAR(255),           -- String
     LastName VARCHAR(255),            -- String
     Address VARCHAR(255),             -- String
