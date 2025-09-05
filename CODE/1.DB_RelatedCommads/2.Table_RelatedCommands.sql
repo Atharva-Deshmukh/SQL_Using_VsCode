@@ -2,7 +2,7 @@
 -- Create DB if it do not exist
 CREATE DATABASE IF NOT EXISTS myDB;
 
--- Select the DB/Schema we first
+-- Select the DB/Schema we are targeting first
 USE myDB;
 
 CREATE TABLE IF NOT EXISTS Persons (
