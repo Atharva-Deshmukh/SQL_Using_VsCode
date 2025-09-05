@@ -25,6 +25,7 @@ INSERT INTO Persons (PersonID, FirstName, LastName) VALUES (2, 'Raj', 'Thakre');
 
 -- -- WAY-3: Null insertions
 -- If we want to insert full record/row, but don't know some of the column values, we can use NULL keyword
+-- Later we can update those values using UPDATE command
 INSERT INTO Persons (PersonID, FirstName, LastName, Address) VALUES (3, 'Rahul', 'Dravid', NULL);
 
 -- Check the inserted data
