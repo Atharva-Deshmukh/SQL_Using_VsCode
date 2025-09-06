@@ -1,3 +1,5 @@
+- Switch case
+
 - Handling case sensitivity in SQL
 
 since SQL is not case sensitive, is this a valid statement in MySQL?
