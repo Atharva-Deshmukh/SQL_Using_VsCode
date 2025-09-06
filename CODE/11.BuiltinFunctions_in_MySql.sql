@@ -1,3 +1,34 @@
+-- There are two types of built-in functions in MySQL:
+/*
+Feature      | Scalar Functions                  | Aggregate Functions
+-------------|----------------------------------|---------------------------------------------
+Input        | Single value (per row)            | Set of values (multiple rows)
+Output       | One result per row                | One result per group or table
+Usage        | In SELECT, WHERE, ORDER BY        | In SELECT (with or without GROUP BY)
+Examples     | UPPER(), ROUND(), CURDATE()       | COUNT(), SUM(), AVG(), MAX(), MIN()
+
+🔹 Scalar vs Aggregate Reminder
+
+Scalar functions: Work on values in a single row and return a result for that row.
+Aggregate functions: Work on values across multiple rows (a set) and return one result per set/group.
+
+🔹 GREATEST() and LEAST()
+
+They take multiple arguments, but all arguments come from the same row.
+The function then compares those arguments and returns a single value (max/min of those arguments).
+They do not look at other rows in the table.
+
+So even though GREATEST()/LEAST() accept multiple arguments, they are still scalar because 
+all comparisons happen within one row.
+
+Other scalar functions:
+
+String: CONCAT(), LOWER(), SUBSTRING()
+Numeric: ABS(), ROUND(), POWER()
+Date/Time: CURDATE(), NOW(), DAYNAME()
+*/
+                            
+                            
                             /* STRING FUNCTIONS */
 
 ----------------------------------- CASE RELATED ------------------------------------------------------
@@ -186,3 +217,107 @@ SELECT MAX(W_Id) FROM wtable; -- 6 - Pics Max Value in a column
 
 SELECT LEAST(3, 12, -34, 8, 25); -- -34
 SELECT LEAST(W_Id, W_Address, W_Age) FROM wtable; -- 4
+
+
+                            /* DATE and TIME RELATED FUNCTIONS */
+
+-----------------------------------------------------------------------------------------
+
+-- CURRDATE() and CURRENT_DATE(): Returns the current date
+-- The date is returned as "YYYY-MM-DD" (string) or as YYYYMMDD (numeric).
+
+/*
+No difference in output.
+CURRENT_DATE is the SQL standard form.
+CURDATE() is MySQL’s shorter alias.
+*/
+
+SELECT CURRENT_DATE(); -- O/P: '2025-09-06'
+SELECT CURRENT_DATE() + 1; -- O/P: 20250907 -- Output is numberic
+SELECT DATE_ADD(CURRENT_DATE(), INTERVAL 1 DAY);-- '2025-09-07' This will add and give date in proper format
+
+-----------------------------------------------------------------------------------------
+
+-- The time is returned as "HH-MM-SS" (string) or as HHMMSS.uuuuuu (numeric).
+SELECT CURRENT_TIME(); -- O/P: '15:11:42'
+SELECT DATE_ADD(CURRENT_TIME(), INTERVAL 1 HOUR); -- ADD 1 hour O/P: '16:13:45'
+SELECT DATE_ADD(CURRENT_TIME(), INTERVAL 1 MINUTE); -- ADD 1 minute O/P: '15:14:30'
+SELECT DATE_ADD(CURRENT_TIME(), INTERVAL 1 SECOND); -- ADD 1 second O/P: '15:13:56'
+
+-----------------------------------------------------------------------------------------
+
+-- Current timestamp: The date and time is returned as "YYYY-MM-DD HH-MM-SS" (string) or as YYYYMMDDHHMMSS.uuuuuu (numeric).
+
+SELECT CURRENT_TIMESTAMP(); -- O/P: '2025-09-06 15:15:22'
+
+-----------------------------------------------------------------------------------------
+
+-- NOW(): 
+-- The NOW() function returns the current date and time.
+-- Note: The date and time is returned as "YYYY-MM-DD HH-MM-SS" (string) or as YYYYMMDDHHMMSS.uuuuuu (numeric).
+
+SELECT NOW(); -- O/P: '2025-09-06 15:17:38'
+-- The SYSDATE() function too returns the current date and time.
+
+-----------------------------------------------------------------------------------------
+-- The DAY() function returns the day of the month for a given date (a number from 1 to 31).
+-- Parameter: The date to extract the day from
+
+SELECT DAY("2017-06-15"); -- '15'
+
+-----------------------------------------------------------------------------------------
+-- The MONTH() function returns the month part for a given date (a number from 1 to 12).
+-- Parameter: The date to extract the month from
+
+SELECT MONTH("2017-06-15"); -- '6'
+-----------------------------------------------------------------------------------------
+-- The YEAR() function returns the year part for a given date (a number from 1000 to 9999).
+-- Parameter: The date to extract the year from
+
+SELECT YEAR("2017-06-15"); -- '2017'
+-----------------------------------------------------------------------------------------
+
+-- QUESTION
+
+-- Display employees who are joined in 1987
+
+SELECT * FROM employee_table WHERE YEAR(HIRE_DATE) = '1987';
+
+-- Display employees who joined in June month
+
+SELECT * FROM employee_table WHERE MONTH(HIRE_DATE) = 6;
+SELECT * FROM employee_table WHERE MONTHNAME(HIRE_DATE) = 'JUNE';
+
+---------------------------------AGGREGATE FUNCTIONS-------------------------------------------
+
+-- MIN() and MAX() already done above with GREATEST() and LEAST()
+
+-- The COUNT() function returns the number of records returned by a select query.
+-- Note: NULL values are not counted.
+
+SELECT COUNT(W_Address) FROM wtable; -- 5
+SELECT COUNT(GENDER) FROM wtable; -- 1 -- DOES NOT COUNT NULL
+
+SELECT COUNT(*) FROM wtable; -- 5
+-- COUNT(*) counts all rows in the table.
+-- It does not care if there are NULLs or what values are inside.
+-----------------------------------------------------------------------------------------------
+
+-- The SUM() function calculates the sum of a set of values.
+-- Note: NULL values are ignored.
+-- Parameter:  A field or a formula
+
+SELECT SUM(W_Id) FROM wtable; -- 22 => Sum of all the Ids
+SELECT SUM(W_Name) FROM wtable; -- 0 => if everything is a string
+SELECT SUM(Gender) FROM wtable; -- 0 => if everything is a string or null
+
+-----------------------------------------------------------------------------------------------
+
+-- The AVG() function returns the average value of an expression.
+-- Note: NULL values are ignored. 
+-- Parameter: A numeric value (can be a field or a formula)
+
+SELECT AVG(W_Id) FROM wtable; -- 5.5 => Average of all the Ids
+SELECT AVG(W_Name) FROM wtable; -- 0 => if everything is a string
+SELECT AVG(Gender) FROM wtable; -- 0 => if everything is a string or null
+
