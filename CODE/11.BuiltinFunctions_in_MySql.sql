@@ -114,5 +114,75 @@ CONCAT_WS('-', Name, Address)
 
 */
 
+                            /* NUMBER FUNCTIONS */
+
+-----------------------------------------------------------------------------------------
+
+-- ABS() - Return the absolute value of a number
+
+SELECT ABS(-45.6); -- O/P: 45.6
+-----------------------------------------------------------------------------------------
+
+-- SQRT() - Return the square root of a number
+--        - Returns NULL if the number is negative
+
+SELECT SQRT(16); -- O/P: 4
+SELECT SQRT(-25); -- O/P: NULL
+-----------------------------------------------------------------------------------------
+
+SELECT MOD(18, 4); -- O/P: 2
+SELECT 18 % 4;  -- O/P: 2
+SELECT 18 MOD 4;  -- O/P: 2
+-----------------------------------------------------------------------------------------
+
+SELECT POWER(4, 2);  -- O/P: 16
+SELECT POW(4, 2);  -- O/P: 16
+-----------------------------------------------------------------------------------------
+
+-- The TRUNCATE() function truncates a number to the specified number of decimal places.
+
+SELECT TRUNCATE(40.9234, 0);  -- O/P: 40
+SELECT TRUNCATE(40.1234, 3);  -- O/P: 40.123
+SELECT TRUNCATE(40.1234, 2);  -- O/P: 40.12
+SELECT TRUNCATE(6876, -1);    -- O/P: 6870
+SELECT TRUNCATE(6876, -2);  -- O/P: 6800
+SELECT TRUNCATE(68763456, -5);  -- O/P: 68700000
+-----------------------------------------------------------------------------------------
+
+/*
+
+| Feature       | GREATEST()                               | MAX()                                  |
+|---------------|------------------------------------------|----------------------------------------|
+| Scope         | Compares multiple values in one row      | Compares one column across many rows   |
+| Type          | Scalar function (row-level)              | Aggregate function (set-level)         |
+| NULL handling | Returns NULL if any argument is NULL     | Ignores NULLs by default               |
+| Usage         | `SELECT GREATEST(col1, col2, col3)`      | `SELECT MAX(col1) FROM table`          |
+| Standard      | SQL extension (not in all RDBMS)         | ANSI SQL standard (in all RDBMS)       |
+
+*/
+
+SELECT GREATEST(3, 12, -34, 8, 25); -- 25
+SELECT GREATEST('AKOLA', 'MUMBAI', 'MAHIM'); -- MUMBAI - Picks lexicographically greatest value
+SELECT GREATEST(W_Id, W_Address, W_Age) FROM wtable; -- 'Hastinapur'
+SELECT GREATEST(W_Id, W_Address, W_Age, Gender) FROM wtable; -- Returns null if any value in the row is null, compares row by row
 
 
+SELECT MAX(Gender) FROM wtable; -- 'M', It ignores null values
+SELECT MAX(W_Id) FROM wtable; -- 6 - Pics Max Value in a column
+
+-----------------------------------------------------------------------------------------
+
+/*
+
+| Feature           | LEAST()                                   | MIN()                                   |
+|-------------------|-------------------------------------------|-----------------------------------------|
+| **Scope**         | Compares multiple values in one row       | Compares one column across many rows    |
+| **Type**          | Scalar function (row-level)               | Aggregate function (set-level)          |
+| **NULL handling** | Returns NULL if any argument is NULL      | Ignores NULLs by default                |
+| **Usage**         | `SELECT LEAST(col1, col2, col3)`          | `SELECT MIN(col1) FROM table`           |
+| **Standard**      | SQL extension (not in all RDBMS)          | ANSI SQL standard (in all RDBMS)        |
+
+*/
+
+SELECT LEAST(3, 12, -34, 8, 25); -- -34
+SELECT LEAST(W_Id, W_Address, W_Age) FROM wtable; -- 4
