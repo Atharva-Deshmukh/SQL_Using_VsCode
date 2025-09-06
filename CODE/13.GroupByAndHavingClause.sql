@@ -152,6 +152,15 @@ FROM emp
 GROUP BY age
 HAVING SUM(sal) > 60000;
 
+-------------------------------------------------------------------------
+
+ORDER OF EXECUTION:
+
+SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY
+
+-------------------------------------------------------------------------
+
+
                                         Some practice Questions:
                                         ------------------------
 
