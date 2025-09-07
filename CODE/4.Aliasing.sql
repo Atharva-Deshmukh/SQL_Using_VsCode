@@ -63,3 +63,59 @@ PersonId | ConcatenatedCols
 2        | NULL
 3        | NULL  */
 
+
+---------------------------------------------------------------------------------
+
+-- GOT TO KNOW A NEW THING!
+-- We can create a temporary column with Our own entries, even though that column don't exists actually
+SELECT 'Employee' AS Designation, name
+FROM emp
+ORDER BY name ASC;
+
+/*
+'Employee' here is not a column name, it’s just a fixed text value that you want to appear in the result set.
+
+Without quotes, MySQL would look for a column named Employee in the table, and since it doesn’t exist, 
+you’d get an error like:
+*/
+
+/* Output:
+
+# Designation	name
+--------------------
+Employee	   Emma
+Employee	   Ethan
+Employee	   Isabella
+Employee	   Liam
+Employee	   Logan
+Employee	   Mason
+Employee	   Mia
+Employee	   Noah
+Employee	   Olivia
+Employee	   Sophia
+
+*/
+
+-- WITHOUT Alias, Column name will also be Employee
+SELECT 'Employee', name
+FROM emp
+ORDER BY name ASC;
+
+/* OUTPUT:
+
+# Employee	name
+-----------------
+Employee	Emma
+Employee	Ethan
+Employee	Isabella
+Employee	Liam
+Employee	Logan
+Employee	Mason
+Employee	Mia
+Employee	Noah
+Employee	Olivia
+Employee	Sophia
+*/
+
+
+
