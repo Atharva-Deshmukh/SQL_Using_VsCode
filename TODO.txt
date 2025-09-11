@@ -1,5 +1,6 @@
 - Switch case
 - Normalisation of DB (hence we store data in multiple tables)
+- Add notes of normalisation in 15.Joins.sql as reason we have joins in the first place
 
 - Handling case sensitivity in SQL
 
