@@ -44,4 +44,20 @@ JOIN salary_grades s
     Ravi	    7000.00	        C
 
 GradeId Column is selected as per the range of salary in table 2
-*/
+
+
+Are they “different joins”?
+--------------------------
+
+They are just joins classified by the type of condition: 
+
+= → Equi Join
+<, >, BETWEEN, LIKE… → Non-Equi Join
+Think of them as flavors of INNER/OUTER joins, not new join types.
+
+ Use cases for non equi joins
+--------------------------------
+
+Salary → Salary Range (Grading, Tax Slabs, Pay Bands).
+Age → Age Bracket (Kids, Adults, Seniors).
+Time → Time Slot (Shift allocation, booking slots). */
