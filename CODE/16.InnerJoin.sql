@@ -5,34 +5,43 @@ matching piece of information (a common key) and only keeping the rows that have
 Only the records with common keys are extracted
 
 t1
-+--------+---------+
-| UserID | UserName|
-+--------+---------+
-|   1    | John    |
-|   2    | Emma    |
-|   3    | Ravi    |
-|   4    | Raj     |
-+--------+---------+
++--------+---------+--------+------------+
+| UserID | UserName|  Sex   | RollNumber |
++--------+---------+--------+------------+
+|   1    | John    | Male   |     11     |
+|   2    | Emma    | Female |     12     |
+|   3    | Ravi    | Male   |     13     |
+|   4    | Raj     | Female |     14     |
++--------+---------+--------+------------+
 
 
 t2
-+--------+----------+----------+
-| UserID |   Sub    | UserName |
-+--------+----------+----------+
-|   3    | Maths    | Jarret   |
-|   4    | English  | Erina    |
-|   5    | Science  | Prashant |
-|   6    | SSC      | Rajan    |
-+--------+----------+----------+
++--------+----------+----------+----------+
+| UserID |   Sub    | UserName | Surname  |
++--------+----------+----------+----------+
+|   3    | Maths    | Jarret   | Joshi    |
+|   4    | English  | Erina    | Ekare    |
+|   5    | Science  | Prashant | Patil    |
+|   6    | SSC      | Rajan    | Rawat    |
++--------+----------+----------+----------+
 
-SELECT t1.UserID, t1.UserName, t2.Sub
+
+SELECT *
 FROM t1
 INNER JOIN t2 ON t1.UserID = t2.UserID;
 
-# UserID	UserName	Sub
-----------------------------
-     3	      Ravi	   Maths         --> Common data is extracted
-     4	      Raj	 English
+# UserID	UserName	Sex	    RollNumber	UserID	 Sub	  UserName	Surname
+--------------------------------------------------------------------------------
+   3	     Ravi	    Male	  13	      3	     Maths	  Jarret	Joshi
+   4	     Raj	    Female	  14	      4	     English  Erina	    Ekare
+
+The INNER JOIN keyword returns only the rows that have matching values in both tables.  
+In this case, only UserID 3 and 4 are present in both t1 and t2, so the result includes  
+Ravi (with Maths) and Raj (with English). 
+UserIDs 1 and 2 from t1, and 5 and 6 from t2,  
+do not appear because they don’t have matches in the other table.
+
+FULL RECORD (ALL COLUMNS) FOR MATCHING COLUMN DATA IN BOTH TABLES IS TAKEN
 
 
 
