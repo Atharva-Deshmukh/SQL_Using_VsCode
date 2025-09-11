@@ -60,5 +60,14 @@ ON t1.ManagerId = t2.EmpId;
    Atharva	 Vishal
    Vishal	 Aditya
 
-In each iteration, the query matches managerId of t1 with empId of t2 */
+In each iteration, the query matches managerId of t1 with empId of t2 
+
+
+-------------------------------------------------------------------------------
+
+A point to note here:
+
+JOIN = INNER JOIN by default.
+SELF JOIN just means a join where the table is joined with itself.
+In your query: it’s an INNER SELF JOIN. */
 
