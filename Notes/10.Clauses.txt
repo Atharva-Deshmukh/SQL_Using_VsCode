@@ -1,0 +1,31 @@
+                                        Clauses in English language
+                                        ---------------------------
+
+A clause is a group of words that contains a subject and a predicate (verb).
+
+Examples:
+- “She runs.” → Independent clause (can stand alone).
+- “Because she was tired” → Dependent clause (cannot stand alone).
+
+So in English, clauses are building blocks of sentences.
+
+                                        Clauses in SQL language
+                                        -----------------------
+
+In SQL, a clause is a part of a query that performs a specific task.
+Think of them as building blocks of SQL statements, just like clauses in English build sentences.
+
+                                        Categories of SQL clauses
+                                        -------------------------
+
+Selection Clauses → SELECT, DISTINCT
+Source Clauses → FROM, JOIN
+Filtering Clauses → WHERE, HAVING, IN, BETWEEN, LIKE, IS NULL, EXISTS
+Grouping & Aggregation Clauses → GROUP BY, HAVING
+Sorting & Limiting Clauses → ORDER BY, LIMIT
+Set Clauses → UNION, UNION ALL, INTERSECT, EXCEPT (not all supported in MySQL)
+
+In short:
+-----------
+- In English, a clause = subject + verb (part of sentence).
+- In SQL, a clause = building block of a query (e.g., WHERE, GROUP BY).
