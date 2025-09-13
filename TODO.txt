@@ -1,6 +1,12 @@
 How to give variables in SQL - learn this
-Functions in SQL
+
+User defined Functions in SQL - For Leetcode
+
 Integrity constraints from DBMS point of view
+
+
+Explore all datatypes, their limits, default values in MySQL
+specifically enum
 
 - Switch case
 - Normalisation of DB (hence we store data in multiple tables)
