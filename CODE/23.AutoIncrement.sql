@@ -6,6 +6,8 @@ every time a new record is inserted.
 
 By default starts by 1 and increments by 1 for each new record.
 
+Auto-increment is allowed at column-level only and not at table-level.
+
                                             Key rules about AUTO_INCREMENT
                                             ------------------------------
 - You can have only one AUTO_INCREMENT column per table.
