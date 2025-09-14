@@ -234,3 +234,178 @@ FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
 -- Dropping a FOREIGN KEY constraint
 ALTER TABLE Orders
 DROP FOREIGN KEY FK_PersonOrder; -- need to specify the name of the foreign key constraint here
+
+-- We cannot delete a record from parent table if it has matching records in child table
+-- We must first delete the dependent child table records, and then delete the parent table record
+
+-- Fails deletion due to foreign key constraint, Delete the child record first
+DELETE FROM FK_Persons WHERE PersonID = 2;
+
+-- First delete the child record, now hitting above query again will work
+DELETE FROM FK_Orders WHERE PersonID = 2;
+
+
+-- Similarly we cannot directly update a primary key value in parent table if it has matching records in child table
+-- This direct update is not possible, we need to first update all dependent child-table rows  and then update the parent table records
+UPDATE FK_Persons SET PersonID = 30 WHERE PersonID = 3;
+-----------------------------------------------------------------------------------------------
+
+/* This manual deletion of dependent records in child table can be automated/triggered using
+Cascades.
+
+Cascades comes under the concept of Referential actions on foreign keys.
+
+Cascade: an action triggered automatically when a change occurs in a parent table, 
+propagating the update or deletion to the related child table(s). 
+
+ON DELETE CASCADE:
+-------------------
+When a record in the parent table is deleted, 
+all dependent related records in the child table are automatically deleted.
+*/
+
+CREATE TABLE FK_Persons (
+    PersonID INT PRIMARY KEY,
+    LastName VARCHAR(50) NOT NULL,
+    FirstName VARCHAR(50) NOT NULL,
+    Age INT
+);
+
+INSERT INTO FK_Persons (PersonID, LastName, FirstName, Age) VALUES
+(1, 'Hansen', 'Ola', 30),
+(2, 'Svendson', 'Tove', 23),
+(3, 'Pettersen', 'Kari', 20),
+(4, 'Donald', 'Ross', 24);
+
+
+CREATE TABLE FK_Orders (
+    OrderID INT PRIMARY KEY,
+    OrderNumber INT NOT NULL,
+    PersonID INT,
+    CONSTRAINT FK_CONST FOREIGN KEY(PersonID)
+    REFERENCES FK_Persons(PersonID)
+    ON DELETE CASCADE -- cascades are applied on the child tables so that changes in parent table triggers actions here in the child table
+);
+
+INSERT INTO FK_Orders (OrderID, OrderNumber, PersonID) VALUES
+(1, 77895, 2),
+(2, 44678, 3),
+(3, 44678, 2),
+(4, 44678, 3),
+(5, 44678, 1);
+
+-- Automatically, PersonID = 3 records from FK_Orders (child-table) are also deleted
+DELETE FROM FK_Persons WHERE PersonID = 3;
+
+DELETE FROM FK_Orders WHERE PersonID = 3;  -- No need of this separately now
+
+/*
+ON UPDATE CASCADE:
+-------------------
+When a record in the parent table is updated,
+all dependent related records in the child table are automatically updated. */
+
+CREATE TABLE FK_Persons (
+    PersonID INT PRIMARY KEY,
+    LastName VARCHAR(50) NOT NULL,
+    FirstName VARCHAR(50) NOT NULL,
+    Age INT
+);
+
+INSERT INTO FK_Persons (PersonID, LastName, FirstName, Age) VALUES
+(1, 'Hansen', 'Ola', 30),
+(2, 'Svendson', 'Tove', 23),
+(3, 'Pettersen', 'Kari', 20),
+(4, 'Donald', 'Ross', 24);
+
+
+CREATE TABLE FK_Orders (
+    OrderID INT PRIMARY KEY,
+    OrderNumber INT NOT NULL,
+    PersonID INT,
+    CONSTRAINT FK_CONST FOREIGN KEY(PersonID)
+    REFERENCES FK_Persons(PersonID)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+INSERT INTO FK_Orders (OrderID, OrderNumber, PersonID) VALUES
+(1, 77895, 2),
+(2, 44678, 3),
+(3, 44678, 2),
+(4, 44678, 3),
+(5, 44678, 1);
+
+-- Now this update in parent table will be cascaded/reflected in child table automatically
+UPDATE FK_Persons SET PersonID = 30 WHERE PersonID = 3;
+
+/* These cascade actions can also be added while altering the table
+
+You cannot directly modify a foreign key in MySQL.
+Instead, you must:
+
+- Drop the existing FK
+- Recreate it with the new action
+
+-- Drop old constraint
+ALTER TABLE FK_Orders
+DROP FOREIGN KEY fk_person;
+
+-- Re-add with new cascade rule
+ALTER TABLE FK_Orders
+ADD CONSTRAINT fk_person
+FOREIGN KEY (PersonID) REFERENCES FK_Persons(PersonID)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+
+*/
+
+-----------------------------------SOME MORE ACTIONS-------------------------------------------------------
+
+/* ON DELETE SET NULL
+
+Child rows will remain, but the foreign key column will be set to NULL when the parent is deleted. */
+
+CREATE TABLE FK_Persons (
+    PersonID INT PRIMARY KEY,
+    LastName VARCHAR(50) NOT NULL,
+    FirstName VARCHAR(50) NOT NULL,
+    Age INT
+);
+
+INSERT INTO FK_Persons (PersonID, LastName, FirstName, Age) VALUES
+(1, 'Hansen', 'Ola', 30),
+(2, 'Svendson', 'Tove', 23),
+(3, 'Pettersen', 'Kari', 20),
+(4, 'Donald', 'Ross', 24);
+
+
+CREATE TABLE FK_Orders (
+    OrderID INT PRIMARY KEY,
+    OrderNumber INT NOT NULL,
+    PersonID INT,
+    CONSTRAINT FK_CONST FOREIGN KEY(PersonID)
+    REFERENCES FK_Persons(PersonID)
+    ON DELETE SET NULL
+);
+
+INSERT INTO FK_Orders (OrderID, OrderNumber, PersonID) VALUES
+(1, 77895, 2),
+(2, 44678, 3),
+(3, 44678, 2),
+(4, 44678, 3),
+(5, 44678, 1);
+
+
+-- All dependent records in child tables are set to null
+DELETE FROM FK_Persons WHERE PersonID = 3;
+
+/*ON DELETE SET DEFAULT -- NOT SUPPORTED IN MySQL*/
+
+/* ON DELETE RESTRICT (or NO ACTION)
+
+    This prevents deletion if there are child rows referencing the parent.
+
+    This is the default behaviour of the foreign key constraint in MySQL.
+    No need to use this explicitly. */
