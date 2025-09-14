@@ -221,6 +221,25 @@ A PRIMARY KEY constraint automatically has a UNIQUE constraint.
 
 Primary key vs unique constraint:
 => We can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
+
+A unique constraint can accept null values, and multiple nulls are allowed.
+
+CREATE TABLE UNIQUE_NULL (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Email VARCHAR(100) UNIQUE
+);
+
+INSERT INTO UNIQUE_NULL (Email) VALUES ('a@example.com'); -- ✅ OK
+INSERT INTO UNIQUE_NULL (Email) VALUES ('b@example.com'); -- ✅ OK
+INSERT INTO UNIQUE_NULL (Email) VALUES (NULL);            -- ✅ OK
+INSERT INTO UNIQUE_NULL (Email) VALUES (NULL);            -- ✅ OK (allowed again)
+-- INSERT INTO UNIQUE_NULL (Email) VALUES ('a@example.com'); -- ❌ Error (duplicate) 
+
+SELECT * FROM UNIQUE_NULL;
+
+Hence Primary key = UNIQUE + NOT NULL
+Since, unique allows multiple nulls, it can't be a primary key.
+
 */
 ---------------------------------------------------------------------------------------------
 
