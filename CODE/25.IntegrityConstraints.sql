@@ -16,7 +16,7 @@ NOT NULL → Ensures the column cannot store NULL values.
 DEFAULT → Provides a default value if none is supplied.
 CHECK → Restricts values based on a condition (e.g., salary > 0).
 UNIQUE → Ensures values in the column are unique.
-PRIMARY KEY (single-column) → Uniquely identifies rows + NOT NULL.
+PRIMARY KEY (single-column) → Uniquely identifies rows + NOT NULL.odo
 AUTO_INCREMENT (MySQL specific) → Auto-generates sequential numbers.
 
 Table-level integrity constraints
@@ -220,7 +220,62 @@ Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness f
 A PRIMARY KEY constraint automatically has a UNIQUE constraint.
 
 Primary key vs unique constraint:
-
-you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
+=> We can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
 */
 ---------------------------------------------------------------------------------------------
+
+-- While CREATE
+
+-- column level
+CREATE TABLE UserData (
+    UserID INT UNIQUE,
+    UserName VARCHAR(50) NOT NULL,
+    Age INT,
+    City VARCHAR(50)
+);
+
+-- Table level
+
+CREATE TABLE UserData (
+    UserID INT,
+    UserName VARCHAR(50) NOT NULL,
+    Age INT,
+    City VARCHAR(50),
+    UNIQUE(UserID, Age) -- This means: the combination of UserID and Age must be unique, not each column individually.
+);
+
+INSERT INTO UserData (UserID, UserName, Age, City) VALUES
+(1, 'John', 25, 'Delhi'),
+(2, 'Emma', 25, 'Mumbai');  -- combination (2, 25) is unique, not unique columns individually
+
+-- again there are named and unnamed constraint for unique 
+-- we need to get the name of the constraint and then drop it
+
+-- named constraint with a custom, its at table level
+-- at column level, name is automatically generated, the constraint is always a named one
+CREATE TABLE UserData (
+    UserID INT,
+    UserName VARCHAR(50) NOT NULL,
+    Age INT,
+    City VARCHAR(50),
+    CONSTRAINT uniq_cont UNIQUE(UserID, Age) -- named constraint
+);
+
+-- QUERY TO GET THE CONSTRAINT NAME(S)
+SELECT CONSTRAINT_NAME
+FROM information_schema.TABLE_CONSTRAINTS
+WHERE TABLE_NAME = 'UserData'
+  AND CONSTRAINT_TYPE = 'UNIQUE';
+
+  -- altering columns by adding UN-NAMED unique constraint on them.
+ALTER TABLE UserData
+ADD UNIQUE(UserID, Age);
+
+-- altering columns by adding NAMED unique constraint on them.
+ALTER TABLE UserData
+ADD CONSTRAINT AD_UN UNIQUE(UserID, Age);
+
+-- Dropping a unique constraint
+ALTER TABLE Persons
+DROP INDEX UC_Person; -- for unnamed constraint, we need to get the name first
+                      -- Syntax has 'INDEX' keyword for dropping unique constraint
