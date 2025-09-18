@@ -395,7 +395,7 @@ INSERT INTO FK_Orders (OrderID, OrderNumber, PersonID) VALUES
 (2, 44678, 3),
 (3, 44678, 2),
 (4, 44678, 3),
-(5, 44678, 1);
+(5, 44678, 1); 
 
 
 -- All dependent records in child tables are set to null
