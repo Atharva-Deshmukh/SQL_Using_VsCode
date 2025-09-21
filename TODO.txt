@@ -1,5 +1,9 @@
 How to give variables in SQL - learn this
 
+WINDOW Functions
+
+SQL CTE
+
 User defined Functions in SQL - For Leetcode
 
 Integrity constraints from DBMS point of view
