@@ -47,3 +47,37 @@ This avoids database bloat and improves performance.
 Use BLOB/LONGBLOB if you really want to store files inside MySQL.
 For scalable apps, store files externally and keep only metadata + file path in MySQL.
 */
+
+/* ENUM DATA TYPE
+
+CREATE TABLE Student_grade(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Grade VARCHAR(250) NOT NULL,
+    priority ENUM('Low', 'Medium', 'High') NOT NULL
+);
+
+The prioritized column will accept only three columns. Here, the order of numbering Low->1, Medium->2, High->3.
+
+Instead of using the enumeration values, you can also use the numerical indexes too, in order to insert 
+the values into the ENUM column of the table
+
+INSERT INTO
+ Student_grade(Grade, priority),
+VALUES
+('Poor grades', 1);
+Here we use 1 instead of using 'Low' enumeration value, since 1 is mapped to 'Low' implicitly.
+
+
+Let's add more rows into the table Student_grade
+
+INSERT INTO Student_grade(Grade, priority)
+VALUES('Mediocre grade', 'Medium');
+
+INSERT INTO Student_grade(Grade)
+VALUES('Poor grades',1);
+
+INSERT INTO Student_grade(Grade)
+VALUES('Good grades','High');
+Note : ENUM column can also store NULL values if it is defined as a null-able column.
+
+*/
