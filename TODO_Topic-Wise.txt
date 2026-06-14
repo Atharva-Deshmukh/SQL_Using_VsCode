@@ -1,0 +1,203 @@
+========================
+1. SQL CORE SYNTAX (MUST KNOW)
+========================
+
+SELECT, WHERE, GROUP BY, HAVING, ORDER BY
+DISTINCT
+LIMIT / OFFSET
+
+CASE WHEN
+COALESCE / IFNULL
+
+BASIC AGGREGATIONS:
+COUNT()
+SUM()
+AVG()
+MIN()
+MAX()
+
+
+========================
+2. JOINS (MOST IMPORTANT TOPIC)
+========================
+
+INNER JOIN
+LEFT JOIN
+RIGHT JOIN
+FULL OUTER JOIN
+
+SELF JOIN (VERY IMPORTANT for manager-employee type questions)
+
+CROSS JOIN (basic awareness only)
+
+Interview Patterns:
+- Employees > Managers
+- Customers without orders
+- Department salary mapping
+- Missing records detection
+
+
+========================
+3. SUBQUERIES (HIGH ROI)
+========================
+
+SINGLE ROW SUBQUERY
+MULTI ROW SUBQUERY (IN, EXISTS, NOT EXISTS)
+
+CORRELATED SUBQUERY (VERY IMPORTANT)
+
+Patterns:
+- second highest salary
+- nth highest salary
+- department max salary
+- filtering based on aggregation
+
+
+========================
+4. WINDOW FUNCTIONS (VERY HIGH ROI - MODERN INTERVIEWS)
+========================
+
+ROW_NUMBER()
+RANK()
+DENSE_RANK()
+
+LAG()
+LEAD()
+
+OVER (PARTITION BY)
+
+Patterns:
+- ranking salaries
+- consecutive login/activity
+- top N per group
+- running totals
+- difference between rows
+
+
+========================
+5. GROUP BY PATTERNS (CORE INTERVIEW AREA)
+========================
+
+GROUP BY + HAVING combinations:
+
+- duplicates detection
+- count per group
+- filtering aggregated data
+- percentage calculations
+
+
+========================
+6. SQL INTERVIEW PATTERNS (MOST ASKED)
+========================
+
+PATTERN 1: JOIN + FILTER
+- Customers without orders
+- Employees with missing manager
+
+PATTERN 2: GROUP + HAVING
+- repeated emails
+- count-based filtering
+
+PATTERN 3: TOP-N PER GROUP
+- department highest salary
+- rank queries
+
+PATTERN 4: SUBQUERY FILTERING
+- nth highest salary
+- second max salary
+
+PATTERN 5: NULL HANDLING
+- missing records
+- left join + null check
+
+
+========================
+7. DBMS CONCEPTS (THEORY - MUST KNOW)
+========================
+
+Normalization:
+- 1NF, 2NF, 3NF (definition + example)
+
+Keys:
+- Primary Key
+- Foreign Key
+- Candidate Key
+- Composite Key
+
+Indexes:
+- Clustered vs Non-clustered index
+- When indexing helps / hurts
+
+Transactions:
+- ACID properties
+- Commit / Rollback
+
+Isolation Levels:
+- Read Uncommitted
+- Read Committed
+- Repeatable Read
+- Serializable
+
+Joins vs Index impact (VERY IMPORTANT conceptually)
+
+Deadlocks:
+- what causes them
+- how to avoid
+
+CAP Theorem (basic awareness only)
+
+
+========================
+8. SCENARIO BASED SQL QUESTIONS (VERY IMPORTANT FOR SDET)
+========================
+
+SCENARIO 1:
+Find duplicate records in production table
+
+SCENARIO 2:
+Find missing data between two systems (data reconciliation)
+
+SCENARIO 3:
+Validate API response data vs DB data
+
+SCENARIO 4:
+Find inconsistent records after migration
+
+SCENARIO 5:
+Find latest record per user (window functions)
+
+SCENARIO 6:
+Calculate user retention / activity in last N days
+
+SCENARIO 7:
+Find flaky data (NULL + inconsistent joins)
+
+SCENARIO 8:
+Performance issue in query (index missing)
+
+
+========================
+9. PERFORMANCE + REAL WORLD SQL (IMPORTANT DIFFERENTIATOR)
+========================
+
+- Why query is slow?
+- Index selection strategy
+- Avoid SELECT *
+- Join order importance
+- Filter early vs late
+- Explain plan (basic awareness)
+
+
+========================
+10. FINAL HIGH ROI INTERVIEW FOCUS
+========================
+
+If time is limited, prioritize:
+
+1. JOINs (ALL TYPES)
+2. GROUP BY + HAVING
+3. WINDOW FUNCTIONS
+4. SUBQUERIES
+5. NULL handling
+6. Basic DBMS theory
+7. 30–40 SQL problems (not 200+)

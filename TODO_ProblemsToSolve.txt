@@ -1,0 +1,145 @@
+                                Only 6 patterns
+                                ---------------
+
+JOINs
+GROUP BY + HAVING
+Window functions (RANK, DENSE_RANK)
+Subqueries
+CASE WHEN
+NULL handling
+
+FINAL Questions: 59
+
+
+🧱 1. JOINs (Core foundation — MUST MASTER)
+
+👉 Goal: relationships, self joins, missing data, multi-table logic
+
+175 Combine Two Tables
+181 Employees Earning More Than Their Managers
+183 Customers Who Never Order
+577 Employee Bonus
+1378 Replace Employee ID With The Unique Identifier
+1965 Employees With Missing Information
+1978 Employees Whose Manager Left the Company
+1068 Product Sales Analysis I
+1075 Project Employees I
+1581 Customer Who Visited but Did Not Make Any Transactions
+
+✔ Covers:
+
+LEFT JOIN / INNER JOIN
+self join (manager problems)
+missing relationships
+real-world reporting joins
+
+
+📊 2. GROUP BY + HAVING (Aggregation core — VERY HIGH FREQUENCY)
+
+👉 Goal: summarization + filtering grouped data
+
+182 Duplicate Emails
+595 Big Countries
+596 Classes With at Least 5 Students
+1251 Average Selling Price
+1211 Queries Quality and Percentage
+1484 Group Sold Products By The Date
+1729 Find Followers Count
+1741 Find Total Time Spent by Each Employee
+2356 Number of Unique Subjects Taught by Each Teacher
+1693 Daily Leads and Partners
+
+✔ Covers:
+
+COUNT / SUM / AVG
+HAVING filters
+grouped analytics (very common in SDET dashboards)
+
+🪟 3. WINDOW FUNCTIONS (MOST IMPORTANT FOR 20+ LPA)
+
+👉 Goal: ranking, partitioning, ordering logic
+
+176 Second Highest Salary
+177 Nth Highest Salary
+178 Rank Scores
+184 Department Highest Salary
+185 Department Top Three Salaries
+550 Game Play Analysis IV
+602 Friend Requests II: Who Has the Most Friends
+626 Exchange Seats
+1204 Last Person to Fit in the Bus
+1934 Confirmation Rate
+1070 Product Sales Analysis III
+
+✔ Covers:
+
+RANK / DENSE_RANK / ROW_NUMBER
+partitioning logic
+“top N per group”
+sequencing problems
+
+
+🔍 4. SUBQUERIES + EXISTS (FILTERING THINKING)
+
+👉 Goal: nested logic, dependency queries
+
+1045 Customers Who Bought All Products
+1164 Product Price at a Given Date
+1341 Movie Rating
+1141 User Activity for the Past 30 Days I
+1789 Primary Department for Each Employee
+184 Department Highest Salary (also window overlap)
+197 Rising Temperature
+1148 Article Views I
+619 Biggest Single Number
+1321 Restaurant Growth
+
+✔ Covers:
+
+correlated subqueries
+EXISTS / NOT EXISTS
+filtering based on other tables
+time-based logic
+
+
+🧠 5. CASE WHEN (VERY COMMON IN REAL INTERVIEWS)
+
+👉 Goal: classification, transformations, rules
+
+610 Triangle Judgement
+1873 Calculate Special Bonus
+1683 Invalid Tweets
+627 Swap Sex of Employees
+1907 Count Salary Categories
+1393 Capital Gain/Loss
+3220 Odd and Even Transactions
+1757 Recyclable and Low Fat Products
+
+✔ Covers:
+
+IF-ELSE logic in SQL
+bucketing / classification
+data transformation logic
+
+
+⚠️ 6. NULL HANDLING + EDGE CASES (REAL WORLD TEST)
+
+👉 Goal: missing data, LEFT JOIN correctness
+
+175 Combine Two Tables (repeated intentionally)
+183 Customers Who Never Order (critical)
+196 Delete Duplicate Emails
+197 Rising Temperature
+577 Employee Bonus
+1587 Bank Account Summary II
+1731 The Number of Employees Which Report to Each Employee
+1965 Employees With Missing Information (repeated intentionally)
+1978 Employees Whose Manager Left the Company
+1148 Article Views I
+
+✔ Covers:
+
+IS NULL logic
+LEFT JOIN pitfalls
+missing row handling
+anti-joins
