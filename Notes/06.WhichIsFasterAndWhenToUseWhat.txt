@@ -1,0 +1,7 @@
+Neither is universally faster.
+The better choice depends on the application's requirements.
+
+Choose SQL when consistency, transactions, and complex relationships matter.
+           Use cases: Banking, E-commerce Orders, Inventory, CRM
+Choose NoSQL when scalability, high throughput, and flexible schemas are more important.
+           Use cases: Social Media, Chat Apps, IoT, Logging, Caching
