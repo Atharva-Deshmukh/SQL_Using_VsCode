@@ -1,0 +1,14 @@
+Distributed System
+        │
+        ├── Private Cluster
+        ├── Blockchain
+        ├── Hadoop
+        └── Cloud Computing
+              ├── AWS
+              ├── Azure
+              └── GCP
+
+Distributed system --> An architectural model where multiple computers collaborate as one system. 
+Cloud system --> A distributed system that exposes computing resources as ON-DEMAND SERVICES over the Internet.
+
+Every cloud system is a distributed system, but not every distributed system is a cloud system.
