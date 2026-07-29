@@ -1,0 +1,17 @@
+
+
+SQL (Relational DB)                     | NoSQL (Non-Relational DB)
+----------------------------------------|---------------------------------------------
+Stores data in tables                   | Stores data as key-value or graph format
+Fixed schema                            | Flexible schema
+ACID transactions                       | BASE principles (many DBs) / CAP trade-offs
+Best for complex queries & transactions | Best for high scalability & throughput
+Structured data                         | Semi-structured / Unstructured data
+Vertical scaling                        | Horizontal scaling
+Strong consistency                      | High availability & scalability
+Uses SQL                                | Vendor-specific query languages / APIs
+Ex: MySQL, SQL Server                   | Ex: MongoDB, Redis
+
+Use case: Banking, E-commerce, Inventory| Use case: Social Media, Chat Apps, IoT, Caching, Analytics
+          Payroll                  
+
