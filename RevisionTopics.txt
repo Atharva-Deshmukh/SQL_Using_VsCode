@@ -1,0 +1,15 @@
+✓ SELECT / WHERE / ORDER BY / LIMIT
+✓ GROUP BY / HAVING
+✓ Aggregate Functions
+✓ CASE
+✓ String Functions
+✓ Date Functions
+✓ INNER / LEFT / SELF JOIN
+✓ UNION vs UNION ALL
+✓ Subqueries
+✓ CTE
+✓ Window Functions
+✓ Constraints
+✓ Indexes
+✓ Transactions & ACID
+✓ 59 SQL Questions
