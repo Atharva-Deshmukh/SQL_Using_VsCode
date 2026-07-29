@@ -1,0 +1,59 @@
+                    Is SQL Same Across All Databases?
+                    ---------------------------------
+
+No.
+
+All relational databases follow the ANSI/ISO SQL standard, but each database
+vendor extends SQL with its own proprietary features and syntax.
+
+Examples:
+- MySQL
+- PostgreSQL
+- Oracle
+- SQL Server
+
+------------------------------------------------------------
+
+1. Core SQL (Mostly Same Everywhere)
+
+The following are nearly identical across databases:
+
+- SELECT
+- INSERT
+- UPDATE
+- DELETE
+- WHERE
+- ORDER BY
+- GROUP BY
+- HAVING
+- JOIN
+- CREATE TABLE
+- ALTER TABLE
+- DROP TABLE
+
+Common data types:
+- INT
+- VARCHAR
+- DATE
+
+------------------------------------------------------------
+
+2. Vendor-Specific Differences
+
+Examples:
+
+- AUTO_INCREMENT (MySQL)
+
+------------------------------------------------------------
+
+3. Statement Terminator
+
+ANSI SQL
+--------
+Semicolon (;) is the official SQL statement terminator.
+
+MySQL
+-----
+- Required in MySQL CLI.
+- Optional for a single query in MySQL Workbench.
+- Required when executing multiple statements together.
