@@ -1,0 +1,19 @@
+                                                DB Sharding
+                                                -----------
+
+- The process of storing a large database across multiple machines. 
+- A single machine, or DB server, can store and process only a limited amount of data. 
+  Hence we split data into smaller chunks, called shards, and store them across several DB servers. 
+- All these DB servers usually have the same underlying technologies, and they work together to 
+  store and process large volumes of data.
+
+Why is database sharding important?
+- As users grow, database becomes a bottleneck if too many users attempt to read/write information 
+  simultaneously. 
+- DB sharding enables parallel processing of smaller datasets across shards.
+
+Alternatives to DB sharding
+- Vertical scaling, replication
+
+Methods of sharding
+- Range based, hash based - No need to know in depth
