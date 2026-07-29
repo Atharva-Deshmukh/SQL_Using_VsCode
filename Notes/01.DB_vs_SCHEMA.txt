@@ -1,0 +1,48 @@
+                                            What is a DB?
+                                            -------------
+
+- Structured organization of related data allows for efficient data retrieval and manipulation.
+- Includes schemas, records.
+- Managed using a software called DBMS with the help of DML (Data Manipulation Language) 
+  for operations like adding and updating data.
+
+Advantages of a Database:
+-------------------------
+- Efficient Data Management
+- Scalability
+- Data Security
+- Data Integrity
+
+
+Disadvantages of a Database:
+---------------------------
+- Complexity of setting it up
+- Cost to maintain
+
+----------------------------------------------------------------------------------------------------------------
+
+                                            What is Schema?
+                                            ---------------
+
+- A logical blueprint of a database. 
+- It defines how data is organized within the database, including the tables, fields, relationships, and constraints. 
+
+- Specified by DDL (Data Definition Language).
+
+  ----------------------------------------------------------------------------------------------------------------
+
+                                    SCHEMAS AND DBs Differ as per the server
+                                    ----------------------------------------
+
+- In MySQL, schema = database. They are synonyms.
+  Hence when create create separate schemas, you create separate DBs
+
+Example:
+
+CREATE SCHEMA school;
+CREATE DATABASE school;   -- Same thing
+
+Oracle DB (where schema ≠ database, and schemas are under a single DB) 
+
+
+  
