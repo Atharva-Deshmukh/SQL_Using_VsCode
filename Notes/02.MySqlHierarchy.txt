@@ -1,0 +1,18 @@
+
+
+
+MySQL Server Instance
+│
+├── Database (Schema)
+│   │
+│   ├── Tables
+│   │   └── Rows (Records)
+│   │
+│   ├── Views
+│   ├── Stored Procedures
+│   ├── Functions
+│   ├── Triggers
+│   └── Indexes (associated with tables)
+│
+└── Database (Schema)
+    ├── ...

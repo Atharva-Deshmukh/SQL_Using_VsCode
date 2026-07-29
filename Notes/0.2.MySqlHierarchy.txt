@@ -1,8 +1,0 @@
-
-
-
-
-                MySQL Server Instance
-                └── Database (aka Schema)
-                        └── Tables / Views / Routines
-                            └── Rows (entries / records)
