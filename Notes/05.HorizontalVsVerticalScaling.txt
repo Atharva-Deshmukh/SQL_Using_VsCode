@@ -1,0 +1,21 @@
+
+Horizontal scaling --> increase capacity by adding more machines
+                   --> Offers better scalability and fault tolerance
+
+                    Horizontal Scaling (Scale Out)
+
+                            Load Balancer
+                                │
+                        ┌───────┼───────┐
+                        │       │       │
+                    Server1 Server2 Server3
+
+
+ Vertical scaling --> increase capacity by upgrading the resources of a single machine. 
+
+                    Vertical Scaling (Scale Up)
+
+                            Server
+                    CPU ↑
+                    RAM ↑
+                    Storage ↑
