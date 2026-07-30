@@ -10,7 +10,8 @@ CREATE TABLE ProgrammingLanguages (
 );
 
 -- Insert 2 rows of data
-INSERT INTO ProgrammingLanguages (lang_id, language_name, designed_by, first_release_year) VALUES
+INSERT INTO ProgrammingLanguages (lang_id, language_name, designed_by, first_release_year) 
+VALUES
 (1, 'Python', 'Guido van Rossum', 1991),
 (2, 'JavaScript', 'Brendan Eich', 1995);
 
