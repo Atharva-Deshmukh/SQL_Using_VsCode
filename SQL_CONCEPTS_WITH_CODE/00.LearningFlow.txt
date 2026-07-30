@@ -1,0 +1,48 @@
+Basics
+│
+├── Connections
+├── Databases
+├── Tables
+└── Data Types
+        │
+        ▼
+Querying Data
+│
+├── SELECT
+├── WHERE
+├── Functions
+├── CASE
+├── GROUP BY
+├── ORDER BY
+├── HAVING
+└── LIMIT
+        │
+        ▼
+DDL & DML
+│
+├── CREATE
+├── ALTER
+├── INSERT
+├── UPDATE
+└── DELETE
+        │
+        ▼
+Combining Data
+│
+├── JOINS
+├── UNION
+├── SUBQUERIES
+└── CTE
+        │
+        ▼
+Advanced SQL
+│
+├── Window Functions
+├── Views
+├── Indexes
+├── Procedures
+├── Triggers
+└── UDF
+        │
+        ▼
+Transactions
