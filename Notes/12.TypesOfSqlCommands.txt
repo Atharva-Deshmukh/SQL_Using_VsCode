@@ -1,0 +1,126 @@
+
+DDL → Design → Design the notebook.
+DML → Modify → Write/Erase notes.
+DQL → Query → Read/Search notes.
+TCL → Transaction → Undo/Redo changes.
+DCL → Control (Permissions) → Decide who can access the notebook.
+
+
+======================================================================
+1. DDL (Data Definition Language)
+======================================================================
+
+Purpose:
+      - Defines DB structure.
+
+Works On:
+      - Schemas
+      - Tables
+      - Views
+      - Indexes
+      - Other database objects
+
+Commands:
+      CREATE
+      ALTER
+      DROP
+      TRUNCATE
+      RENAME
+
+Remember:
+      DDL changes the "structure", NOT the data.
+
+======================================================================
+2. DML (Data Manipulation Language)
+======================================================================
+
+Purpose:
+      - Inserts, updates, or deletes data.
+
+Works On:
+      - Tables
+      - Views
+
+Commands:
+      INSERT
+      UPDATE
+      DELETE
+
+      (DB-specific: CALL, LOCK)
+
+======================================================================
+3. DQL (Data Query Language)
+======================================================================
+
+Purpose:
+      - Retrieves data.
+
+Works On:
+      - Tables
+      - Views
+
+Command:
+      SELECT
+
+Example:
+      SELECT * FROM school.students;
+
+Remember:
+      DQL = Read Only
+
+======================================================================
+4. TCL (Transaction Control Language)
+======================================================================
+
+Transaction:
+      A group of SQL statements executed as ONE unit.
+
+Result:
+      ✔ COMMIT   → Save changes permanently.
+      ✘ ROLLBACK → Undo all changes.
+      📍 SAVEPOINT → Undo to a specific point.
+
+Commands:
+      COMMIT
+      ROLLBACK
+      SAVEPOINT
+      SET TRANSACTION
+
+Example:
+
+      START TRANSACTION;
+
+      UPDATE A ...
+      UPDATE B ...
+
+      COMMIT;
+
+      Money transfers succeed only if BOTH updates succeed.
+
+      ----------------------
+      ACID Properties
+      ----------------------
+
+      A → Atomicity
+      All or Nothing.
+
+      C → Consistency
+      Database always remains valid.
+
+      I → Isolation
+      Transactions don't interfere.
+
+      D → Durability
+      Committed changes are permanent.
+
+
+======================================================================
+5. DCL (Data Control Language)
+======================================================================
+
+Purpose:
+- Controls user permissions.
+
+Commands:
+      GRANT
+      REVOKE

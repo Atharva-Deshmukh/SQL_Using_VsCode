@@ -1,0 +1,22 @@
+/**********************************************************************
+                            SQL Clauses
+**********************************************************************
+
+Clause -> A building block of an SQL query.
+          SQL query = Combination of clauses. 
+          Each clause performs a specific task.
+
+Examples:
+    SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT
+
+Categories:
+- Selection      → SELECT, DISTINCT
+- Source         → FROM, JOIN
+- Filtering      → WHERE, HAVING, IN, BETWEEN, LIKE, IS NULL, EXISTS
+- Grouping       → GROUP BY
+- Sorting        → ORDER BY
+- Limiting       → LIMIT
+- Set Operations → UNION, UNION ALL, INTERSECT, EXCEPT*
+                  (*Not fully supported in MySQL)
+
+**********************************************************************/
