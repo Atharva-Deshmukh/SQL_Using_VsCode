@@ -1,46 +1,47 @@
 /*
-                                    What are Window Functions?
-                                    -------------------------
+                                        What are Window Functions?
+                                        --------------------------
 
-- Basically, Window functions operate over a window of rows
+- Lets us perform calculations across a set of related rows (window) 
+  without collapsing those rows into one row.
+- Return a calculated value for every row.
+- Unlike GROUP BY aggregate functions, they DO NOT collapse rows into a single row.
 
-- Difference from normal GROUP BY aggregate functions:
-  GROUP BY collapses rows into a single row.
-  Window functions keep all rows, but add extra calculated values alongside them.
+                    -------------------- Common Use Cases --------------------
 
-                                    Real-Life Use Cases
-                                    -------------------
-
-- Ranking students/employees by marks, salary, etc.
-- Running totals / moving averages in finance or sales.
-- Comparing with previous/next row (e.g., stock price change compared to yesterday).
+✔ Department-wise calculations
 
                             Can we use Aggregate Functions as Window Functions?
                             ---------------------------------------------------
 
-✅ Yes. Any aggregate function can be used as a window function by adding OVER(...).
+✅ Yes --> by adding OVER(...).
 
-                                TYPES OF WINDOW FUNCTIONS
-                                -------------------------
+    Ex:
+        SELECT region, amount,
+            AVG(amount) OVER(PARTITION BY region) AS avg_sales
+        FROM Sales;
 
-(A) Aggregate Window Functions
+                                            TYPES OF WINDOW FUNCTIONS
+                                            -------------------------
 
-These are the same aggregate functions you already know, but applied over a window.
-    SUM()
-    AVG()
-    COUNT()
-    MIN()
-    MAX()
-👉 Instead of collapsing rows into one, they return a value for each row.
+(A) Aggregate Window Functions: 
+    
+    - Known Aggregate functions + OVER() = Aggregate Window Function.
+    - Instead of collapsing rows into one, they return a value for each row.
+    
+        SUM()
+        AVG()
+        COUNT()
+        MIN()
+        MAX()
 
 
-                                                CLAUSES USED:
-                                                -------------
+    CLAUSES USED:
 
-Using PARTITION BY
-- Used to divide the result set into partitions. 
-- The window function is then applied independently to each partition. 
-- Ex: department-wise cumulative salaries.
+    Using PARTITION BY
+    - Used to divide the result set into partitions. 
+    - The window function is then applied independently to each partition. 
+    - Ex: department-wise cumulative salaries.
 
 ---------------------------------------------------------------------------------------------------------
 
