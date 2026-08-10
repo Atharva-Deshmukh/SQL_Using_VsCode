@@ -72,4 +72,5 @@ $      → End of string
 .      → Any single character
 .*     → Zero or more characters
 [abc]  → a, b or c
+[^abc]  → NOT a, b or c
 */
