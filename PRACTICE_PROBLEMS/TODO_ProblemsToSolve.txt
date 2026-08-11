@@ -1,145 +1,556 @@
-                                Only 6 patterns
-                                ---------------
+====================================================================
+                 LEETCODE SQL — 105 QUESTIONS
+                 TOPIC-WISE REVISION ROADMAP
+====================================================================
 
-JOINs
-GROUP BY + HAVING
-Window functions (RANK, DENSE_RANK)
-Subqueries
+====================================================================
+🎯 REVISION MENTAL MODEL
+====================================================================
+
+Do NOT memorize 105 solutions.
+
+Learn to recognize:
+
+    JOIN
+    GROUP BY
+    HAVING
+    WINDOW
+    SUBQUERY
+    CASE
+    NULL
+    DATE
+    STRING
+
+Then recognize combinations:
+
+    JOIN + GROUP BY
+    JOIN + NULL
+    JOIN + CASE
+    GROUP BY + HAVING
+    GROUP BY + CASE
+    SUBQUERY + GROUP BY
+    WINDOW + PARTITION BY
+    WINDOW + DATE
+    WINDOW + CASE
+    JOIN + WINDOW
+    DATE + WINDOW
+    STRING + CASE
+
+
+The real goal:
+
+    105 QUESTIONS
+        ↓
+    10 PATTERNS
+        ↓
+    PATTERN RECOGNITION
+        ↓
+    SOLVE NEW SQL PROBLEMS
+        ↓
+    SDET-2 INTERVIEW READY
+
+
+====================================================================
+🧱 1. JOINS
+   Core foundation — MUST MASTER
+====================================================================
+
+Goal:
+→ Understand relationships between tables
+→ INNER JOIN / LEFT JOIN
+→ SELF JOIN
+→ Missing relationships
+→ Multi-table reporting
+→ Anti-join patterns
+
+Questions:
+
+2997. Combine Two Tables
+3002. Employees Earning More Than Their Managers
+3004. Customers Who Never Order
+3007. Delete Duplicate Emails
+3009. Trips and Users
+3012. Managers with at Least 5 Direct Reports
+3021. Sales Person
+3030. Product Sales Analysis I
+3032. Project Employees I
+3036. Market Analysis I
+3048. Replace Employee ID With The Unique Identifier
+3054. Customer Who Visited but Did Not Make Any Transactions
+3062. The Number of Employees Which Report to Each Employee
+3065. Primary Department for Each Employee
+3071. Employees With Missing Information
+3072. Employees Whose Manager Left the Company
+3083. Find Product Recommendation Pairs
+3084. Find Category Recommendation Pairs
+
+MUST KNOW:
+
+INNER JOIN
+LEFT JOIN
+SELF JOIN
+LEFT JOIN + IS NULL
+NOT EXISTS
+Joining multiple tables
+
+Core mental model:
+
+"What relationship am I trying to establish
+between rows?"
+
+
+====================================================================
+📊 2. GROUP BY + HAVING
+   Aggregation core — VERY HIGH FREQUENCY
+====================================================================
+
+Goal:
+→ Summarize data
+→ COUNT / SUM / AVG / MIN / MAX
+→ Filter groups using HAVING
+→ Conditional aggregation
+→ Business/reporting queries
+
+Questions:
+
+3003. Duplicate Emails
+3016. Customer Placing the Largest Number of Orders
+3018. Classes With at Least 5 Students
+3020. Friend Requests II: Who Has the Most Friends
+3029. Actors and Directors Who Cooperated At Least Three Times
+3039. Reformat Department Table
+3042. Queries Quality and Percentage
+3043. Average Selling Price
+3044. Students and Examinations
+3050. Top Travellers
+3051. Group Sold Products By The Date
+3055. Bank Account Summary II
+3056. Percentage of Users Attended a Contest
+3057. Average Time of Process per Machine
+3060. Daily Leads and Partners
+3061. Find Followers Count
+3063. Find Total Time Spent by Each Employee
+3069. Count Salary Categories
+3073. Number of Unique Subjects Taught by Each Teacher
+3090. Find Overbooked Employees
+3092. Find Stores with Inventory Imbalance
+3093. Find Books with Polarized Opinions
+3094. Find Loyal Customers
+3098. Most Common Course Pairs
+3099. Find Users with High Token Usage
+
+MUST KNOW:
+
+GROUP BY
+HAVING
+COUNT(*)
+COUNT(column)
+COUNT(DISTINCT column)
+SUM()
+AVG()
+MIN()
+MAX()
+
+VERY IMPORTANT:
+
+WHERE → filters rows BEFORE grouping
+HAVING → filters groups AFTER grouping
+
+Example:
+
+GROUP BY department
+HAVING COUNT(*) >= 5
+
+
+====================================================================
+🪟 3. WINDOW FUNCTIONS
+   Ranking / sequencing / top-N — HIGH PRIORITY
+====================================================================
+
+Goal:
+→ Ranking
+→ Top N per group
+→ Previous/next row
+→ Running calculations
+→ Comparing rows
+→ Sequence-based logic
+
+Questions:
+
+2998. Second Highest Salary
+2999. Nth Highest Salary
+3000. Rank Scores
+3001. Consecutive Numbers
+3005. Department Highest Salary
+3006. Department Top Three Salaries
+3011. Game Play Analysis IV
+3026. Exchange Seats
+3031. Product Sales Analysis III
+3041. Last Person to Fit in the Bus
+3045. Restaurant Growth
+3047. Movie Rating
+3070. Confirmation Rate
+3076. Find Students Who Improved
+3085. Seasonal Sales Analysis
+3087. Find Consistently Improving Employees
+3089. Find Drivers with Improved Fuel Efficiency
+3091. Find Students with Study Spiral Pattern
+3095. Find Zombie Sessions
+3096. Find Golden Hour Customers
+3097. Find Churn Risk Customers
+3100. Find Emotionally Consistent Users
+3101. Find Users with Persistent Behavior Patterns
+
+MUST KNOW:
+
+ROW_NUMBER()
+RANK()
+DENSE_RANK()
+LAG()
+LEAD()
+
+Also know:
+
+SUM() OVER(...)
+AVG() OVER(...)
+COUNT() OVER(...)
+
+Core patterns:
+
+-- Rank within group
+RANK() OVER(
+    PARTITION BY department
+    ORDER BY salary DESC
+)
+
+-- Previous row
+LAG(value) OVER(
+    ORDER BY date
+)
+
+-- Next row
+LEAD(value) OVER(
+    ORDER BY date
+)
+
+-- Running total
+SUM(value) OVER(
+    ORDER BY date
+)
+
+IMPORTANT:
+
+ROW_NUMBER → unique numbering
+RANK       → ties + gaps
+DENSE_RANK → ties + no gaps
+
+This section should be one of your strongest.
+
+
+====================================================================
+🔍 4. SUBQUERIES + EXISTS
+   Nested filtering / dependency logic
+====================================================================
+
+Goal:
+→ Compare against another query
+→ Find records based on other rows
+→ EXISTS / NOT EXISTS
+→ Correlated subqueries
+→ "All", "any", "none" type logic
+
+Questions:
+
+3015. Investments in 2016
+3024. Biggest Single Number
+3028. Customers Who Bought All Products
+3034. User Activity for the Past 30 Days I
+3035. Article Views I
+3037. Product Price at a Given Date
+3038. Immediate Food Delivery II
+3046. List the Products Ordered in a Period
+3068. The Latest Login in 2020
+3086. Find Books with No Available Copies
+
+MUST KNOW:
+
+IN
+NOT IN
+EXISTS
+NOT EXISTS
+correlated subquery
+scalar subquery
+
+Very important mental pattern:
+
+"For each row, I need to know whether
+something exists somewhere else."
+
+
+====================================================================
+🧠 5. CASE WHEN + CONDITIONAL LOGIC
+   Classification / business rules
+====================================================================
+
+Goal:
+→ IF / ELSE logic
+→ Categorization
+→ Bucketing
+→ Conditional transformations
+→ Conditional aggregation
+
+Questions:
+
+3013. Employee Bonus
+3022. Tree Node
+3023. Triangle Judgement
+3027. Swap Sex of Employees
+3064. Recyclable and Low Fat Products
+3066. Rearrange Products Table
+3067. Calculate Special Bonus
+3074. Odd and Even Transactions
+3082. Analyze Subscription Conversion
+
+MUST KNOW:
+
+CASE
+    WHEN condition THEN result
+    WHEN condition THEN result
+    ELSE result
+END
+
+Also:
+
+SUM(CASE WHEN ... THEN 1 ELSE 0 END)
+
+COUNT(CASE WHEN ... THEN 1 END)
+
+This pattern is extremely important for real interviews.
+
+
+====================================================================
+⚠️ 6. NULL HANDLING + ANTI-JOIN + EDGE CASES
+   Real-world SQL correctness
+====================================================================
+
+Goal:
+→ Missing data
+→ NULL comparisons
+→ LEFT JOIN correctness
+→ Missing relationships
+→ Edge cases
+
+Questions:
+
+3014. Find Customer Referee
+3017. Big Countries
+3019. Human Traffic of Stadium
+3025. Not Boring Movies
+3033. Sales Analysis III
+3049. Capital Gain/Loss
+3053. Patients With a Condition
+
+MUST KNOW:
+
+IS NULL
+IS NOT NULL
+COALESCE()
+NULLIF()
+
+CRITICAL:
+
+NULL = NULL      → NOT TRUE
+NULL <> value    → NOT TRUE
+
+Use:
+
+WHERE column IS NULL
+
+NOT:
+
+WHERE column = NULL
+
+Also master:
+
+LEFT JOIN + WHERE right_table.id IS NULL
+
+This is the classic ANTI-JOIN pattern.
+
+
+====================================================================
+📅 7. DATE + TIME FUNCTIONS
+   NEW TOPIC — IMPORTANT
+====================================================================
+
+Your original six patterns don't explicitly cover date/time,
+but these 105 questions require it.
+
+Goal:
+→ Date filtering
+→ Date comparison
+→ Extracting date parts
+→ Month/day grouping
+→ Time differences
+→ Rolling/time-based analysis
+
+Questions:
+
+3008. Rising Temperature
+3010. Game Play Analysis I
+3040. Monthly Transactions I
+3088. Find COVID Recovery Patients
+
+Also date/time-heavy questions:
+
+3051. Group Sold Products By The Date
+3068. The Latest Login in 2020
+
+IMPORTANT FUNCTIONS / CONCEPTS:
+
+YEAR()
+MONTH()
+DAY()
+DATE()
+DATEDIFF()
+DATE_ADD()
+DATE_SUB()
+
+Also understand:
+
+date >= start_date
+AND date < end_date
+
+for reliable date-range filtering.
+
+KEY QUESTION:
+
+"Am I comparing individual dates,
+extracting date parts,
+or calculating time differences?"
+
+
+====================================================================
+🔤 8. STRING + REGEX + DATA VALIDATION
+   NEW TOPIC — IMPORTANT
+====================================================================
+
+Goal:
+→ Validate strings
+→ Pattern matching
+→ Email validation
+→ IP validation
+→ Text formatting
+→ String extraction
+
+Questions:
+
+3052. Find Users With Valid E-Mails
+3053. Patients With a Condition
+3058. Fix Names in a Table
+3059. Invalid Tweets
+3075. First Letter Capitalization II
+3077. Find Valid Emails
+3078. Find Invalid IP Addresses
+3079. Find Products with Valid Serial Numbers
+3080. DNA Pattern Recognition
+
+MUST KNOW:
+
+LIKE
+%
+_
+CONCAT()
+LOWER()
+UPPER()
+SUBSTRING()
+LEFT()
+RIGHT()
+LENGTH()
+
+Depending on SQL dialect:
+
+REGEXP / REGEXP_LIKE
+
+This becomes particularly important in the newer
+validation/string questions.
+
+
+====================================================================
+🏗️ 9. RECURSIVE CTE / HIERARCHY
+   NEW TOPIC — ADVANCED
+====================================================================
+
+Questions:
+
+3081. Analyze Organization Hierarchy
+
+Core concept:
+
+WITH RECURSIVE ...
+
+Used when data has:
+
+employee → manager → manager's manager → ...
+
+Think:
+
+"I need to repeatedly traverse a relationship."
+
+
+====================================================================
+🧩 10. ADVANCED MULTI-PATTERN SQL
+   NEW TOPIC — DO NOT TREAT AS A SINGLE PATTERN
+====================================================================
+
+These are questions where the main challenge is combining
+multiple previously learned patterns.
+
+Questions:
+
+3001. Consecutive Numbers
+3019. Human Traffic of Stadium
+3041. Last Person to Fit in the Bus
+3045. Restaurant Growth
+3076. Find Students Who Improved
+3085. Seasonal Sales Analysis
+3087. Find Consistently Improving Employees
+3089. Find Drivers with Improved Fuel Efficiency
+3091. Find Students with Study Spiral Pattern
+3095. Find Zombie Sessions
+3096. Find Golden Hour Customers
+3097. Find Churn Risk Customers
+3100. Find Emotionally Consistent Users
+3101. Find Users with Persistent Behavior Patterns
+
+These commonly combine:
+
+Window Functions
+GROUP BY
 CASE WHEN
-NULL handling
+Date/Time
+Subqueries
 
-FINAL Questions: 59
+DO NOT learn these as isolated tricks.
 
+Instead ask:
 
-🧱 1. JOINs (Core foundation — MUST MASTER)
+"Which basic patterns are being combined?"
 
-👉 Goal: relationships, self joins, missing data, multi-table logic
+====================================================================
+🎯 RECOMMENDED LEARNING ORDER
+====================================================================
 
-175 Combine Two Tables
-181 Employees Earning More Than Their Managers
-183 Customers Who Never Order
-577 Employee Bonus
-1378 Replace Employee ID With The Unique Identifier
-1965 Employees With Missing Information
-1978 Employees Whose Manager Left the Company
-1068 Product Sales Analysis I
-1075 Project Employees I
-1581 Customer Who Visited but Did Not Make Any Transactions
+Do NOT necessarily solve them in numerical order.
 
-✔ Covers:
+Use this order:
 
-LEFT JOIN / INNER JOIN
-self join (manager problems)
-missing relationships
-real-world reporting joins
-
-
-📊 2. GROUP BY + HAVING (Aggregation core — VERY HIGH FREQUENCY)
-
-👉 Goal: summarization + filtering grouped data
-
-182 Duplicate Emails
-595 Big Countries
-596 Classes With at Least 5 Students
-1251 Average Selling Price
-1211 Queries Quality and Percentage
-1484 Group Sold Products By The Date
-1729 Find Followers Count
-1741 Find Total Time Spent by Each Employee
-2356 Number of Unique Subjects Taught by Each Teacher
-1693 Daily Leads and Partners
-
-✔ Covers:
-
-COUNT / SUM / AVG
-HAVING filters
-grouped analytics (very common in SDET dashboards)
-
-🪟 3. WINDOW FUNCTIONS (MOST IMPORTANT FOR 20+ LPA)
-
-👉 Goal: ranking, partitioning, ordering logic
-
-176 Second Highest Salary
-177 Nth Highest Salary
-178 Rank Scores
-184 Department Highest Salary
-185 Department Top Three Salaries
-550 Game Play Analysis IV
-602 Friend Requests II: Who Has the Most Friends
-626 Exchange Seats
-1204 Last Person to Fit in the Bus
-1934 Confirmation Rate
-1070 Product Sales Analysis III
-
-✔ Covers:
-
-RANK / DENSE_RANK / ROW_NUMBER
-partitioning logic
-“top N per group”
-sequencing problems
-
-
-🔍 4. SUBQUERIES + EXISTS (FILTERING THINKING)
-
-👉 Goal: nested logic, dependency queries
-
-1045 Customers Who Bought All Products
-1164 Product Price at a Given Date
-1341 Movie Rating
-1141 User Activity for the Past 30 Days I
-1789 Primary Department for Each Employee
-184 Department Highest Salary (also window overlap)
-197 Rising Temperature
-1148 Article Views I
-619 Biggest Single Number
-1321 Restaurant Growth
-
-✔ Covers:
-
-correlated subqueries
-EXISTS / NOT EXISTS
-filtering based on other tables
-time-based logic
-
-
-🧠 5. CASE WHEN (VERY COMMON IN REAL INTERVIEWS)
-
-👉 Goal: classification, transformations, rules
-
-610 Triangle Judgement
-1873 Calculate Special Bonus
-1683 Invalid Tweets
-627 Swap Sex of Employees
-1907 Count Salary Categories
-1393 Capital Gain/Loss
-3220 Odd and Even Transactions
-1757 Recyclable and Low Fat Products
-
-✔ Covers:
-
-IF-ELSE logic in SQL
-bucketing / classification
-data transformation logic
-
-
-⚠️ 6. NULL HANDLING + EDGE CASES (REAL WORLD TEST)
-
-👉 Goal: missing data, LEFT JOIN correctness
-
-175 Combine Two Tables (repeated intentionally)
-183 Customers Who Never Order (critical)
-196 Delete Duplicate Emails
-197 Rising Temperature
-577 Employee Bonus
-1587 Bank Account Summary II
-1731 The Number of Employees Which Report to Each Employee
-1965 Employees With Missing Information (repeated intentionally)
-1978 Employees Whose Manager Left the Company
-1148 Article Views I
-
-✔ Covers:
-
-IS NULL logic
-LEFT JOIN pitfalls
-missing row handling
-anti-joins
+STEP 1  → JOINs
+STEP 2  → GROUP BY + HAVING
+STEP 3  → CASE WHEN
+STEP 4  → NULL + Anti-Join
+STEP 5  → SUBQUERIES + EXISTS
+STEP 6  → WINDOW FUNCTIONS
+STEP 7  → DATE / TIME
+STEP 8  → STRING / REGEX
+STEP 9  → Recursive CTE
+STEP 10 → Advanced mixed problems
