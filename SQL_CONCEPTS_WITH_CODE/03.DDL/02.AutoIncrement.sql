@@ -1,18 +1,24 @@
-/* Auto-increment allows a unique number to be generated automatically 
-when a new record is inserted into a table.
+/* AUTO_INCREMENT automatically generates a numeric value when
+a new row is inserted.
 
-Often this is the primary key field that we would like to be created automatically 
-every time a new record is inserted.
+Commonly used for:
 
-By default starts by 1 and increments by 1 for each new record.
+→ PRIMARY KEY / unique identifier
+→ User ID
+→ Employee ID
+→ Order ID
 
-Auto-increment is allowed at column-level only and not at table-level.
+===========================================================
+KEY RULES
+===========================================================
 
-                                            Key rules about AUTO_INCREMENT
-                                            ------------------------------
 - You can have only one AUTO_INCREMENT column per table.
 - That column must be indexed (PRIMARY KEY or UNIQUE).
-- It must use a numeric data type (INT, BIGINT, etc.). */
+- It must use a numeric data type (INT, BIGINT, etc.). 
+
+| Default start       | 1 (commonly)                         |
+| Default increment   | 1                                    |
+*/
 
 CREATE TABLE UserData (
     UserID INT AUTO_INCREMENT UNIQUE, -- auto-increment column
@@ -46,7 +52,10 @@ INSERT INTO UserData (UserName, Age, City) VALUES
 |   7    | Ethan   | 40  | Delhi     |
 +--------+---------+-----+-----------+ */
 
--- We can also start auto-increment with some other number instead of default 1 always while create and alter table ops
+===========================================================
+START AUTO_INCREMENT FROM A DIFFERENT VALUE
+===========================================================
+
 CREATE TABLE UserData (
     UserID INT AUTO_INCREMENT UNIQUE, -- auto-increment column
     UserName VARCHAR(50) NOT NULL,
@@ -68,7 +77,9 @@ CREATE TABLE UserData (
 | 106    | Ethan   | 40  | Delhi     |
 +--------+---------+-----+-----------+ */
 
-/* Adding auto-incement via altering the table, after creation basically */
+===========================================================
+ADD AUTO_INCREMENT TO AN EXISTING TABLE
+===========================================================
 
 ALTER TABLE UserData MODIFY UserID INT AUTO_INCREMENT;
 
@@ -83,3 +94,74 @@ ALTER TABLE UserData AUTO_INCREMENT = 1000;
 INSERT INTO UserData (UserName, Age, City) VALUES
 ('Liam', 35, 'Bangalore'),
 ('Olivia', 22, 'Hyderabad');
+
+/* IMPORTANT INTERVIEW POINT:
+
+AUTO_INCREMENT guarantees generated identifiers,
+NOT gap-free numbering.
+
+Example:
+
+1
+2
+3    DELETE FROM UserData WHERE UserID = 3;
+4
+
+
+Now:
+
+1
+2
+4
+
+
+The next inserted row does NOT necessarily reuse 3.
+It may be: 5
+
+
+Output:
+
++--------+
+| UserID |
++--------+
+| 1      |
+| 2      |
+| 4      |
+| 5      |
++--------+
+
+===========================================================
+COMMON INTERVIEW TRAPS
+===========================================================
+
+TRAP 1:
+
+    "AUTO_INCREMENT guarantees unique numbers forever."
+
+    NOT EXACTLY.
+
+    It is commonly used for unique identifiers, especially when combined with PRIMARY KEY / UNIQUE constraints.
+    The uniqueness guarantee comes from the constraint.
+    AUTO_INCREMENT is responsible for generating values.
+
+
+TRAP 2:
+
+    "AUTO_INCREMENT means no gaps."
+    FALSE.
+    Gaps are possible if any row is deleted
+
+
+TRAP 3:
+
+    "AUTO_INCREMENT always starts at 1."
+    FALSE.
+    The starting value can be configured.
+
+
+TRAP 4:
+
+    "DELETE resets AUTO_INCREMENT."
+    Generally FALSE.
+    Deleting rows does not automatically reset the counter.
+*/
