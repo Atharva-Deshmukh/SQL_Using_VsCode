@@ -39,10 +39,9 @@ Module 4: DML (Working with Data)
 Module 5: Combining Queries
 14.UnionAndUnionAll.sql
 22.Subqueries.sql
-34.CommonTableExpressions.sql
 
 Module 6: SQL Joins
-15.1SQL_JOINS.png
+15.SQL_JOINS.png
 15.Joins.sql
 16.InnerJoin.sql
 17.LeftOuterJoin.sql
