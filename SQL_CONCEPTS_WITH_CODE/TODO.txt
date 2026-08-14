@@ -41,7 +41,7 @@ Module 5: Combining Queries
 22.Subqueries.sql
 
 Module 6: SQL Joins
-15.SQL_JOINS.png
+15.SQL_JOINS.png --> Image
 15.Joins.sql
 16.InnerJoin.sql
 17.LeftOuterJoin.sql
