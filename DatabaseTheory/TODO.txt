@@ -1,0 +1,48 @@
+/*
+DBMS THEORY — SDET-2
+
+1. Primary Key vs Foreign Key
+2. Candidate Key / Unique Key
+3. Normalization
+   - 1NF
+   - 2NF
+   - 3NF
+   - Why normalization?
+   - When denormalization is useful
+
+4. Relationships
+   - 1:1
+   - 1:N
+   - M:N
+
+5. ER Diagram
+   - Entity
+   - Attribute
+   - Relationship
+   - Cardinality
+
+6. Transactions
+   - What is a transaction?
+   - ACID properties
+   - COMMIT
+   - ROLLBACK
+
+7. Index
+   - What is an index?
+   - Why does it speed up SELECT?
+   - Why can too many indexes hurt INSERT/UPDATE?
+   - Primary/index difference at a basic level
+
+8. DELETE vs TRUNCATE vs DROP
+
+9. View vs Table
+
+10. Stored Procedure vs Function
+
+11. Basic isolation/concurrency concepts
+    - Dirty Read
+    - Non-repeatable Read
+    - Phantom Read
+
+12. SQL vs NoSQL
+*/
