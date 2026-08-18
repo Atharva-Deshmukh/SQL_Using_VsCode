@@ -2,10 +2,6 @@
 SQL PRACTICE WORKBOOK — SDET-2
 ============================================================
 
-============================================================
-DATASET A — EMPLOYEE / DEPARTMENT / LOCATION
-============================================================
-
 Employee
 
    | employee_id | name  | age | department_id | manager_id | salary | experience_years | status | hire_date  |
@@ -16,17 +12,6 @@ Employee
    | 4           | Carol | 24  | NULL          | 1          | 50000  | 1                | A      | 2025-02-05 |
    | 5           | David | 40  | 20            | NULL       | 80000  | 10               | A      | 2016-09-12 |
 
-
-   /* 
-   | employee_id | name  | age | department_id | manager_id | salary | experience_years | status | hire_date  |
-   |-------------|-------|-----|---------------|------------|--------|------------------|--------|------------|
-   | 1           | John  | 35  | 10            | NULL       | 90000  | 8                | A      | 2018-03-15 |
-   | 2           | Alice | 29  | 10            | 1          | 70000  | 4                | A      | 2021-06-10 |
-   | 3           | Bob   | 31  | 20            | 5          | 60000  | 3                | I      | 2022-01-20 |
-   | 4           | Carol | 24  | NULL          | 1          | 50000  | 1                | A      | 2025-02-05 |
-   | 5           | David | 40  | 20            | NULL       | 80000  | 10               | A      | 2016-09-12 |
-
-*/
 CREATE TABLE IF NOT EXISTS Employee (
     employee_id INT NOT NULL,
     name VARCHAR(100),                                   --> VARCHAR must have length
@@ -104,7 +89,7 @@ PROBLEMS
    |          NULL |
    +---------------+
 
-4. Display employee name and salary increased by 10%.
+4. Display employee name and salary increased by 10%.  --> Revise
 
     SELECT name, (salary + (0.1 * salary)) FROM Employee;
 
@@ -134,7 +119,7 @@ PROBLEMS
    | David         |
    +---------------+
 
-6. Display employee name and a constant column 'Employee'.
+6. Display employee name and a constant column 'Employee'.  --> Revise
 
    SELECT name, 'Employee' FROM Employee;
 
@@ -183,7 +168,7 @@ PROBLEMS
    |           4 | Carol |  24 |          NULL |          1 |  50000 |                1 | A      | 2025-02-05 |
    +-------------+-------+-----+---------------+------------+--------+------------------+--------+------------+
 
-10. Display employees ordered by department_id and salary descending.
+10. Display employees ordered by department_id and salary descending.  --> Revise
 
    SELECT * FROM Employee ORDER BY department_id ASC, salary DESC;
 
