@@ -2,52 +2,27 @@
 SOLUTION KEY
 ============================================================
 
-1. SELECT
---------
 
-1.
-SELECT * FROM Employee;
 
-2.
-SELECT name, salary, department_id
-FROM Employee;
 
-3.
-SELECT DISTINCT department_id
-FROM Employee;
 
-4.
-SELECT name, salary * 1.10 AS increased_salary
-FROM Employee;
 
-5.
-SELECT name AS Employee_Name
-FROM Employee;
 
-6.
-SELECT name, 'Employee' AS type
-FROM Employee;
 
-7.
-SELECT *
-FROM Employee
-ORDER BY salary ASC;
 
-8.
-SELECT *
-FROM Employee
-ORDER BY salary DESC;
 
-9.
-SELECT *
-FROM Employee
-ORDER BY salary DESC
-LIMIT 5;
 
-10.
-SELECT *
-FROM Employee
-ORDER BY department_id, salary DESC;
+
+
+
+
+
+
+
+
+
+
+
 
 
 2. WHERE
