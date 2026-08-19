@@ -12,6 +12,28 @@ LEFT JOIN
 EXAMPLE
 ===========================================================
 
+Ex:
+
+t1
+    +--------+---------+--------+------------+
+    | UserID | UserName| Sex    | RollNumber |
+    +--------+---------+--------+------------+
+    | 1      | John    | Male   | 11         |
+    | 2      | Emma    | Female | 12         |
+    | 3      | Ravi    | Male   | 13         |
+    | 4      | Raj     | Female | 14         |
+    +--------+---------+--------+------------+
+
+t2
+    +--------+----------+----------+---------+
+    | UserID | Sub      | UserName | Surname |
+    +--------+----------+----------+---------+
+    | 3      | Maths    | Jarret   | Joshi   |
+    | 4      | English  | Erina    | Ekare   |
+    | 5      | Science  | Prashant | Patil   |
+    | 6      | SSC      | Rajan    | Rawat   |
+    +--------+----------+----------+---------+
+
 SELECT *
 FROM t1
 LEFT JOIN t2
