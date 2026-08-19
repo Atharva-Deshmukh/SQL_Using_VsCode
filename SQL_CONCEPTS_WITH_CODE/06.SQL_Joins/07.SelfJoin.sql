@@ -1,6 +1,7 @@
 /*
 ===========================================================
 SELF JOIN → A table is joined with itself.
+            Its just an INNER JOIN of table with itself, not a special type of join
 ===========================================================
 
 Use case:
