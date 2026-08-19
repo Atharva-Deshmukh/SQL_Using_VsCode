@@ -17,14 +17,35 @@ Set A         Set B
   2     ×      b
   2     ×      c
 
-CROSS JOIN → Every row from the LEFT table combines with
-              every row from the RIGHT table.
+CROSS JOIN → Every row from the LEFT table combines with every row from the RIGHT table.
 
 ROWS IN RESULT = rows(t1) × rows(t2)
 
 ===========================================================
 EXAMPLE
 ===========================================================
+
+Ex:
+
+t1
+    +--------+---------+--------+------------+
+    | UserID | UserName| Sex    | RollNumber |
+    +--------+---------+--------+------------+
+    | 1      | John    | Male   | 11         |
+    | 2      | Emma    | Female | 12         |
+    | 3      | Ravi    | Male   | 13         |
+    | 4      | Raj     | Female | 14         |
+    +--------+---------+--------+------------+
+
+t2
+    +--------+----------+----------+---------+
+    | UserID | Sub      | UserName | Surname |
+    +--------+----------+----------+---------+
+    | 3      | Maths    | Jarret   | Joshi   |
+    | 4      | English  | Erina    | Ekare   |
+    | 5      | Science  | Prashant | Patil   |
+    | 6      | SSC      | Rajan    | Rawat   |
+    +--------+----------+----------+---------+
 
 SELECT *
 FROM t1
