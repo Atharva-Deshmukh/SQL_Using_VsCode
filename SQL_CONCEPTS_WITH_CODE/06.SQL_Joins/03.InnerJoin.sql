@@ -1,6 +1,8 @@
 /*
 ======================================================================
 INNER JOIN → Returns ONLY rows having a matching value in BOTH tables.
+
+            NULLs are excluded because NULLs don't match using = because NULL = NULL is not TRUE.
 ======================================================================
 
 Ex:
