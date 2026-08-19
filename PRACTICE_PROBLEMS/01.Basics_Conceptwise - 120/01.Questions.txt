@@ -411,13 +411,56 @@ PROBLEMS
 
 8. Find employees who earn more than their manager.
 
+   SELECT e.name 
+   FROM Employee AS e 
+   INNER JOIN Employee AS m 
+      ON e.manager_id = m.employee_id
+   WHERE e.salary > m.salary;
+
+   As per our data, no employee earns more than their manager
+
 9. Find employees who do not have a manager.
 
-10. Find employees working in Engineering.
+   SELECT e.name 
+   FROM Employee AS e 
+   LEFT JOIN Employee AS m 
+      ON e.manager_id = m.employee_id
+   WHERE e.manager_id IS NULL;
+
+   SELECT name FROM Employee WHERE Employee.manager_id IS NULL;
+
+10. Find employees working in Engineering. --> REVISE
+
+   SELECT e.name 
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   WHERE e.department_id = 10;
+
+   SELECT name FROM Employee WHERE Employee.department_id = 10  --> We may not know another table value, hence don't use this
 
 11. Find employees earning > 50000 in Engineering.
 
-12. Find employees hired after 2024 with their department name.
+   SELECT e.name 
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   WHERE (e.department_id = 10 AND e.salary > 50000);
+
+12. Find employees hired after 2024 with their department name. --> Revise
+
+   SELECT e.name, d.department_name
+   FROM Employee AS e 
+   LEFT JOIN Department AS d 
+      ON e.department_id = d.department_id
+   WHERE e.hire_date > '2024-01-01';         --> REVISE date format: YYYY-MM-DD
+
+   Output:
+   +-------+-----------------+
+   | name  | department_name |
+   +-------+-----------------+
+   | Carol | NULL            |
+   +-------+-----------------+
 
 
 ============================================================

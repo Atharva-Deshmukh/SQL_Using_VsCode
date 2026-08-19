@@ -21,46 +21,6 @@ SOLUTION KEY
 
 
 
-3. JOIN
---------
-
-
-8.
-SELECT e.name AS employee,
-       e.salary AS employee_salary,
-       m.name AS manager,
-       m.salary AS manager_salary
-FROM Employee e
-JOIN Employee m
-  ON e.manager_id = m.employee_id
-WHERE e.salary > m.salary;
-
-9.
-SELECT *
-FROM Employee
-WHERE manager_id IS NULL;
-
-10.
-SELECT e.*
-FROM Employee e
-JOIN Department d
-  ON e.department_id = d.department_id
-WHERE d.department_name = 'Engineering';
-
-11.
-SELECT e.*
-FROM Employee e
-JOIN Department d
-  ON e.department_id = d.department_id
-WHERE d.department_name = 'Engineering'
-  AND e.salary > 50000;
-
-12.
-SELECT e.name, d.department_name
-FROM Employee e
-LEFT JOIN Department d
-  ON e.department_id = d.department_id
-WHERE e.hire_date > '2024-01-01';
 
 
 4. GROUP BY / HAVING
