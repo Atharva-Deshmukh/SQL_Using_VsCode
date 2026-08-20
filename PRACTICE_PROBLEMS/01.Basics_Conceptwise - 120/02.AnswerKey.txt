@@ -23,72 +23,7 @@ SOLUTION KEY
 
 
 
-4. GROUP BY / HAVING
---------------------
 
-1.
-SELECT COUNT(*) AS employee_count
-FROM Employee;
-
-2.
-SELECT department_id, COUNT(*) AS employee_count
-FROM Employee
-GROUP BY department_id;
-
-3.
-SELECT AVG(salary) AS average_salary
-FROM Employee;
-
-4.
-SELECT department_id, AVG(salary) AS average_salary
-FROM Employee
-GROUP BY department_id;
-
-5.
-SELECT department_id, MAX(salary) AS max_salary
-FROM Employee
-GROUP BY department_id;
-
-6.
-SELECT department_id, MIN(salary) AS min_salary
-FROM Employee
-GROUP BY department_id;
-
-7.
-SELECT department_id, SUM(salary) AS total_salary
-FROM Employee
-GROUP BY department_id;
-
-8.
-SELECT department_id, COUNT(*) AS employee_count
-FROM Employee
-GROUP BY department_id
-HAVING COUNT(*) > 1;
-
-9.
-SELECT department_id, AVG(salary) AS average_salary
-FROM Employee
-GROUP BY department_id
-HAVING AVG(salary) > 60000;
-
-10.
-SELECT department_id, SUM(salary) AS total_salary
-FROM Employee
-GROUP BY department_id
-HAVING SUM(salary) > 100000;
-
-11.
-SELECT department_id, COUNT(*) AS employee_count
-FROM Employee
-WHERE salary > 50000
-GROUP BY department_id;
-
-12.
-SELECT department_id, COUNT(*) AS high_salary_count
-FROM Employee
-WHERE salary > 50000
-GROUP BY department_id
-HAVING COUNT(*) >= 2;
 
 
 5. CASE

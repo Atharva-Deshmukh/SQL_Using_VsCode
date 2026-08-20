@@ -472,27 +472,167 @@ PROBLEMS
 
 1. Count all employees.
 
-2. Count employees in each department.
+   SELECT COUNT(*) AS EMP_COUNT 
+   FROM Employee;
+
+   Output:
+   +-----------+
+   | EMP_COUNT |
+   +-----------+
+   |         5 |
+   +-----------+
+
+2. Count employees in each department.          -->    REVISE
+
+   SELECT d.department_name, COUNT(*) AS NoOfEmployees
+   FROM Employee AS e 
+   INNER JOIN Department as d 
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name;
+
+   Output:
+   +-----------------+---------------+
+   | department_name | NoOfEmployees |
+   +-----------------+---------------+
+   | Engineering     |             2 |
+   | QA              |             2 |
+   +-----------------+---------------+
+
+   We need not use joins here in case department name is not asked in the question, we can straight away group by department_id
+
+   SELECT department_id, COUNT(*) AS employee_count
+   FROM Employee
+   GROUP BY department_id;
 
 3. Find average salary.
 
+   SELECT AVG(Employee.salary) AS AVG_SALARY 
+   FROM Employee;
+
 4. Find average salary per department.
+
+   SELECT d.department_name, AVG(e.salary)
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name;
+
+   Output:
+   +-----------------+---------------+
+   | department_name | AVG(e.salary) |
+   +-----------------+---------------+
+   | Engineering     |    80000.0000 |
+   | QA              |    70000.0000 |
+   +-----------------+---------------+
 
 5. Find maximum salary per department.
 
+   SELECT d.department_name, MAX(e.salary) AS Max_Salary
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name;
+
+   Output:
+   +-----------------+------------+
+   | department_name | Max_Salary |
+   +-----------------+------------+
+   | Engineering     |      90000 |
+   | QA              |      80000 |
+   +-----------------+------------+
+
 6. Find minimum salary per department.
+
+   SELECT d.department_name, MIN(e.salary) AS Min_Salary
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name;
 
 7. Find total salary per department.
 
-8. Find departments having more than 1 employee.
+   SELECT d.department_name, SUM(e.salary) AS Total_Salary
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name;
+
+8. Find departments having more than 1 employee.  --> REVISE
+
+   SELECT d.department_name, COUNT(*) AS Emp_Count
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name
+   HAVING COUNT(*) > 1;
+
+   Output:
+   +-----------------+-----------+
+   | department_name | Emp_Count |
+   +-----------------+-----------+
+   | Engineering     |         2 |
+   | QA              |         2 |
+   +-----------------+-----------+
 
 9. Find departments whose average salary > 60000.
 
+   SELECT d.department_name, AVG(e.salary) AS AverageSal
+   FROM Employee AS e 
+   INNER JOIN Department AS d
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name
+   HAVING AVG(e.salary) > 60000;
+
 10. Find departments whose total salary > 100000.
 
-11. Count employees in each department whose salary > 50000.
+   SELECT d.department_name, SUM(e.salary) AS TotalSal
+   FROM Employee AS e 
+   INNER JOIN Department AS d
+      ON e.department_id = d.department_id
+   GROUP BY d.department_name
+   HAVING SUM(e.salary) > 100000;
 
-12. Find departments having at least 2 employees earning > 50000.
+11. Count employees in each department whose salary > 50000.      -->  REVISE
+
+   Thought process: I have to also now filter rows - Hence I can use WHERE clause along with GROUP BY
+
+   SELECT d.department_name, COUNT(*) AS EmployeeCount
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   WHERE e.salary > 50000
+   GROUP BY d.department_name;
+
+      Output:
+      +-----------------+---------------+
+      | department_name | EmployeeCount |
+      +-----------------+---------------+
+      | Engineering     |             2 |
+      | QA              |             2 |
+      +-----------------+---------------+
+
+12. Find departments having at least 2 employees earning > 50000.  -->   REVISE
+
+
+   Thought process: I have to also now filter rows - WHERE CLAUSE
+                    I have to apply condition on the groups, hence HAVING clause
+                    Get the count of employees per dept using GROUP BY clause and then apply > 2 condition
+
+   SELECT d.department_name, COUNT(*) AS EmployeeCount
+   FROM Employee AS e 
+   INNER JOIN Department AS d 
+      ON e.department_id = d.department_id
+   WHERE (e.salary > 50000)
+   GROUP BY d.department_name
+   HAVING COUNT(*) >= 2;
+
+   Output:
+   +-----------------+---------------+
+   | department_name | EmployeeCount |
+   +-----------------+---------------+
+   | Engineering     |             2 |
+   | QA              |             2 |
+   +-----------------+---------------+
 
 
 ============================================================
