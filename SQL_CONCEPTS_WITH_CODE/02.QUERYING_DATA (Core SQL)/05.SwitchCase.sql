@@ -28,7 +28,7 @@ SELECT
     salary,
     CASE                                                 -- No column-name specified here
         WHEN salary >= 60000 THEN 'High'                 -- individual row is compared -> when salary > .. then ..
-        WHEN salary >= 40000 THEN 'Medium'
+        WHEN salary >= 40000 THEN 'Medium'               -- USE CASE: When we evaluate a condition
         ELSE 'Low'
     END AS salary_band
 FROM employees;
@@ -64,7 +64,7 @@ SELECT
         WHEN 'HR' THEN 'People Team'
         WHEN 'Engineering' THEN 'Tech Team'            -- Here value is already considered in case
         ELSE 'Other'                                   -- When dept is this.. then this..
-    END AS team_label
+    END AS team_label                                  -- USE CASE: When we evaluate a value
 FROM employees;
 
 Output
