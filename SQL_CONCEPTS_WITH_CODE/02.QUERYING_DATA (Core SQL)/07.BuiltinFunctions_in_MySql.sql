@@ -132,4 +132,41 @@ Remember:
 GREATEST → Row-wise
 MAX      → Column-wise
 
+/************************************* FUNCTION USED WHILE HANDLING NULL VALUES *********************************/
+
+
+COALESCE() — SQL Function
+
+- COALESCE() is a SQL function.
+   It is available in MySQL also
+
+Purpose:
+   COALESCE() is mainly used to handle NULL values.
+
+Basic syntax:
+   COALESCE(value, replacement)
+
+Example:
+   SELECT COALESCE(salary, 0) AS salary FROM employees;
+
+   - If salary is NOT NULL → return salary
+   - If salary IS NULL → return 0
+
+- COALESCE() can accept multiple values: COALESCE(salary, bonus, 0)
+   It returns the FIRST value that is NOT NULL.
+
+   Example:
+   - salary = 50000 → returns 50000
+   - salary = NULL, bonus = 5000 → returns 5000
+   - salary = NULL, bonus = NULL → returns 0
+
+- MySQL also has IFNULL():
+   IFNULL(salary, 0)
+
+   Both can handle this simple case.
+
+   - COALESCE() → standard SQL, works across many databases
+   - IFNULL() → MySQL-specific
+
+
 /**********************************************************************/
