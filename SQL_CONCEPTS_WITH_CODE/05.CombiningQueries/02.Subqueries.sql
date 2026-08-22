@@ -9,8 +9,6 @@ SUBQUERY
 
 Basic flow:
 
-      Outer Query
-          ↓
       Subquery result
           ↓
       Outer Query uses result
