@@ -178,8 +178,8 @@ Output:
     +----+--------+--------+---------------+
 
 NOTE:
-    If we won't consider FULL FRAME, then we may get the last value as the current row itself, and this can be confusing
-    as we may think why are we not getting the last value
+    If we won't consider FULL FRAME, then we may get the last value as the current row itself, 
+    and this can be confusing as we may think why are we not getting the last value
 
 Query:
 
