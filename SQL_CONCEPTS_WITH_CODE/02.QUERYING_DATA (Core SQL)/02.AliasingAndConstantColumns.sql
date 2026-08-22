@@ -89,6 +89,22 @@ Here:
 - 'Employee' is a constant expression.
 - The column exists only in the query output, not in the table.
 
+
+Without an Alias, column name and values will be same
+
+SELECT 'Employee' FROM Employee;
+
+    Output:
+    +----------+
+    | Employee |
+    +----------+
+    | Employee |
+    | Employee |
+    | Employee |
+    | Employee |
+    | Employee |
+    +----------+
+
 -- Other examples of constant columns
 
 SELECT 2025 AS Year, ProductName
