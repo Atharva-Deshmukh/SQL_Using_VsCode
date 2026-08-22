@@ -90,6 +90,10 @@ Output:
     +----+--------+--------+-------------+
 
 
+NOTE: WITHOUT ORDER BY
+ For each row, calculate the total amount of the entire partition.
+ Hence full total is added to the end of the row
+
 ===========================================================
 4.3: SUM() + ORDER BY = RUNNING TOTAL
 ===========================================================
@@ -141,6 +145,9 @@ Output:
 | 5  | West   | 300    | 450           |
 +----+--------+--------+---------------+
 
+NOTE: With ORDER BY
+Within each partition, arrange the rows by ORDER BY, and calculate the SUM up to the current row.
+Thats why we get running total
 
 ===========================================================
 4. AVG() OVER(PARTITION BY ...)
