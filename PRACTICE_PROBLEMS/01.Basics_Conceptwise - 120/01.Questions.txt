@@ -756,25 +756,82 @@ PROBLEMS
 
 1. Find employees whose manager_id IS NULL.
 
+   SELECT name FROM Employee WHERE manager_id IS NULL;
+
+   Output:
+   +-------+
+   | name  |
+   +-------+
+   | John  |
+   | David |
+   +-------+
+
 2. Find employees whose department_id IS NULL.
+
+   SELECT name FROM Employee WHERE department_id IS NULL; 
 
 3. Replace NULL salary with 0 using COALESCE.
 
-4. Replace NULL department_id with 'Unknown'.
+   SELECT name, COALESCE(salary, 0) FROM Employee;
+
+4. Replace NULL department_id with 'Unknown'.   -->   REVISE
+
+   SELECT name, COALESCE(department_id, 'Unknown') FROM Employee;
+
+   Output:
+   +-------+------------------------------------+
+   | name  | COALESCE(department_id, 'Unknown') |
+   +-------+------------------------------------+
+   | John  | 10                                 |
+   | Alice | 10                                 |
+   | Bob   | 20                                 |
+   | Carol | Unknown                            |
+   | David | 20                                 |
+   +-------+------------------------------------+
 
 5. Count employees whose manager_id IS NULL.
 
+   SELECT COUNT(*) FROM Employee WHERE manager_id IS NULL;
+
+   Output:
+   +----------+
+   | COUNT(*) |
+   +----------+
+   |        2 |
+   +----------+
+
 6. Find employees whose manager_id IS NOT NULL.
 
-7. Find employees with missing department information.
+   SELECT name FROM Employee WHERE manager_id IS NOT NULL;
+
+7. Find employees with missing department information.   -->  REVISE, language of the question
+
+   SELECT name FROM Employee WHERE department_id IS NULL;
 
 8. Explain why:
-   WHERE manager_id = NULL
+   WHERE manager_id = NULL                              --> REVISE concept
    does not correctly find NULL values.
 
-9. Compare COUNT(*) and COUNT(salary).
+   NULL represents a missing/unknown value in SQL.
+   It is not a normal value that can be compared using =.
 
-10. Use COALESCE to display a fallback value for NULLs.
+   NULL = NULL results in UNKNOWN, not TRUE.
+   WHERE only returns rows where the condition is TRUE.
+
+   Therefore:
+
+   WRONG:
+      WHERE manager_id = NULL
+
+   CORRECT:
+      WHERE manager_id IS NULL
+
+9. Compare COUNT(*) and COUNT(salary).                --> REVISE
+
+   COUNT(*)      → Counts all rows.
+   COUNT(column) → Ignores NULL values.
+
+10. Use COALESCE to display a fallback value for NULLs. --> Done already
 
 
 ============================================================
