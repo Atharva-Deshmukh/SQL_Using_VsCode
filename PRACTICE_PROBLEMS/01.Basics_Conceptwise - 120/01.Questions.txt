@@ -51,34 +51,6 @@ Location
 
 
 ============================================================
-10. DATE / TIME
-============================================================
-
-PROBLEMS
---------
-
-1. Find employees hired after 2020-01-01.
-
-2. Find employees hired between 2020-01-01 and 2024-12-31.
-
-3. Find employees hired in 2022.
-
-4. Extract year, month and day from hire_date.
-
-5. Find employees who joined in the current month.
-
-6. Calculate employee tenure.
-
-7. Find orders placed in the last 7 days.
-
-8. Find total sales for each month.
-
-9. Find number of orders per day.
-
-10. Find the month with highest total sales.
-
-
-============================================================
 11. STRING
 ============================================================
 
