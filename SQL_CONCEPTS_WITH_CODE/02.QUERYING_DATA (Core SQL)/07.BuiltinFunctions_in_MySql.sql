@@ -45,6 +45,21 @@ SELECT TRIM(' SQL ');            -- SQL
 SELECT SUBSTRING('ORACLE',2,3);  -- RAC
 SELECT CONCAT('Hello',' SQL');   -- Hello SQL
 
+SELECT name,
+   LOCATE('o', name) AS position
+FROM Employee;
+
+    Output:
+    +-------+----------+
+    | name  | position |
+    +-------+----------+
+    | John  |        2 |
+    | Alice |        0 |
+    | Bob   |        2 |
+    | Carol |        4 |
+    | David |        0 |
+    +-------+----------+
+
 ======================================================================
 NUMERIC FUNCTIONS
 ======================================================================
