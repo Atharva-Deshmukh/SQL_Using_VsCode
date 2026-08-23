@@ -49,48 +49,6 @@ Location
    | 300         | HQ            | Mumbai    | India |
    | 400         | Finance HQ    | Delhi     | India |
 
-
-============================================================
-11. STRING
-============================================================
-
-Use:
-
-Employee
-
-| employee_id | name  |
-|-------------|-------|
-| 1 | John |
-| 2 | Alice |
-| 3 | Bob |
-| 4 | Carol |
-| 5 | David |
-
-PROBLEMS
---------
-
-1. Find length of each employee name.
-
-2. Convert names to uppercase.
-
-3. Convert names to lowercase.
-
-4. Extract first 3 characters.
-
-5. Extract last 3 characters.
-
-6. Find names beginning with A.
-
-7. Find names containing 'a'.
-
-8. Concatenate first_name and last_name.
-   (Create/use a small table with both columns.)
-
-9. Replace a substring in employee names.
-
-10. Find the position of 'o' in each employee name.
-
-
 ============================================================
 12. COMBINATIONS
 ============================================================

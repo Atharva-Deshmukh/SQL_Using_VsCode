@@ -20,56 +20,6 @@ SOLUTION KEY
 
 
 
-11. STRING
-----------
-
-1.
-SELECT name, LENGTH(name) AS name_length
-FROM Employee;
-
-2.
-SELECT UPPER(name)
-FROM Employee;
-
-3.
-SELECT LOWER(name)
-FROM Employee;
-
-4.
-SELECT name, LEFT(name, 3) AS first_3
-FROM Employee;
-
-5.
-SELECT name, RIGHT(name, 3) AS last_3
-FROM Employee;
-
-6.
-SELECT *
-FROM Employee
-WHERE name LIKE 'A%';
-
-7.
-SELECT *
-FROM Employee
-WHERE name LIKE '%a%';
-
-8.
-Example if Employee has first_name and last_name:
-
-SELECT CONCAT(first_name, ' ', last_name) AS full_name
-FROM Employee;
-
-9.
-SELECT name,
-       REPLACE(name, 'a', 'x') AS modified_name
-FROM Employee;
-
-10.
-SELECT name,
-       LOCATE('o', name) AS position
-FROM Employee;
-
-
 12. COMBINATIONS
 ---------------
 
