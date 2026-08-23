@@ -49,57 +49,6 @@ Location
    | 300         | HQ            | Mumbai    | India |
    | 400         | Finance HQ    | Delhi     | India |
 
-============================================================
-9. WINDOW FUNCTIONS
-============================================================
-
-PROBLEMS — RANKING
-------------------
-
-1. Rank all employees by salary.
-
-2. Rank employees by salary within each department.
-
-3. Find the highest-paid employee in each department.
-
-4. Find the second-highest salary in each department.
-
-5. Find the top 3 employees in each department.
-
-6. Demonstrate ROW_NUMBER vs RANK vs DENSE_RANK.
-
-
-PROBLEMS — LAG / LEAD
----------------------
-
-Use:
-
-Sales
-
-| sale_id | employee_id | sale_date  | amount |
-|---------|-------------|------------|--------|
-| 1 | 1 | 2026-08-01 | 500 |
-| 2 | 1 | 2026-08-02 | 700 |
-| 3 | 2 | 2026-08-03 | 400 |
-| 4 | 2 | 2026-08-04 | 600 |
-| 5 | 1 | 2026-08-05 | 900 |
-
-7. Display each employee's sale and previous sale amount.
-
-8. Compare each employee's current sale with previous sale.
-
-9. Find sales where current amount > previous amount.
-
-
-PROBLEMS — WINDOW AGGREGATES
-----------------------------
-
-10. Calculate running salary total ordered by employee_id.
-
-11. Display every employee with total salary of their department.
-
-12. Display every employee with average salary of their department.
-
 
 ============================================================
 10. DATE / TIME

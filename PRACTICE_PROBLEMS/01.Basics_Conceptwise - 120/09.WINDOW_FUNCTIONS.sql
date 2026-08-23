@@ -61,25 +61,142 @@ PROBLEMS — RANKING
 
 1. Rank all employees by salary.
 
+       Thought process: I need unique ranks for different salaries and 
+                    if salaries tie, then I need same ranks, 
+                    No gaps should be there for subsequent salaries
+                    Hence DENSE_RANK()
+
+        SELECT name, salary,
+        DENSE_RANK() OVER (
+            ORDER BY salary DESC
+        ) AS rnk
+        FROM Employee;
+
 2. Rank employees by salary within each department.
 
-3. Find the highest-paid employee in each department.
+    SELECT name, department_id, salary,
+    DENSE_RANK() OVER (
+        PARTITION BY department_id
+        ORDER BY salary DESC
+    ) AS rnk
+    FROM Employee
+    WHERE department_id IS NOT NULL;   -- To Exclude Carol
+
+3. Find the highest-paid employee in each department.   --  REVISE
+
+    SELECT name, department_id, salary
+    FROM (                                  -- Pass entire SELECT query inside FROM(), not just the window function
+    SELECT name, department_id, salary,
+    DENSE_RANK() OVER(
+        PARTITION BY department_id
+        ORDER BY salary DESC
+    )  AS rnk
+    FROM Employee                        -- We have FROM inside FROM
+    ) AS ALIAS_NOT_USED_ANYWHERE
+    WHERE rnk = 1 AND department_id IS NOT NULL;
 
 4. Find the second-highest salary in each department.
 
+    SELECT name, department_id, salary
+    FROM (
+    SELECT name, department_id, salary,
+        DENSE_RANK() OVER (
+            PARTITION BY department_id
+            ORDER BY salary DESC
+        ) AS rnk 
+        FROM Employee
+        WHERE department_id IS NOT NULL
+    ) AS ALIAS_NOT_USED_ANYWHERE
+    WHERE rnk = 2;
+
 5. Find the top 3 employees in each department.
 
-6. Demonstrate ROW_NUMBER vs RANK vs DENSE_RANK.
+    SELECT name, department_id, salary, rnk  --> We now also added rnk
+    FROM (
+    SELECT name, department_id, salary,
+        DENSE_RANK() OVER(
+            PARTITION BY department_id
+            ORDER BY salary DESC
+        ) AS rnk 
+    FROM Employee
+    WHERE department_id IS NOT NULL
+    ) AS ALIAS_USED_NOWHERE
+    WHERE rnk <= 3;
+
+    Output:
+    +-------+---------------+--------+-----+
+    | name  | department_id | salary | rnk |
+    +-------+---------------+--------+-----+
+    | John  |            10 |  90000 |   1 |
+    | Alice |            10 |  70000 |   2 |
+    | David |            20 |  80000 |   1 |
+    | Bob   |            20 |  60000 |   2 |
+    +-------+---------------+--------+-----+
+
+6. Demonstrate ROW_NUMBER vs RANK vs DENSE_RANK.  -- Read theory, no need to solve
 
 
 PROBLEMS — LAG / LEAD
 ---------------------
 
-7. Display each employee's sale and previous sale amount.
+7. Display each employees sale and previous sale amount.
 
-8. Compare each employee's current sale with previous sale.
+    SELECT employee_id, amount AS CurrentSale, 
+    LAG(amount, 1, 0) OVER (
+        PARTITION BY employee_id
+        ORDER BY sale_date         -->  ORDER BY DATES NOW
+    ) AS PreviousSale
+    FROM Sales;
 
-9. Find sales where current amount > previous amount.
+8. Compare each employees current sale with previous sale.  -- REVISE OPTIMISATION
+
+    SELECT employee_id, amount AS CurrentSale, 
+    LAG(amount, 1, 0) OVER (
+        PARTITION BY employee_id
+        ORDER BY sale_date
+    ) AS PreviousSale,
+
+    amount - 
+    LAG(amount, 1, 0) OVER(
+        PARTITION BY employee_id
+        ORDER BY sale_date
+    ) AS difference
+    FROM Sales;
+
+    -- Optimise using subquery
+
+    SELECT employee_id, amount AS CurrentSale, PreviousSale, amount - PreviousSale AS difference
+    FROM (
+    SELECT employee_id, amount, 
+        LAG(amount, 1, 0) OVER (
+            PARTITION BY employee_id
+            ORDER BY sale_date
+        ) AS PreviousSale
+    FROM Sales
+    ) AS ALIAS_NOWHERE_USED;
+
+    Output:
+    +-------------+-------------+--------------+------------+
+    | employee_id | CurrentSale | PreviousSale | difference |
+    +-------------+-------------+--------------+------------+
+    |           1 |         500 |            0 |        500 |
+    |           1 |         700 |          500 |        200 |
+    |           1 |         900 |          700 |        200 |
+    |           2 |         400 |            0 |        400 |
+    |           2 |         600 |          400 |        200 |
+    +-------------+-------------+--------------+------------+
+
+9. Find sales where current amount > previous amount.   --   REVISE
+
+    SELECT sale_id, amount
+    FROM (
+    SELECT sale_id, amount,             --   WE NEED SUBQUERY to compare with another column alias
+        LAG(amount, 1, 0) OVER (
+            ORDER BY sale_date
+        ) AS PreviousAmt
+    FROM Sales
+    ) AS NON_USED_ALIAS
+    WHERE amount > PreviousAmt;
 
 
 PROBLEMS — WINDOW AGGREGATES
@@ -87,6 +204,25 @@ PROBLEMS — WINDOW AGGREGATES
 
 10. Calculate running salary total ordered by employee_id.
 
+    SELECT name, employee_id, salary, 
+    SUM(salary) OVER (
+        ORDER BY employee_id
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW -- Don't need it actually
+    ) AS RunningTotal
+    FROM Employee;
+
 11. Display every employee with total salary of their department.
 
+    SELECT name, department_id, 
+    SUM(salary) OVER (
+        PARTITION BY department_id
+    ) AS DeptTotalSal
+    FROM Employee;
+
 12. Display every employee with average salary of their department.
+
+    SELECT name, department_id, 
+    AVG(salary) OVER (
+        PARTITION BY department_id
+    ) AS DeptAvg
+    FROM Employee;
