@@ -2,7 +2,7 @@ Basic Select - 20 - DONE
 
 Advanced Select - 5
 
-Aggregation - 17
+Aggregation - 17 - DONE
 
 Basic Join - 8
 
