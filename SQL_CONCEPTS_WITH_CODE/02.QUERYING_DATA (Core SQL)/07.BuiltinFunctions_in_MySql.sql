@@ -26,6 +26,13 @@ Scalar    → One Row
 Aggregate → Many Rows
 */
 
+-- LEARNINGS FROM QUESTIONS
+
+REPLACE(Salary, '0', '')          -> Removes all 0s From number directly, no need to convert to string
+CAST(... AS UNSIGNED)             -> Converts result back to number
+AVG(Salary)                       -> Actual average
+CEIL(...)                         -> Rounds UP to next integer
+
 ======================================================================
 STRING FUNCTIONS
 ======================================================================
