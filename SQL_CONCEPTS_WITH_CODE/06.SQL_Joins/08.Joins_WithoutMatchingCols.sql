@@ -48,6 +48,8 @@ salary_grades
     | C     | 5001      | 8000      |
     +-------+-----------+-----------+
 
+The Above tables are not related by a common table column, but by a logical condition
+
 SELECT e.Name, e.Salary, s.Grade
 FROM employees e
 JOIN salary_grades s                                                 -->   THIS IS ACTUALLY INNER JOIN, with a condition
