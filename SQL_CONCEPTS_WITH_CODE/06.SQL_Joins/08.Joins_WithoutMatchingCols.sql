@@ -12,7 +12,7 @@ JOIN departments d
 
 → This is an INNER JOIN using =.
 
-Most common joins using matching keys are EQUI JOINS.
+Most common joins using matching/foreign keys/columns are EQUI JOINS.
 
 ===========================================================
 NON-EQUI JOIN
@@ -28,7 +28,7 @@ Examples:
     BETWEEN
     etc.
 
-Example:
+Example: TABLE WITHOUT ANY MATCHING COLUMN
 
 employees
     +-------+------+--------+
@@ -50,7 +50,7 @@ salary_grades
 
 SELECT e.Name, e.Salary, s.Grade
 FROM employees e
-JOIN salary_grades s
+JOIN salary_grades s                                                 -->   THIS IS ACTUALLY INNER JOIN, with a condition
     ON e.Salary BETWEEN s.MinSalary AND s.MaxSalary;
 
 OUTPUT:
