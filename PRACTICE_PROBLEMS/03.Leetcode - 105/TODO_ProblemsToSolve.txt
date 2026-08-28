@@ -1,556 +1,179 @@
 ====================================================================
-                 LEETCODE SQL — 105 QUESTIONS
-                 TOPIC-WISE REVISION ROADMAP
+         LEETCODE SQL — 105 QUESTIONS
+         TOPIC-WISE REVISION ROADMAP (CORRECTED LC NUMBERS)
 ====================================================================
 
 ====================================================================
-🎯 REVISION MENTAL MODEL
+🧱 1. JOINS  (18 problems)
 ====================================================================
 
-Do NOT memorize 105 solutions.
-
-Learn to recognize:
-
-    JOIN
-    GROUP BY
-    HAVING
-    WINDOW
-    SUBQUERY
-    CASE
-    NULL
-    DATE
-    STRING
-
-Then recognize combinations:
-
-    JOIN + GROUP BY
-    JOIN + NULL
-    JOIN + CASE
-    GROUP BY + HAVING
-    GROUP BY + CASE
-    SUBQUERY + GROUP BY
-    WINDOW + PARTITION BY
-    WINDOW + DATE
-    WINDOW + CASE
-    JOIN + WINDOW
-    DATE + WINDOW
-    STRING + CASE
-
-
-The real goal:
-
-    105 QUESTIONS
-        ↓
-    10 PATTERNS
-        ↓
-    PATTERN RECOGNITION
-        ↓
-    SOLVE NEW SQL PROBLEMS
-        ↓
-    SDET-2 INTERVIEW READY
+[2997] → 175.   Combine Two Tables                                Easy
+[3002] → 181.   Employees Earning More Than Their Managers        Easy
+[3004] → 183.   Customers Who Never Order                         Easy
+[3007] → 196.   Delete Duplicate Emails                           Easy
+[3009] → 262.   Trips and Users                                   Hard
+[3012] → 570.   Managers with at Least 5 Direct Reports           Med
+[3021] → 607.   Sales Person                                      Easy
+[3030] → 1068.  Product Sales Analysis I                          Easy
+[3032] → 1075.  Project Employees I                               Easy
+[3036] → 1158.  Market Analysis I                                 Med
+[3048] → 1378.  Replace Employee ID With The Unique Identifier    Easy
+[3054] → 1581.  Customer Who Visited but Did Not Make Transactions Easy
+[3062] → 1731.  The Number of Employees Which Report to Each Emp  Easy
+[3065] → 1789.  Primary Department for Each Employee              Easy
+[3071] → 1965.  Employees With Missing Information                Easy
+[3072] → 1978.  Employees Whose Manager Left the Company          Easy
+[3083] → 3521.  Find Product Recommendation Pairs                 Med
+[3084] → 3554.  Find Category Recommendation Pairs                Hard
 
 
 ====================================================================
-🧱 1. JOINS
-   Core foundation — MUST MASTER
+📊 2. GROUP BY + HAVING  (25 problems)
 ====================================================================
 
-Goal:
-→ Understand relationships between tables
-→ INNER JOIN / LEFT JOIN
-→ SELF JOIN
-→ Missing relationships
-→ Multi-table reporting
-→ Anti-join patterns
-
-Questions:
-
-2997. Combine Two Tables
-3002. Employees Earning More Than Their Managers
-3004. Customers Who Never Order
-3007. Delete Duplicate Emails
-3009. Trips and Users
-3012. Managers with at Least 5 Direct Reports
-3021. Sales Person
-3030. Product Sales Analysis I
-3032. Project Employees I
-3036. Market Analysis I
-3048. Replace Employee ID With The Unique Identifier
-3054. Customer Who Visited but Did Not Make Any Transactions
-3062. The Number of Employees Which Report to Each Employee
-3065. Primary Department for Each Employee
-3071. Employees With Missing Information
-3072. Employees Whose Manager Left the Company
-3083. Find Product Recommendation Pairs
-3084. Find Category Recommendation Pairs
-
-MUST KNOW:
-
-INNER JOIN
-LEFT JOIN
-SELF JOIN
-LEFT JOIN + IS NULL
-NOT EXISTS
-Joining multiple tables
-
-Core mental model:
-
-"What relationship am I trying to establish
-between rows?"
+[3003] → 182.   Duplicate Emails                                  Easy
+[3016] → 586.   Customer Placing the Largest Number of Orders     Easy
+[3018] → 596.   Classes With at Least 5 Students                  Easy
+[3020] → 602.   Friend Requests II: Who Has the Most Friends      Med
+[3029] → 1050.  Actors and Directors Who Cooperated ≥3 Times      Easy
+[3039] → 1179.  Reformat Department Table                         Easy
+[3042] → 1211.  Queries Quality and Percentage                    Easy
+[3043] → 1251.  Average Selling Price                             Easy
+[3044] → 1280.  Students and Examinations                         Easy
+[3050] → 1407.  Top Travellers                                    Easy
+[3051] → 1484.  Group Sold Products By The Date                   Easy
+[3055] → 1587.  Bank Account Summary II                           Easy
+[3056] → 1633.  Percentage of Users Attended a Contest            Easy
+[3057] → 1661.  Average Time of Process per Machine               Easy
+[3060] → 1693.  Daily Leads and Partners                          Easy
+[3061] → 1729.  Find Followers Count                              Easy
+[3063] → 1741.  Find Total Time Spent by Each Employee            Easy
+[3069] → 1907.  Count Salary Categories                           Med
+[3073] → 2356.  Number of Unique Subjects Taught by Each Teacher  Easy
+[3090] → 3611.  Find Overbooked Employees                         Med
+[3092] → 3626.  Find Stores with Inventory Imbalance              Med
+[3093] → 3642.  Find Books with Polarized Opinions                Med
+[3094] → 3657.  Find Loyal Customers                              Med
+[3098] → 3764.  Most Common Course Pairs                          Hard
+[3099] → 3793.  Find Users with High Token Usage                  Easy
 
 
 ====================================================================
-📊 2. GROUP BY + HAVING
-   Aggregation core — VERY HIGH FREQUENCY
+🪟 3. WINDOW FUNCTIONS  (23 problems)
 ====================================================================
 
-Goal:
-→ Summarize data
-→ COUNT / SUM / AVG / MIN / MAX
-→ Filter groups using HAVING
-→ Conditional aggregation
-→ Business/reporting queries
-
-Questions:
-
-3003. Duplicate Emails
-3016. Customer Placing the Largest Number of Orders
-3018. Classes With at Least 5 Students
-3020. Friend Requests II: Who Has the Most Friends
-3029. Actors and Directors Who Cooperated At Least Three Times
-3039. Reformat Department Table
-3042. Queries Quality and Percentage
-3043. Average Selling Price
-3044. Students and Examinations
-3050. Top Travellers
-3051. Group Sold Products By The Date
-3055. Bank Account Summary II
-3056. Percentage of Users Attended a Contest
-3057. Average Time of Process per Machine
-3060. Daily Leads and Partners
-3061. Find Followers Count
-3063. Find Total Time Spent by Each Employee
-3069. Count Salary Categories
-3073. Number of Unique Subjects Taught by Each Teacher
-3090. Find Overbooked Employees
-3092. Find Stores with Inventory Imbalance
-3093. Find Books with Polarized Opinions
-3094. Find Loyal Customers
-3098. Most Common Course Pairs
-3099. Find Users with High Token Usage
-
-MUST KNOW:
-
-GROUP BY
-HAVING
-COUNT(*)
-COUNT(column)
-COUNT(DISTINCT column)
-SUM()
-AVG()
-MIN()
-MAX()
-
-VERY IMPORTANT:
-
-WHERE → filters rows BEFORE grouping
-HAVING → filters groups AFTER grouping
-
-Example:
-
-GROUP BY department
-HAVING COUNT(*) >= 5
+[2998] → 176.   Second Highest Salary                             Med
+[2999] → 177.   Nth Highest Salary                                Med
+[3000] → 178.   Rank Scores                                       Med
+[3001] → 180.   Consecutive Numbers                               Med
+[3005] → 184.   Department Highest Salary                         Med
+[3006] → 185.   Department Top Three Salaries                     Hard
+[3011] → 550.   Game Play Analysis IV                             Med
+[3026] → 626.   Exchange Seats                                    Med
+[3031] → 1070.  Product Sales Analysis III                        Med
+[3041] → 1204.  Last Person to Fit in the Bus                     Med
+[3045] → 1321.  Restaurant Growth                                 Med
+[3047] → 1341.  Movie Rating                                      Med
+[3070] → 1934.  Confirmation Rate                                 Med
+[3076] → 3421.  Find Students Who Improved                        Med
+[3085] → 3564.  Seasonal Sales Analysis                           Med
+[3087] → 3580.  Find Consistently Improving Employees             Med
+[3089] → 3601.  Find Drivers with Improved Fuel Efficiency        Med
+[3091] → 3617.  Find Students with Study Spiral Pattern           Hard
+[3095] → 3673.  Find Zombie Sessions                              Hard
+[3096] → 3705.  Find Golden Hour Customers                        Med
+[3097] → 3716.  Find Churn Risk Customers                         Med
+[3100] → 3808.  Find Emotionally Consistent Users                 Med
+[3101] → 3832.  Find Users with Persistent Behavior Patterns      Hard
 
 
 ====================================================================
-🪟 3. WINDOW FUNCTIONS
-   Ranking / sequencing / top-N — HIGH PRIORITY
+🔍 4. SUBQUERIES + EXISTS  (10 problems)
 ====================================================================
 
-Goal:
-→ Ranking
-→ Top N per group
-→ Previous/next row
-→ Running calculations
-→ Comparing rows
-→ Sequence-based logic
-
-Questions:
-
-2998. Second Highest Salary
-2999. Nth Highest Salary
-3000. Rank Scores
-3001. Consecutive Numbers
-3005. Department Highest Salary
-3006. Department Top Three Salaries
-3011. Game Play Analysis IV
-3026. Exchange Seats
-3031. Product Sales Analysis III
-3041. Last Person to Fit in the Bus
-3045. Restaurant Growth
-3047. Movie Rating
-3070. Confirmation Rate
-3076. Find Students Who Improved
-3085. Seasonal Sales Analysis
-3087. Find Consistently Improving Employees
-3089. Find Drivers with Improved Fuel Efficiency
-3091. Find Students with Study Spiral Pattern
-3095. Find Zombie Sessions
-3096. Find Golden Hour Customers
-3097. Find Churn Risk Customers
-3100. Find Emotionally Consistent Users
-3101. Find Users with Persistent Behavior Patterns
-
-MUST KNOW:
-
-ROW_NUMBER()
-RANK()
-DENSE_RANK()
-LAG()
-LEAD()
-
-Also know:
-
-SUM() OVER(...)
-AVG() OVER(...)
-COUNT() OVER(...)
-
-Core patterns:
-
--- Rank within group
-RANK() OVER(
-    PARTITION BY department
-    ORDER BY salary DESC
-)
-
--- Previous row
-LAG(value) OVER(
-    ORDER BY date
-)
-
--- Next row
-LEAD(value) OVER(
-    ORDER BY date
-)
-
--- Running total
-SUM(value) OVER(
-    ORDER BY date
-)
-
-IMPORTANT:
-
-ROW_NUMBER → unique numbering
-RANK       → ties + gaps
-DENSE_RANK → ties + no gaps
-
-This section should be one of your strongest.
+[3015] → 585.   Investments in 2016                               Med
+[3024] → 619.   Biggest Single Number                             Easy
+[3028] → 1045.  Customers Who Bought All Products                 Med
+[3034] → 1141.  User Activity for the Past 30 Days I              Easy
+[3035] → 1148.  Article Views I                                   Easy
+[3037] → 1164.  Product Price at a Given Date                     Med
+[3038] → 1174.  Immediate Food Delivery II                        Med
+[3046] → 1327.  List the Products Ordered in a Period             Easy
+[3068] → 1890.  The Latest Login in 2020                          Easy
+[3086] → 3570.  Find Books with No Available Copies               Easy
 
 
 ====================================================================
-🔍 4. SUBQUERIES + EXISTS
-   Nested filtering / dependency logic
+🧠 5. CASE WHEN  (9 problems)
 ====================================================================
 
-Goal:
-→ Compare against another query
-→ Find records based on other rows
-→ EXISTS / NOT EXISTS
-→ Correlated subqueries
-→ "All", "any", "none" type logic
-
-Questions:
-
-3015. Investments in 2016
-3024. Biggest Single Number
-3028. Customers Who Bought All Products
-3034. User Activity for the Past 30 Days I
-3035. Article Views I
-3037. Product Price at a Given Date
-3038. Immediate Food Delivery II
-3046. List the Products Ordered in a Period
-3068. The Latest Login in 2020
-3086. Find Books with No Available Copies
-
-MUST KNOW:
-
-IN
-NOT IN
-EXISTS
-NOT EXISTS
-correlated subquery
-scalar subquery
-
-Very important mental pattern:
-
-"For each row, I need to know whether
-something exists somewhere else."
+[3013] → 577.   Employee Bonus                                    Easy
+[3022] → 608.   Tree Node                                         Med
+[3023] → 610.   Triangle Judgement                                Easy
+[3027] → 627.   Swap Sex of Employees                             Easy
+[3064] → 1757.  Recyclable and Low Fat Products                   Easy
+[3066] → 1795.  Rearrange Products Table                          Easy
+[3067] → 1873.  Calculate Special Bonus                           Easy
+[3074] → 3220.  Odd and Even Transactions                         Med   ← real number
+[3082] → 3497.  Analyze Subscription Conversion                   Med   ← real number
 
 
 ====================================================================
-🧠 5. CASE WHEN + CONDITIONAL LOGIC
-   Classification / business rules
+⚠️  6. NULL HANDLING + ANTI-JOIN  (7 problems)
 ====================================================================
 
-Goal:
-→ IF / ELSE logic
-→ Categorization
-→ Bucketing
-→ Conditional transformations
-→ Conditional aggregation
-
-Questions:
-
-3013. Employee Bonus
-3022. Tree Node
-3023. Triangle Judgement
-3027. Swap Sex of Employees
-3064. Recyclable and Low Fat Products
-3066. Rearrange Products Table
-3067. Calculate Special Bonus
-3074. Odd and Even Transactions
-3082. Analyze Subscription Conversion
-
-MUST KNOW:
-
-CASE
-    WHEN condition THEN result
-    WHEN condition THEN result
-    ELSE result
-END
-
-Also:
-
-SUM(CASE WHEN ... THEN 1 ELSE 0 END)
-
-COUNT(CASE WHEN ... THEN 1 END)
-
-This pattern is extremely important for real interviews.
+[3014] → 584.   Find Customer Referee                             Easy
+[3017] → 595.   Big Countries                                     Easy
+[3019] → 601.   Human Traffic of Stadium                          Hard
+[3025] → 620.   Not Boring Movies                                 Easy
+[3033] → 1084.  Sales Analysis III                                Easy
+[3049] → 1393.  Capital Gain/Loss                                 Med
+[3053] → 1527.  Patients With a Condition                         Easy
 
 
 ====================================================================
-⚠️ 6. NULL HANDLING + ANTI-JOIN + EDGE CASES
-   Real-world SQL correctness
+📅 7. DATE + TIME  (4 primary problems)
 ====================================================================
 
-Goal:
-→ Missing data
-→ NULL comparisons
-→ LEFT JOIN correctness
-→ Missing relationships
-→ Edge cases
+[3008] → 197.   Rising Temperature                                Easy
+[3010] → 511.   Game Play Analysis I                              Easy
+[3040] → 1193.  Monthly Transactions I                            Med
+[3088] → 3586.  Find COVID Recovery Patients                      Med   ← real number
 
-Questions:
-
-3014. Find Customer Referee
-3017. Big Countries
-3019. Human Traffic of Stadium
-3025. Not Boring Movies
-3033. Sales Analysis III
-3049. Capital Gain/Loss
-3053. Patients With a Condition
-
-MUST KNOW:
-
-IS NULL
-IS NOT NULL
-COALESCE()
-NULLIF()
-
-CRITICAL:
-
-NULL = NULL      → NOT TRUE
-NULL <> value    → NOT TRUE
-
-Use:
-
-WHERE column IS NULL
-
-NOT:
-
-WHERE column = NULL
-
-Also master:
-
-LEFT JOIN + WHERE right_table.id IS NULL
-
-This is the classic ANTI-JOIN pattern.
+Also cross-referenced in other sections:
+         1484.  Group Sold Products By The Date       (Section 2)
+         1890.  The Latest Login in 2020              (Section 4)
 
 
 ====================================================================
-📅 7. DATE + TIME FUNCTIONS
-   NEW TOPIC — IMPORTANT
+🔤 8. STRING + REGEX  (9 problems — 1527 overlaps with Section 6)
 ====================================================================
 
-Your original six patterns don't explicitly cover date/time,
-but these 105 questions require it.
-
-Goal:
-→ Date filtering
-→ Date comparison
-→ Extracting date parts
-→ Month/day grouping
-→ Time differences
-→ Rolling/time-based analysis
-
-Questions:
-
-3008. Rising Temperature
-3010. Game Play Analysis I
-3040. Monthly Transactions I
-3088. Find COVID Recovery Patients
-
-Also date/time-heavy questions:
-
-3051. Group Sold Products By The Date
-3068. The Latest Login in 2020
-
-IMPORTANT FUNCTIONS / CONCEPTS:
-
-YEAR()
-MONTH()
-DAY()
-DATE()
-DATEDIFF()
-DATE_ADD()
-DATE_SUB()
-
-Also understand:
-
-date >= start_date
-AND date < end_date
-
-for reliable date-range filtering.
-
-KEY QUESTION:
-
-"Am I comparing individual dates,
-extracting date parts,
-or calculating time differences?"
+[3052] → 1517.  Find Users With Valid E-Mails                     Easy
+[3053] → 1527.  Patients With a Condition          ← also Sec 6   Easy
+[3058] → 1667.  Fix Names in a Table                              Easy
+[3059] → 1683.  Invalid Tweets                                    Easy
+[3075] → 3374.  First Letter Capitalization II                    Hard  ← real number
+[3077] → 3436.  Find Valid Emails                                 Easy  ← real number
+[3078] → 3451.  Find Invalid IP Addresses                         Hard  ← real number
+[3079] → 3465.  Find Products with Valid Serial Numbers           Easy  ← real number
+[3080] → 3475.  DNA Pattern Recognition                           Med   ← real number
 
 
 ====================================================================
-🔤 8. STRING + REGEX + DATA VALIDATION
-   NEW TOPIC — IMPORTANT
+🏗️  9. RECURSIVE CTE  (1 problem)
 ====================================================================
 
-Goal:
-→ Validate strings
-→ Pattern matching
-→ Email validation
-→ IP validation
-→ Text formatting
-→ String extraction
-
-Questions:
-
-3052. Find Users With Valid E-Mails
-3053. Patients With a Condition
-3058. Fix Names in a Table
-3059. Invalid Tweets
-3075. First Letter Capitalization II
-3077. Find Valid Emails
-3078. Find Invalid IP Addresses
-3079. Find Products with Valid Serial Numbers
-3080. DNA Pattern Recognition
-
-MUST KNOW:
-
-LIKE
-%
-_
-CONCAT()
-LOWER()
-UPPER()
-SUBSTRING()
-LEFT()
-RIGHT()
-LENGTH()
-
-Depending on SQL dialect:
-
-REGEXP / REGEXP_LIKE
-
-This becomes particularly important in the newer
-validation/string questions.
+[3081] → 3482.  Analyze Organization Hierarchy                    Hard  ← real number
 
 
 ====================================================================
-🏗️ 9. RECURSIVE CTE / HIERARCHY
-   NEW TOPIC — ADVANCED
+🧩 10. ADVANCED MULTI-PATTERN  (cross-references only, no new Qs)
 ====================================================================
 
-Questions:
+All 14 questions listed here are already covered in earlier sections:
 
-3081. Analyze Organization Hierarchy
-
-Core concept:
-
-WITH RECURSIVE ...
-
-Used when data has:
-
-employee → manager → manager's manager → ...
-
-Think:
-
-"I need to repeatedly traverse a relationship."
-
-
-====================================================================
-🧩 10. ADVANCED MULTI-PATTERN SQL
-   NEW TOPIC — DO NOT TREAT AS A SINGLE PATTERN
-====================================================================
-
-These are questions where the main challenge is combining
-multiple previously learned patterns.
-
-Questions:
-
-3001. Consecutive Numbers
-3019. Human Traffic of Stadium
-3041. Last Person to Fit in the Bus
-3045. Restaurant Growth
-3076. Find Students Who Improved
-3085. Seasonal Sales Analysis
-3087. Find Consistently Improving Employees
-3089. Find Drivers with Improved Fuel Efficiency
-3091. Find Students with Study Spiral Pattern
-3095. Find Zombie Sessions
-3096. Find Golden Hour Customers
-3097. Find Churn Risk Customers
-3100. Find Emotionally Consistent Users
-3101. Find Users with Persistent Behavior Patterns
-
-These commonly combine:
-
-Window Functions
-GROUP BY
-CASE WHEN
-Date/Time
-Subqueries
-
-DO NOT learn these as isolated tricks.
-
-Instead ask:
-
-"Which basic patterns are being combined?"
-
-====================================================================
-🎯 RECOMMENDED LEARNING ORDER
-====================================================================
-
-Do NOT necessarily solve them in numerical order.
-
-Use this order:
-
-STEP 1  → JOINs
-STEP 2  → GROUP BY + HAVING
-STEP 3  → CASE WHEN
-STEP 4  → NULL + Anti-Join
-STEP 5  → SUBQUERIES + EXISTS
-STEP 6  → WINDOW FUNCTIONS
-STEP 7  → DATE / TIME
-STEP 8  → STRING / REGEX
-STEP 9  → Recursive CTE
-STEP 10 → Advanced mixed problems
+180  (Sec 3) | 601  (Sec 6) | 1204 (Sec 3) | 1321 (Sec 3)
+3421 (Sec 3) | 3564 (Sec 3) | 3580 (Sec 3) | 3601 (Sec 3)
+3617 (Sec 3) | 3673 (Sec 3) | 3705 (Sec 3) | 3716 (Sec 3)
+3808 (Sec 3) | 3832 (Sec 3)
