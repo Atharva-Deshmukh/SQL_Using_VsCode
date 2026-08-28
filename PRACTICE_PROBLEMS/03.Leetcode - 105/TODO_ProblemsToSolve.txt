@@ -7,138 +7,138 @@
 🧱 1. JOINS  (18 problems)
 ====================================================================
 
-[2997] → 175.   Combine Two Tables                                Easy
-[3002] → 181.   Employees Earning More Than Their Managers        Easy
-[3004] → 183.   Customers Who Never Order                         Easy
-[3007] → 196.   Delete Duplicate Emails                           Easy
-[3009] → 262.   Trips and Users                                   Hard
-[3012] → 570.   Managers with at Least 5 Direct Reports           Med
-[3021] → 607.   Sales Person                                      Easy
-[3030] → 1068.  Product Sales Analysis I                          Easy
-[3032] → 1075.  Project Employees I                               Easy
-[3036] → 1158.  Market Analysis I                                 Med
-[3048] → 1378.  Replace Employee ID With The Unique Identifier    Easy
-[3054] → 1581.  Customer Who Visited but Did Not Make Transactions Easy
-[3062] → 1731.  The Number of Employees Which Report to Each Emp  Easy
-[3065] → 1789.  Primary Department for Each Employee              Easy
-[3071] → 1965.  Employees With Missing Information                Easy
-[3072] → 1978.  Employees Whose Manager Left the Company          Easy
-[3083] → 3521.  Find Product Recommendation Pairs                 Med
-[3084] → 3554.  Find Category Recommendation Pairs                Hard
+✓ 175.   Combine Two Tables                                Easy 
+✓ 181.   Employees Earning More Than Their Managers        Easy
+✓ 183.   Customers Who Never Order                         Easy
+196.   Delete Duplicate Emails                           Easy
+262.   Trips and Users                                   Hard
+570.   Managers with at Least 5 Direct Reports           Med
+607.   Sales Person                                      Easy
+1068.  Product Sales Analysis I                          Easy
+1075.  Project Employees I                               Easy
+1158.  Market Analysis I                                 Med
+1378.  Replace Employee ID With The Unique Identifier    Easy
+1581.  Customer Who Visited but Did Not Make Transactions Easy
+1731.  The Number of Employees Which Report to Each Emp  Easy
+1789.  Primary Department for Each Employee              Easy
+1965.  Employees With Missing Information                Easy
+1978.  Employees Whose Manager Left the Company          Easy
+3521.  Find Product Recommendation Pairs                 Med
+3554.  Find Category Recommendation Pairs                Hard
 
 
 ====================================================================
 📊 2. GROUP BY + HAVING  (25 problems)
 ====================================================================
 
-[3003] → 182.   Duplicate Emails                                  Easy
-[3016] → 586.   Customer Placing the Largest Number of Orders     Easy
-[3018] → 596.   Classes With at Least 5 Students                  Easy
-[3020] → 602.   Friend Requests II: Who Has the Most Friends      Med
-[3029] → 1050.  Actors and Directors Who Cooperated ≥3 Times      Easy
-[3039] → 1179.  Reformat Department Table                         Easy
-[3042] → 1211.  Queries Quality and Percentage                    Easy
-[3043] → 1251.  Average Selling Price                             Easy
-[3044] → 1280.  Students and Examinations                         Easy
-[3050] → 1407.  Top Travellers                                    Easy
-[3051] → 1484.  Group Sold Products By The Date                   Easy
-[3055] → 1587.  Bank Account Summary II                           Easy
-[3056] → 1633.  Percentage of Users Attended a Contest            Easy
-[3057] → 1661.  Average Time of Process per Machine               Easy
-[3060] → 1693.  Daily Leads and Partners                          Easy
-[3061] → 1729.  Find Followers Count                              Easy
-[3063] → 1741.  Find Total Time Spent by Each Employee            Easy
-[3069] → 1907.  Count Salary Categories                           Med
-[3073] → 2356.  Number of Unique Subjects Taught by Each Teacher  Easy
-[3090] → 3611.  Find Overbooked Employees                         Med
-[3092] → 3626.  Find Stores with Inventory Imbalance              Med
-[3093] → 3642.  Find Books with Polarized Opinions                Med
-[3094] → 3657.  Find Loyal Customers                              Med
-[3098] → 3764.  Most Common Course Pairs                          Hard
-[3099] → 3793.  Find Users with High Token Usage                  Easy
+182.   Duplicate Emails                                  Easy
+586.   Customer Placing the Largest Number of Orders     Easy
+596.   Classes With at Least 5 Students                  Easy
+602.   Friend Requests II: Who Has the Most Friends      Med
+1050.  Actors and Directors Who Cooperated ≥3 Times      Easy
+1179.  Reformat Department Table                         Easy
+1211.  Queries Quality and Percentage                    Easy
+1251.  Average Selling Price                             Easy
+1280.  Students and Examinations                         Easy
+1407.  Top Travellers                                    Easy
+1484.  Group Sold Products By The Date                   Easy
+1587.  Bank Account Summary II                           Easy
+1633.  Percentage of Users Attended a Contest            Easy
+1661.  Average Time of Process per Machine               Easy
+1693.  Daily Leads and Partners                          Easy
+1729.  Find Followers Count                              Easy
+1741.  Find Total Time Spent by Each Employee            Easy
+1907.  Count Salary Categories                           Med
+2356.  Number of Unique Subjects Taught by Each Teacher  Easy
+3611.  Find Overbooked Employees                         Med
+3626.  Find Stores with Inventory Imbalance              Med
+3642.  Find Books with Polarized Opinions                Med
+3657.  Find Loyal Customers                              Med
+3764.  Most Common Course Pairs                          Hard
+3793.  Find Users with High Token Usage                  Easy
 
 
 ====================================================================
 🪟 3. WINDOW FUNCTIONS  (23 problems)
 ====================================================================
 
-[2998] → 176.   Second Highest Salary                             Med
-[2999] → 177.   Nth Highest Salary                                Med
-[3000] → 178.   Rank Scores                                       Med
-[3001] → 180.   Consecutive Numbers                               Med
-[3005] → 184.   Department Highest Salary                         Med
-[3006] → 185.   Department Top Three Salaries                     Hard
-[3011] → 550.   Game Play Analysis IV                             Med
-[3026] → 626.   Exchange Seats                                    Med
-[3031] → 1070.  Product Sales Analysis III                        Med
-[3041] → 1204.  Last Person to Fit in the Bus                     Med
-[3045] → 1321.  Restaurant Growth                                 Med
-[3047] → 1341.  Movie Rating                                      Med
-[3070] → 1934.  Confirmation Rate                                 Med
-[3076] → 3421.  Find Students Who Improved                        Med
-[3085] → 3564.  Seasonal Sales Analysis                           Med
-[3087] → 3580.  Find Consistently Improving Employees             Med
-[3089] → 3601.  Find Drivers with Improved Fuel Efficiency        Med
-[3091] → 3617.  Find Students with Study Spiral Pattern           Hard
-[3095] → 3673.  Find Zombie Sessions                              Hard
-[3096] → 3705.  Find Golden Hour Customers                        Med
-[3097] → 3716.  Find Churn Risk Customers                         Med
-[3100] → 3808.  Find Emotionally Consistent Users                 Med
-[3101] → 3832.  Find Users with Persistent Behavior Patterns      Hard
+176.   Second Highest Salary                             Med
+177.   Nth Highest Salary                                Med
+178.   Rank Scores                                       Med
+180.   Consecutive Numbers                               Med
+184.   Department Highest Salary                         Med
+185.   Department Top Three Salaries                     Hard
+550.   Game Play Analysis IV                             Med
+626.   Exchange Seats                                    Med
+1070.  Product Sales Analysis III                        Med
+1204.  Last Person to Fit in the Bus                     Med
+1321.  Restaurant Growth                                 Med
+1341.  Movie Rating                                      Med
+1934.  Confirmation Rate                                 Med
+3421.  Find Students Who Improved                        Med
+3564.  Seasonal Sales Analysis                           Med
+3580.  Find Consistently Improving Employees             Med
+3601.  Find Drivers with Improved Fuel Efficiency        Med
+3617.  Find Students with Study Spiral Pattern           Hard
+3673.  Find Zombie Sessions                              Hard
+3705.  Find Golden Hour Customers                        Med
+3716.  Find Churn Risk Customers                         Med
+3808.  Find Emotionally Consistent Users                 Med
+3832.  Find Users with Persistent Behavior Patterns      Hard
 
 
 ====================================================================
 🔍 4. SUBQUERIES + EXISTS  (10 problems)
 ====================================================================
 
-[3015] → 585.   Investments in 2016                               Med
-[3024] → 619.   Biggest Single Number                             Easy
-[3028] → 1045.  Customers Who Bought All Products                 Med
-[3034] → 1141.  User Activity for the Past 30 Days I              Easy
-[3035] → 1148.  Article Views I                                   Easy
-[3037] → 1164.  Product Price at a Given Date                     Med
-[3038] → 1174.  Immediate Food Delivery II                        Med
-[3046] → 1327.  List the Products Ordered in a Period             Easy
-[3068] → 1890.  The Latest Login in 2020                          Easy
-[3086] → 3570.  Find Books with No Available Copies               Easy
+585.   Investments in 2016                               Med
+619.   Biggest Single Number                             Easy
+1045.  Customers Who Bought All Products                 Med
+1141.  User Activity for the Past 30 Days I              Easy
+1148.  Article Views I                                   Easy
+1164.  Product Price at a Given Date                     Med
+1174.  Immediate Food Delivery II                        Med
+1327.  List the Products Ordered in a Period             Easy
+1890.  The Latest Login in 2020                          Easy
+3570.  Find Books with No Available Copies               Easy
 
 
 ====================================================================
 🧠 5. CASE WHEN  (9 problems)
 ====================================================================
 
-[3013] → 577.   Employee Bonus                                    Easy
-[3022] → 608.   Tree Node                                         Med
-[3023] → 610.   Triangle Judgement                                Easy
-[3027] → 627.   Swap Sex of Employees                             Easy
-[3064] → 1757.  Recyclable and Low Fat Products                   Easy
-[3066] → 1795.  Rearrange Products Table                          Easy
-[3067] → 1873.  Calculate Special Bonus                           Easy
-[3074] → 3220.  Odd and Even Transactions                         Med   ← real number
-[3082] → 3497.  Analyze Subscription Conversion                   Med   ← real number
+577.   Employee Bonus                                    Easy
+608.   Tree Node                                         Med
+610.   Triangle Judgement                                Easy
+627.   Swap Sex of Employees                             Easy
+1757.  Recyclable and Low Fat Products                   Easy
+1795.  Rearrange Products Table                          Easy
+1873.  Calculate Special Bonus                           Easy
+3220.  Odd and Even Transactions                         Med   ← real number
+3497.  Analyze Subscription Conversion                   Med   ← real number
 
 
 ====================================================================
 ⚠️  6. NULL HANDLING + ANTI-JOIN  (7 problems)
 ====================================================================
 
-[3014] → 584.   Find Customer Referee                             Easy
-[3017] → 595.   Big Countries                                     Easy
-[3019] → 601.   Human Traffic of Stadium                          Hard
-[3025] → 620.   Not Boring Movies                                 Easy
-[3033] → 1084.  Sales Analysis III                                Easy
-[3049] → 1393.  Capital Gain/Loss                                 Med
-[3053] → 1527.  Patients With a Condition                         Easy
+584.   Find Customer Referee                             Easy
+595.   Big Countries                                     Easy
+601.   Human Traffic of Stadium                          Hard
+620.   Not Boring Movies                                 Easy
+1084.  Sales Analysis III                                Easy
+1393.  Capital Gain/Loss                                 Med
+1527.  Patients With a Condition                         Easy
 
 
 ====================================================================
 📅 7. DATE + TIME  (4 primary problems)
 ====================================================================
 
-[3008] → 197.   Rising Temperature                                Easy
-[3010] → 511.   Game Play Analysis I                              Easy
-[3040] → 1193.  Monthly Transactions I                            Med
-[3088] → 3586.  Find COVID Recovery Patients                      Med   ← real number
+197.   Rising Temperature                                Easy
+511.   Game Play Analysis I                              Easy
+1193.  Monthly Transactions I                            Med
+3586.  Find COVID Recovery Patients                      Med   ← real number
 
 Also cross-referenced in other sections:
          1484.  Group Sold Products By The Date       (Section 2)
@@ -149,22 +149,22 @@ Also cross-referenced in other sections:
 🔤 8. STRING + REGEX  (9 problems — 1527 overlaps with Section 6)
 ====================================================================
 
-[3052] → 1517.  Find Users With Valid E-Mails                     Easy
-[3053] → 1527.  Patients With a Condition          ← also Sec 6   Easy
-[3058] → 1667.  Fix Names in a Table                              Easy
-[3059] → 1683.  Invalid Tweets                                    Easy
-[3075] → 3374.  First Letter Capitalization II                    Hard  ← real number
-[3077] → 3436.  Find Valid Emails                                 Easy  ← real number
-[3078] → 3451.  Find Invalid IP Addresses                         Hard  ← real number
-[3079] → 3465.  Find Products with Valid Serial Numbers           Easy  ← real number
-[3080] → 3475.  DNA Pattern Recognition                           Med   ← real number
+1517.  Find Users With Valid E-Mails                     Easy
+1527.  Patients With a Condition          ← also Sec 6   Easy
+1667.  Fix Names in a Table                              Easy
+1683.  Invalid Tweets                                    Easy
+3374.  First Letter Capitalization II                    Hard  ← real number
+3436.  Find Valid Emails                                 Easy  ← real number
+3451.  Find Invalid IP Addresses                         Hard  ← real number
+3465.  Find Products with Valid Serial Numbers           Easy  ← real number
+3475.  DNA Pattern Recognition                           Med   ← real number
 
 
 ====================================================================
 🏗️  9. RECURSIVE CTE  (1 problem)
 ====================================================================
 
-[3081] → 3482.  Analyze Organization Hierarchy                    Hard  ← real number
+3482.  Analyze Organization Hierarchy                    Hard  ← real number
 
 
 ====================================================================
