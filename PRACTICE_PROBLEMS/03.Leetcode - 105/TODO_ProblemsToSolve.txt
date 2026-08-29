@@ -39,12 +39,12 @@
 ✓ 1179.  Reformat Department Table                         Easy
 1211.  Queries Quality and Percentage                    Easy
 ✓ 1251.  Average Selling Price                             Easy
-1280.  Students and Examinations                         Easy
-1407.  Top Travellers                                    Easy
-1484.  Group Sold Products By The Date                   Easy
-1587.  Bank Account Summary II                           Easy
-1633.  Percentage of Users Attended a Contest            Easy
-1661.  Average Time of Process per Machine               Easy
+✓ 1280.  Students and Examinations                         Easy
+✓ 1407.  Top Travellers                                    Easy
+✓ 1484.  Group Sold Products By The Date                   Easy
+✓ 1587.  Bank Account Summary II                           Easy
+✓ 1633.  Percentage of Users Attended a Contest            Easy
+✓ 1661.  Average Time of Process per Machine               Easy
 ✓ 1693.  Daily Leads and Partners                          Easy
 ✓ 1729.  Find Followers Count                              Easy
 ✓ 1741.  Find Total Time Spent by Each Employee            Easy

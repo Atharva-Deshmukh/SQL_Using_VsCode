@@ -52,6 +52,8 @@ SELECT TRIM(' SQL ');            -- SQL
 SELECT SUBSTRING('ORACLE',2,3);  -- RAC
 SELECT CONCAT('Hello',' SQL');   -- Hello SQL
 
+-----------------------------------------------------------------------------------------------
+
 SELECT name,
    LOCATE('o', name) AS position
 FROM Employee;
@@ -66,6 +68,38 @@ FROM Employee;
     | Carol |        4 |
     | David |        0 |
     +-------+----------+
+
+-----------------------------------------------------------------------------------------------
+GROUP_CONCAT(product_name_column) 
+
+            Headphone
+            Basketball
+            T-Shirt
+               ↓
+    Headphone,Basketball,T-Shirt
+
+For Outputs:
+Output: 
++------------+----------+------------------------------+
+| sell_date  | num_sold | products                     |
++------------+----------+------------------------------+
+| 2020-05-30 | 3        | Basketball,Headphone,T-shirt |
+| 2020-06-01 | 2        | Bible,Pencil                 |
+| 2020-06-02 | 1        | Mask                         |
++------------+----------+------------------------------+
+
+SELECT
+    sell_date,
+    COUNT(DISTINCT product) AS num_sold,
+    GROUP_CONCAT(
+        DISTINCT product
+        ORDER BY product
+        SEPARATOR ','
+    ) AS products
+FROM Activities
+GROUP BY sell_date
+ORDER BY sell_date;
+
 
 ======================================================================
 NUMERIC FUNCTIONS
