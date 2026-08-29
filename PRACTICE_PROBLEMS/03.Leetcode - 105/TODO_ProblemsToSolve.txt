@@ -20,10 +20,10 @@
 ✓ 1378.  Replace Employee ID With The Unique Identifier    Easy
 ✓ 1581.  Customer Who Visited but Did Not Make Transactions Easy
 ✓ 1731.  The Number of Employees Which Report to Each Emp  Easy
-1789.  Primary Department for Each Employee              Easy
+✓ 1789.  Primary Department for Each Employee              Easy
 ✓ 1965.  Employees With Missing Information                Easy
-1978.  Employees Whose Manager Left the Company          Easy
-3521.  Find Product Recommendation Pairs                 Med
+✓ 1978.  Employees Whose Manager Left the Company          Easy
+✓ 3521.  Find Product Recommendation Pairs                 Med
 3554.  Find Category Recommendation Pairs                Hard
 
 
