@@ -31,25 +31,25 @@
 📊 2. GROUP BY + HAVING  (25 problems)
 ====================================================================
 
-182.   Duplicate Emails                                  Easy
-586.   Customer Placing the Largest Number of Orders     Easy
-596.   Classes With at Least 5 Students                  Easy
+✓ 182.   Duplicate Emails                                  Easy
+✓ 586.   Customer Placing the Largest Number of Orders     Easy
+✓ 596.   Classes With at Least 5 Students                  Easy
 602.   Friend Requests II: Who Has the Most Friends      Med
-1050.  Actors and Directors Who Cooperated ≥3 Times      Easy
-1179.  Reformat Department Table                         Easy
+✓ 1050.  Actors and Directors Who Cooperated ≥3 Times      Easy
+✓ 1179.  Reformat Department Table                         Easy
 1211.  Queries Quality and Percentage                    Easy
-1251.  Average Selling Price                             Easy
+✓ 1251.  Average Selling Price                             Easy
 1280.  Students and Examinations                         Easy
 1407.  Top Travellers                                    Easy
 1484.  Group Sold Products By The Date                   Easy
 1587.  Bank Account Summary II                           Easy
 1633.  Percentage of Users Attended a Contest            Easy
 1661.  Average Time of Process per Machine               Easy
-1693.  Daily Leads and Partners                          Easy
-1729.  Find Followers Count                              Easy
-1741.  Find Total Time Spent by Each Employee            Easy
-1907.  Count Salary Categories                           Med
-2356.  Number of Unique Subjects Taught by Each Teacher  Easy
+✓ 1693.  Daily Leads and Partners                          Easy
+✓ 1729.  Find Followers Count                              Easy
+✓ 1741.  Find Total Time Spent by Each Employee            Easy
+✓ 1907.  Count Salary Categories                           Med
+✓ 2356.  Number of Unique Subjects Taught by Each Teacher  Easy
 3611.  Find Overbooked Employees                         Med
 3626.  Find Stores with Inventory Imbalance              Med
 3642.  Find Books with Polarized Opinions                Med
