@@ -55,19 +55,19 @@
 3642.  Find Books with Polarized Opinions                Med
 3657.  Find Loyal Customers                              Med
 3764.  Most Common Course Pairs                          Hard
-3793.  Find Users with High Token Usage                  Easy
+✓ 3793.  Find Users with High Token Usage                  Easy
 
 
 ====================================================================
 🪟 3. WINDOW FUNCTIONS  (23 problems)
 ====================================================================
 
-176.   Second Highest Salary                             Med
-177.   Nth Highest Salary                                Med
-178.   Rank Scores                                       Med
+✓ 176.   Second Highest Salary                             Med
+✓ 177.   Nth Highest Salary                                Med
+✓ 178.   Rank Scores                                       Med
 180.   Consecutive Numbers                               Med
-184.   Department Highest Salary                         Med
-185.   Department Top Three Salaries                     Hard
+✓ 184.   Department Highest Salary                         Med
+✓ 185.   Department Top Three Salaries                     Hard
 550.   Game Play Analysis IV                             Med
 626.   Exchange Seats                                    Med
 1070.  Product Sales Analysis III                        Med
