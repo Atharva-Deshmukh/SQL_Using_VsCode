@@ -76,9 +76,9 @@
 ✓ 1341.  Movie Rating                                      Med
 ✓ 1934.  Confirmation Rate                                 Med
 ✓ 3421.  Find Students Who Improved                        Med
-3564.  Seasonal Sales Analysis                           Med
-3580.  Find Consistently Improving Employees             Med
-3601.  Find Drivers with Improved Fuel Efficiency        Med
+✓ 3564.  Seasonal Sales Analysis                           Med
+✓ 3580.  Find Consistently Improving Employees             Med
+✓ 3601.  Find Drivers with Improved Fuel Efficiency        Med
 3617.  Find Students with Study Spiral Pattern           Hard
 3673.  Find Zombie Sessions                              Hard
 ✓ 3705.  Find Golden Hour Customers                        Med
