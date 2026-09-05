@@ -83,7 +83,7 @@
 3673.  Find Zombie Sessions                              Hard
 ✓ 3705.  Find Golden Hour Customers                        Med
 ✓ 3716.  Find Churn Risk Customers                         Med
-3808.  Find Emotionally Consistent Users                 Med
+✓ 3808.  Find Emotionally Consistent Users                 Med
 3832.  Find Users with Persistent Behavior Patterns      Hard
 
 
