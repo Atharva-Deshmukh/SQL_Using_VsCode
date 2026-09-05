@@ -37,7 +37,7 @@
 ✓ 602.   Friend Requests II: Who Has the Most Friends      Med
 ✓ 1050.  Actors and Directors Who Cooperated ≥3 Times      Easy
 ✓ 1179.  Reformat Department Table                         Easy
-1211.  Queries Quality and Percentage                    Easy
+✓ 1211.  Queries Quality and Percentage                    Easy
 ✓ 1251.  Average Selling Price                             Easy
 ✓ 1280.  Students and Examinations                         Easy
 ✓ 1407.  Top Travellers                                    Easy
@@ -50,9 +50,9 @@
 ✓ 1741.  Find Total Time Spent by Each Employee            Easy
 ✓ 1907.  Count Salary Categories                           Med
 ✓ 2356.  Number of Unique Subjects Taught by Each Teacher  Easy
-3611.  Find Overbooked Employees                         Med
-3626.  Find Stores with Inventory Imbalance              Med
-3642.  Find Books with Polarized Opinions                Med
+✓ 3611.  Find Overbooked Employees                         Med
+✓ 3626.  Find Stores with Inventory Imbalance              Med
+✓ 3642.  Find Books with Polarized Opinions                Med
 ✓ 3657.  Find Loyal Customers                              Med
 3764.  Most Common Course Pairs                          Hard
 ✓ 3793.  Find Users with High Token Usage                  Easy
@@ -81,8 +81,8 @@
 3601.  Find Drivers with Improved Fuel Efficiency        Med
 3617.  Find Students with Study Spiral Pattern           Hard
 3673.  Find Zombie Sessions                              Hard
-3705.  Find Golden Hour Customers                        Med
-3716.  Find Churn Risk Customers                         Med
+✓ 3705.  Find Golden Hour Customers                        Med
+✓ 3716.  Find Churn Risk Customers                         Med
 3808.  Find Emotionally Consistent Users                 Med
 3832.  Find Users with Persistent Behavior Patterns      Hard
 

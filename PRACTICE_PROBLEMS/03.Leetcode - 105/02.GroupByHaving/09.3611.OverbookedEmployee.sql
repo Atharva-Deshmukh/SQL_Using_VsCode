@@ -30,6 +30,7 @@ Calculate total meeting hours per employee per week (Monday to Sunday)
 An employee is meeting-heavy if their weekly meeting hours > 20 hours (50% of 40 hours)
 Count how many weeks each employee was meeting-heavy
 Only include employees who were meeting-heavy for at least 2 weeks
+
 Return the result table ordered by the number of meeting-heavy weeks in descending order, then by employee name in ascending order.
 
 The result format is in the following example.
@@ -74,16 +75,19 @@ Output:
 | 1           | Alice Johnson  | Engineering | 2                   |
 | 4           | David Wilson   | Engineering | 2                   |
 +-------------+----------------+-------------+---------------------+
+
 Explanation:
 
 Alice Johnson (employee_id = 1):
 Week of June 5-11 (2023-06-05 to 2023-06-11): 8.0 + 6.0 + 7.0 = 21.0 hours (> 20 hours)
 Week of June 12-18 (2023-06-12 to 2023-06-18): 12.0 + 9.0 = 21.0 hours (> 20 hours)
 Meeting-heavy for 2 weeks
+
 David Wilson (employee_id = 4):
 Week of June 5-11: 25.0 hours (> 20 hours)
 Week of June 19-25: 22.0 hours (> 20 hours)
 Meeting-heavy for 2 weeks
+
 Employees not included:
 Bob Smith (employee_id = 2): Week of June 5-11: 15.0 + 8.0 = 23.0 hours (> 20), Week of June 12-18: 10.0 hours (< 20). Only 1 meeting-heavy week
 Carol Davis (employee_id = 3): Week of June 5-11: 4.0 + 3.0 = 7.0 hours (< 20). No meeting-heavy weeks
@@ -109,5 +113,42 @@ I was stuck at: How will I know under which week the current date belongs
 
                 This way, we can have week identifier for a particular date 
 
-
+                BUT MORE UNIQUE way to identify the week yearwise = YEARWEEK(date, 1) --> gives a year + week combination --> 202323
 */
+
+WITH jointTableWithEmployeeWeek AS (
+
+    SELECT e.employee_id AS employee_id,
+       e.employee_name AS employee_name,
+       e.department AS department,
+       YEARWEEK(m.meeting_date, 1) AS weekNumber,
+       m.duration_hours AS duration_hours
+    FROM employees AS e
+    JOIN meetings as m
+        ON e.employee_id = m.employee_id
+),
+
+weekWiseWorkHours AS (
+
+    SELECT employee_id, 
+           employee_name, 
+           department, 
+           weekNumber,
+           SUM(duration_hours) AS weekWiseTotalWorkHours
+    FROM jointTableWithEmployeeWeek
+    GROUP BY employee_id, 
+             employee_name,
+             department,
+             weekNumber
+    HAVING weekWiseTotalWorkHours > 20
+)
+
+
+SELECT employee_id,
+       employee_name,
+       department,
+       COUNT(*) AS meeting_heavy_weeks
+FROM weekWiseWorkHours
+GROUP BY employee_id, employee_name, department
+HAVING meeting_heavy_weeks >= 2
+ORDER BY meeting_heavy_weeks DESC, employee_name ASC;
