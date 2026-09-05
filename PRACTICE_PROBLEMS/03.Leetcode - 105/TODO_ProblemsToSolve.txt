@@ -72,7 +72,7 @@
 ✓ 626.   Exchange Seats                                    Med
 ✓ 1070.  Product Sales Analysis III                        Med
 ✓ 1204.  Last Person to Fit in the Bus                     Med
-1321.  Restaurant Growth                                 Med
+✓ 1321.  Restaurant Growth                                 Med
 ✓ 1341.  Movie Rating                                      Med
 ✓ 1934.  Confirmation Rate                                 Med
 ✓ 3421.  Find Students Who Improved                        Med
