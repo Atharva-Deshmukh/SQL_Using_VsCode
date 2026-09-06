@@ -91,16 +91,16 @@
 🔍 4. SUBQUERIES + EXISTS  (10 problems)
 ====================================================================
 
-585.   Investments in 2016                               Med
-619.   Biggest Single Number                             Easy
-1045.  Customers Who Bought All Products                 Med
-1141.  User Activity for the Past 30 Days I              Easy
-1148.  Article Views I                                   Easy
-1164.  Product Price at a Given Date                     Med
-1174.  Immediate Food Delivery II                        Med
-1327.  List the Products Ordered in a Period             Easy
-1890.  The Latest Login in 2020                          Easy
-3570.  Find Books with No Available Copies               Easy
+✓ 585.   Investments in 2016                               Med
+✓ 619.   Biggest Single Number                             Easy
+✓ 1045.  Customers Who Bought All Products                 Med
+✓ 1141.  User Activity for the Past 30 Days I              Easy
+✓ 1148.  Article Views I                                   Easy
+✓ 1164.  Product Price at a Given Date                     Med
+✓ 1174.  Immediate Food Delivery II                        Med
+✓ 1327.  List the Products Ordered in a Period             Easy
+✓ 1890.  The Latest Login in 2020                          Easy
+✓ 3570.  Find Books with No Available Copies               Easy
 
 
 ====================================================================
