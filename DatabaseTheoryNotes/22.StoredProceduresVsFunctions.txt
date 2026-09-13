@@ -1,0 +1,7 @@
+STORED PROCEDURE vs FUNCTION
+
+| Stored Procedure                         | Function                                    |
+| ---------------------------------------- | ------------------------------------------- |
+| Intent: Do something                     | Intent: Calculate/return a value            |
+| Can perform INSERT/UPDATE/DELETE         | Mainly used for calculations/reusable logic |
+| Usually called using CALL/EXEC           | Can often be used inside SELECT             |

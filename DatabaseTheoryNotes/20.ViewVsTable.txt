@@ -1,0 +1,8 @@
+VIEW vs TABLE
+
+TABLE → Stores data
+VIEW  → Stores query definition; reads underlying data
+
+Base table changes
+	↓
+View automatically reflects the change

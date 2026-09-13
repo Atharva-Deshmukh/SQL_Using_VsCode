@@ -1,0 +1,68 @@
+1. PRIMARY KEY vs FOREIGN KEY
+
+Primary Key (PK)
+
+* Unique + NOT NULL
+* Only one PK constraint per table (can contain multiple columns → composite PK).
+* Ensures entity integrity.
+
+
+               CREATE TABLE Users (
+                  user_id INT PRIMARY KEY,
+                  name VARCHAR(50)
+               );
+
+               → `user_id` uniquely identifies each user.
+
+Foreign Key (FK)
+
+* Column that references a Primary Key/Unique Key in another table.
+* Used to establish a relationship between tables.
+* Can contain NULL (unless NOT NULL is specified).
+* Multiple FKs can exist in one table.
+* Ensures referential integrity.
+
+            CREATE TABLE Orders (
+               order_id INT PRIMARY KEY,
+               user_id INT,
+               FOREIGN KEY (user_id) REFERENCES Users(user_id)
+            );
+
+            Users                  Orders
+            user_id | name         order_id | user_id
+            --------|------         ---------|--------
+            101     | John          1        | 101
+            102     | Alice         2        | 102
+
+
+            → `Orders.user_id` is FK → references `Users(user_id)`.
+
+2. CANDIDATE KEY vs UNIQUE KEY
+
+Candidate Key
+
+* A column/set of columns that can uniquely identify a row.
+* A table can have multiple candidate keys.
+* One candidate key is selected as the Primary Key.
+* Candidate key must be unique and NOT NULL conceptually.
+* If one of the candidate keys is choosen as primary key, 
+  The remaining candidate keys are called alternate keys.
+
+Users
+user_id | email          | phone
+--------|----------------|----------
+101     | a@test.com     | 999111
+102     | b@test.com     | 999222
+
+
+Unique Key / UNIQUE Constraint
+
+* Database constraint that ensures values in a column (or column combination) are unique.
+* A table can have multiple UNIQUE constraints.
+* NULL behavior can vary by database; in SQL Server, a UNIQUE constraint normally allows one NULL value.
+* Used to enforce business uniqueness.
+
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE
+);

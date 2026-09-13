@@ -1,0 +1,43 @@
+WHAT IS AN INDEX?
+
+An INDEX is a data structure that helps the database
+find rows faster.
+
+Think of it like the INDEX of a book.
+
+Without index:
+→ Database may scan many/all rows.
+
+With index:
+→ Database can quickly locate matching rows.
+
+
+WHY CAN TOO MANY INDEXES HURT INSERT/UPDATE?
+--------------------------------------------
+
+Index must also be updated whenever table data changes.
+
+INSERT:
+→ Insert row into table
+→ Update every relevant index
+
+UPDATE:
+→ Update table data
+→ Update affected indexes
+
+Therefore:
+
+More indexes
+→ More index maintenance
+→ Slower INSERT/UPDATE/DELETE
+→ More storage
+
+PRIMARY KEY vs INDEX
+--------------------
+
+PRIMARY KEY
+→ Identifies each row uniquely
+
+INDEX
+→ Does not necessarily enforce uniqueness
+→ Multiple indexes can exist on a table

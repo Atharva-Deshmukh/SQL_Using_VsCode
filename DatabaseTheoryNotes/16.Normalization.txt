@@ -1,0 +1,259 @@
+																 NORMALISATION CONCEPT
+
+WITHOUT NORMALISATION:
+
+- Suppose, we store everything in one single table.
+- With millions of rows getting inserted, there is a possibility of some  data redundancy (duplicate data)
+
+	+------------+--------------+---------+------------+----------+
+	| student_id | student_name | course  | instructor | dept     |
+	+------------+--------------+---------+------------+----------+
+	| 101        | John         | SQL     | Ravi       | IT       |
+	| 101        | John         | Java    | Amit       | IT       |
+	| 102        | Alice        | SQL     | Ravi       | IT       |
+	| 103        | Bob          | Python  | Neha       | CS       |
+	+------------+--------------+---------+------------+----------+
+
+	SQL -> Ravi -> IT --> getting stored multiple timestamp
+
+
+This DATA REDUNDANCY --> causes --> DATA ANOMALIES
+- Update Anomaly
+- Insert Anomaly
+- Delete Anomaly
+
+Update Anomaly:
+--------------
+
+					 +------------+--------------+---------+------------+
+					 | student_id | student_name | course  | instructor |
+					 +------------+--------------+---------+------------+
+					 | 101        | John         | SQL     | Ravi       |
+					 | 102        | Alice        | SQL     | Ravi       |
+					 | 103        | Bob          | Java    | Amit       |
+					 +------------+--------------+---------+------------+
+
+If we have to UPDATE instructor from Ravi -> Ravi Kumar
+But instead of updating it everywhere, we update it only in some places and forget to update at others
+
+101 | John  | SQL | Ravi Kumar
+102 | Alice | SQL | Ravi
+
+Problem: The same information is stored in multiple rows, so updating it in one place 
+			but forgetting another creates inconsistent data.
+
+
+Insert Anomaly:
+--------------
+
+Ex: a new course is to be added to the table 
+Course = Python
+Instructor = Neha
+
+But no student for this course exists yet
+
+We are hence forced to do insertion -> NULL | NULL | Python | Neha
+But if student_id = primary key, then we won't be allowed INSERT
+
+Problem: I can't add something because unrelated information is missing.
+
+Delete Anomaly:
+---------------
+
+Ex: Bob leaves the college --> DELETE FROM StudentCourse WHERE student_id = 103;
+
+Table becomes:
++------------+--------------+---------+------------+
+| student_id | student_name | course  | instructor |
++------------+--------------+---------+------------+
+| 101        | John         | SQL     | Ravi       |
+| 102        | Alice        | SQL     | Ravi       |
++------------+--------------+---------+------------+
+
+We now completely lost Java → Amit
+
+Problem: Deleting one piece of information accidentally deletes other information that we wanted to keep.
+
+WITH NORMALISATION:
+
+Normalization = organizing data into separate related tables
+
+Instead of:
+
+				Student + Course + Instructor + Department
+								↓
+							ONE TABLE
+
+we separate them:
+
+							Student
+							---------
+							student_id (PK)
+							student_name
+
+							Course
+							---------
+							course_id (PK)
+							course_name
+							instructor_id (FK)
+
+							Instructor
+							-----------
+							instructor_id (PK)
+							instructor_name
+
+							Enrollment
+							----------
+							student_id (FK)
+							course_id (FK)
+
+Now each piece of information is stored in the appropriate place.
+
+Benefits:
+	Less duplicate data
+	Avoid update anomalies
+	Avoid insert anomalies
+	Avoid delete anomalies
+
+
+Normalization is done in stages: 
+
+				Each stage removes a particular type of problem.
+
+				1NF (Atomic values / one value per cell)
+				↓
+				2NF (Every non-key column must depend on the FULL key)
+				↓
+				3NF (Non-key columns should not depend on other non-key columns)
+
+
+											1NF: Atomic values / one value per cell
+											---------------------------------------
+
+Student
++------------+--------------+-------------------+
+| student_id | student_name | skills            |
++------------+--------------+-------------------+
+| 101        | John         | SQL, Java, Python |
++------------+--------------+-------------------+
+
+Problem: skills contains multiple values.
+
+We change it to:
+
+student_id | student_name | skill
+-----------|--------------|-------
+101        | John         | SQL
+101        | John         | Java
+101        | John         | Python
+
+
+											2NF — Depend on the FULL key:
+											-----------------------------
+
+OrderItem
++----------+------------+------------+--------------+
+| order_id | product_id | order_date | product_name |
++----------+------------+------------+--------------+
+| 1        | 101        | 10-Jan     | Laptop       |
+| 1        | 102        | 10-Jan     | Mouse        |
++----------+------------+------------+--------------+
+
+The primary key is: (order_id, product_id)
+
+Look at order_date.
+Does it need: (order_id + product_id) to know the date? --> No.
+order_date only needs: order_id → order_date
+
+Similarly:
+product_id → product_name
+
+So these columns depend on only part of the composite key.
+
+That's called a partial dependency.
+
+We fix it this way:
+
+				Orders
+				+----------+------------+
+				| order_id | order_date |
+				+----------+------------+
+				| 1        | 10-Jan     |
+				+----------+------------+
+
+				Products
+				+------------+--------------+
+				| product_id | product_name |
+				+------------+--------------+
+				| 101        | Laptop       |
+				| 102        | Mouse        |
+				+------------+--------------+
+
+				OrderItem
+				+----------+------------+
+				| order_id | product_id |
+				+----------+------------+
+				| 1        | 101        |
+				| 1        | 102        |
+				+----------+------------+
+
+Goal: Every non-key column must depend on the entire primary key, not just part of the composite key.
+Important: 2NF matters when you have a composite key.
+
+Now:
+
+	Orders:
+		order_id → order_date
+
+	Products:
+		product_id → product_name
+
+	OrderItem:
+		(order_id, product_id) identifies the relationship
+
+	No non-key column depends on only PART of the composite key.
+
+
+3NF — Non-key columns should not depend on other non-key columns:
+-----------------------------------------------------------------
+
+Employee
++-------------+--------------+---------+-----------+
+| employee_id | employee_name | dept_id | dept_name |
++-------------+--------------+---------+-----------+
+| 101         | John         | 10      | QA        |
+| 102         | Alice        | 20      | Dev       |
++-------------+--------------+---------+-----------+
+
+		  (primary key)
+we have: employee_id → dept_id
+			dept_id     → dept_name
+
+Hence: employee_id → dept_id → dept_name
+
+Problem: dept_name is not directly dependent on the employee.
+			It's dependent on another non-key column: dept_id
+			That's a transitive dependency.
+
+Solution: Split it
+
+Employee
+employee_id | employee_name | dept_id
+------------|---------------|--------
+101         | John          | 10
+102         | Alice         | 20
+
+Department
+dept_id | dept_name
+--------|----------
+10      | QA
+20      | Dev
+
+
+																	DENORMALIZATION 
+
+Sometimes we intentionally keep some duplicate data.
+
+Why → Performance
+
+Because normalised tables need joins which consumes time in read-heavy systems

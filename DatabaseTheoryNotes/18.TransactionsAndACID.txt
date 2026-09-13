@@ -1,0 +1,105 @@
+WHAT IS A TRANSACTION?
+
+A group of database operations treated as ONE logical unit of work.
+
+Example: Bank transfer
+
+Transfer ₹100 from A → B
+
+1. Deduct ₹100 from A
+2. Add ₹100 to B
+
+Both operations should succeed together.
+
+If step 1 succeeds but step 2 fails: ❌ Money is deducted but not received.
+
+So we need a transaction.
+
+Conceptually:
+
+BEGIN TRANSACTION
+
+UPDATE Account
+SET balance = balance - 100
+WHERE account_id = 1;
+
+UPDATE Account
+SET balance = balance + 100
+WHERE account_id = 2;
+
+COMMIT;
+
+If something goes wrong:
+
+ROLLBACK;
+
+=============================
+WHY DO WE NEED TRANSACTIONS?
+=============================
+
+Without transactions:
+→ Partial updates can happen
+→ Data can become inconsistent
+→ Failed operations may leave unwanted changes
+
+Transactions ensure:
+
+→ All operations succeed
+OR
+→ Changes are undone
+
+================
+ACID PROPERTIES
+================
+
+ACID =
+
+A → Atomicity
+C → Consistency
+I → Isolation
+D → Durability
+
+==========================
+ATOMICITY → ALL or NOTHING
+==========================
+
+ALL operations succeed
+OR
+ALL operations are rolled back.
+
+====================================
+CONSISTENCY → Database remains VALID
+====================================
+
+Transaction must take the database from: VALID state → VALID state
+
+==============================================================
+ISOLATION → Concurrent transactions don't improperly interfere
+==============================================================
+
+Multiple transactions can run at the same time.
+Isolation ensures one transaction does not incorrectly interfere with another.
+
+=====================================
+DURABILITY → COMMIT = Changes survive
+=====================================
+
+Once a transaction is COMMITTED, Changes should persist.
+
+Even if:
+→ Application crashes
+→ Database restarts
+→ System loses power
+
+==================
+COMMIT vs ROLLBACK
+==================
+
+COMMIT
+→ Save changes
+→ Transaction successful
+→ Changes become durable
+
+ROLLBACK
+→ Undo uncommitted changes
+→ Return to previous state

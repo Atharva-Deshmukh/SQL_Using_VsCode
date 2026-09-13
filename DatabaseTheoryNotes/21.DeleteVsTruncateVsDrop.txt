@@ -1,0 +1,13 @@
+DELETE vs TRUNCATE vs DROP
+
++----------------+----------------------+----------------------+----------------------+
+| Feature        | DELETE               | TRUNCATE             | DROP                 |
++----------------+----------------------+----------------------+----------------------+
+| Category       | DML                  | DDL                  | DDL                  |
+| Removes        | Selected/all rows    | All rows             | Table + data         |
+| WHERE          | YES                  | NO                   | NO                   |
+| Table remains  | YES                  | YES                  | NO                   |
+| Structure      | Remains              | Remains              | Removed              |
+| Rollback       | Transaction-dependent| DB-dependent         | DB-dependent         |
+| Triggers       | DELETE triggers      | DB-specific          | DB-specific          |
++----------------+----------------------+----------------------+----------------------+

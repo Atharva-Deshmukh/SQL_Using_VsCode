@@ -1,0 +1,123 @@
+																		 RELATIONSHIP 
+
+
+WHY DO WE NEED RELATIONSHIPS?
+
+In a database, data is usually split into multiple tables.
+We need relationships to define How tables are connected
+
+3 common relationships:
+
+	1:1 → One-to-One
+	1:N → One-to-Many
+	M:N → Many-to-Many
+
+================
+ONE-TO-ONE (1:1)
+================
+
+MEANING:
+One record in A ↔ One record in B
+
+Example:
+Person ↔ Passport
+
+Person
++-----------+-------+
+| person_id | name  |
++-----------+-------+
+| 1         | John  |
+| 2         | Alice |
++-----------+-------+
+
+Passport
++-------------+--------+-----------+
+| passport_id | number | person_id |
++-------------+--------+-----------+
+| 101         | P123   | 1         |
+| 102         | P456   | 2         |
++-------------+--------+-----------+
+
+SQL:
+
+CREATE TABLE Person (
+person_id INT PRIMARY KEY,
+name VARCHAR(50)
+);
+
+CREATE TABLE Passport (
+passport_id INT PRIMARY KEY,
+number VARCHAR(20),
+person_id INT UNIQUE,
+FOREIGN KEY (person_id) REFERENCES Person(person_id)
+);
+
+WHY UNIQUE?
+→ Ensures one person cannot have multiple passports
+→ Makes it 1:1 instead of 1:N
+
+=================
+ONE-TO-MANY (1:N)
+=================
+
+MEANING:
+One record in A → Many records in B
+
+Example:
+Customer → Orders
+
+Customer
++-------------+-------+
+| customer_id | name  |
++-------------+-------+
+| 1           | John  |
+| 2           | Alice |
++-------------+-------+
+
+Orders
++----------+-------------+
+| order_id | customer_id |
++----------+-------------+
+| 101      | 1           |
+| 102      | 1           |
+| 103      | 1           |
+| 104      | 2           |
++----------+-------------+
+
+John → 3 orders
+Alice → 1 order
+
+SQL:
+
+CREATE TABLE Customer (
+customer_id INT PRIMARY KEY,
+name VARCHAR(50)
+);
+
+CREATE TABLE Orders (
+order_id INT PRIMARY KEY,
+customer_id INT,
+FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
+
+IMPORTANT:
+→ FK usually goes on the MANY side.
+
+Customer (1)
+|
+|
+Orders (N)
+
+==================
+MANY-TO-MANY (M:N)
+==================
+
+MEANING:
+Many records in A ↔ Many records in B
+
+We CANNOT directly store this relationship with a single FK.
+
+So we create a:
+	→ Junction table
+	→ Bridge table
+	→ Mapping table
