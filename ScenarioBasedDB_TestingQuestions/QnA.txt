@@ -1,0 +1,484 @@
+1. How do you validate DB after a successful API request?
+
+Answer:
+1. Send the API request.
+2. Validate HTTP status and response body.
+3. Extract the business/entity ID from the response.
+4. Query the DB using that ID.
+5. Compare important business fields between API and DB.
+6. Validate related records if applicable.
+
+Key point:
+HTTP 200/201 alone is not enough. Validate persistence and business state.
+
+------------------------------------------------------------------------------
+
+2. API response and DB data don't match. How do you debug it?
+
+Answer:
+1. Capture the request and API response.
+2. Identify the unique entity/request ID.
+3. Query the DB directly.
+4. Compare field by field.
+5. Check for:
+   - async processing delay
+   - DB write failure
+   - queue/event failure
+   - incorrect business logic
+6. Check application and queue/consumer logs.
+
+Think:
+API → Service → Queue → Consumer → DB
+
+------------------------------------------------------------------------------
+
+3. How do you automate API → Queue → DB validation?
+
+Answer:
+1. Call the API.
+2. Validate the API response.
+3. Capture the entity/request ID.
+4. Poll the DB until the expected record/state appears.
+5. Stop when the expected state is reached.
+6. Fail after a defined timeout.
+
+Don't use a fixed long sleep.
+
+Use:
+poll → check → retry → timeout → fail
+
+------------------------------------------------------------------------------
+
+4. What is eventual consistency and how do you test it?
+
+Answer:
+The DB may not reflect the API operation immediately because processing is asynchronous.
+Use polling with a timeout instead of immediately asserting the DB.
+
+------------------------------------------------------------------------------
+
+5. How do you test duplicate API requests?
+
+Answer:
+Send the same request multiple times.
+
+Validate:
+- only the expected number of records are created
+- duplicate records are not created
+- idempotency is working
+- same/equivalent response is returned when applicable
+- DB unique constraints are respected
+
+Key concept: Idempotency.
+
+------------------------------------------------------------------------------
+
+6. Two users try to book the last seat. How do you test it?
+
+Initial state: available_seats = 1
+
+Send two booking requests concurrently.
+
+Expected:
+- only ONE request succeeds
+- the other fails appropriately
+- exactly one booking is created
+- available_seats becomes 0
+- available_seats never becomes negative
+
+This tests:
+race conditions + concurrency + locking/transaction behavior.
+
+------------------------------------------------------------------------------
+
+7. How do you test transaction rollback?
+
+Example:
+    INSERT order
+    INSERT payment
+    UPDATE inventory
+
+Suppose inventory update fails.
+
+Expected:
+If these operations are part of one transaction, the transaction should roll back 
+and there should be no inconsistent partial state.
+
+Validate all affected tables.
+Don't assume rollback. Verify the actual DB state.
+
+------------------------------------------------------------------------------
+
+8. API returns 500. Does that mean DB rollback happened?
+
+Answer: No.
+        HTTP 500 only tells us the API operation failed from the client's perspective.
+
+Steps:
+1. Capture the request/entity ID.
+2. Query all affected tables.
+3. Check for partial records.
+4. Verify transaction rollback/business recovery.
+5. Check application logs.
+
+------------------------------------------------------------------------------
+
+9. How do you validate API DELETE against the DB?
+
+First determine whether deletion is hard delete or soft delete.
+
+Hard delete:
+    SELECT * FROM users WHERE user_id = 101;
+
+Expected:
+    0 rows.
+
+Soft delete:
+    SELECT is_deleted FROM users WHERE user_id = 101;
+
+Expected:
+    is_deleted = TRUE.
+
+------------------------------------------------------------------------------
+
+10. How do you validate 100 API records against the DB?
+
+Don't compare records manually.
+
+Approach:
+1. Call API.
+2. Extract IDs.
+3. Fetch DB records in bulk.
+4. Map API records and DB records by ID.
+5. Compare required fields.
+
+Validate:
+- record count
+- missing IDs
+- extra IDs
+- field values
+- transformations
+- relationships where required
+
+------------------------------------------------------------------------------
+
+11. How do you test DB constraints?
+
+Test both valid and invalid data.
+
+PRIMARY KEY:
+    Insert duplicate ID → should fail.
+
+UNIQUE:
+    Insert duplicate email → should fail.
+
+NOT NULL:
+    Insert NULL → should fail.
+
+FOREIGN KEY:
+    Insert non-existing parent ID → should fail.
+
+CHECK:
+    Insert invalid value → should fail.
+
+------------------------------------------------------------------------------
+
+12. How do you find duplicate records in SQL?
+
+Use GROUP BY + HAVING.
+
+Example:
+
+SELECT email, COUNT(*)
+FROM users
+GROUP BY email
+HAVING COUNT(*) > 1;
+
+------------------------------------------------------------------------------
+
+13. How do you find orphan records?
+
+An orphan is a child record whose parent does not exist.
+
+Example:
+
+SELECT o.*
+FROM orders o
+LEFT JOIN customers c
+    ON o.customer_id = c.customer_id
+WHERE c.customer_id IS NULL;
+
+Expected:
+0 rows.
+
+LEFT JOIN + parent IS NULL → orphan records.
+
+------------------------------------------------------------------------------
+
+14. How do you find the latest record for each customer?
+
+Use window function ROW_NUMBER():
+
+SELECT *
+FROM (
+    SELECT o.*,
+           ROW_NUMBER() OVER (
+               PARTITION BY customer_id
+               ORDER BY created_at DESC
+           ) rn
+    FROM orders o
+) x
+WHERE rn = 1;
+
+------------------------------------------------------------------------------
+
+15 How do you verify that an UPDATE changed only intended rows?
+
+verify:
+- those IDs were changed
+- unrelated IDs were not changed
+- affected-row count is correct
+
+------------------------------------------------------------------------------
+
+16. How do you validate a k6 load test against the DB?
+
+Don't validate hundreds/thousands of records one by one.
+
+Validate aggregate correctness and invariants.
+
+Example:
+
+SELECT COUNT(*)
+FROM orders
+WHERE test_run_id = 'RUN123';
+
+Compare against expected successful requests.
+
+------------------------------------------------------------------------------
+
+17. What if the primary DB and replica return different data?
+
+Also investigate:
+- replication failure
+- stale cache
+- routing issue
+    WRITE → Primary
+    READ  → Replica
+
+------------------------------------------------------------------------------
+
+18. How do you investigate a slow DB during automation?
+
+Don't immediately blame the DB.
+
+Check:
+- Query execution time.
+- Slow queries.
+- Connection pool exhaustion.
+- CPU/memory/IO.
+- Excessive parallel test traffic.
+
+------------------------------------------------------------------------------
+
+19. How do you test a deadlock?
+
+Create two concurrent transactions that acquire locks in opposite order.
+
+Example:
+
+T1:
+locks Account 1
+→ tries Account 2
+
+T2:
+locks Account 2
+→ tries Account 1
+
+Result:
+T1 waits for T2.
+T2 waits for T1.
+→ deadlock.
+
+Validate:
+- DB detects the deadlock
+- one transaction is rolled back/aborted
+- other transaction can complete
+- application handles retry if designed
+- no inconsistent data remains
+
+------------------------------------------------------------------------------
+
+20. What are the most important DB validation checks for an SDET?
+
+- Relationships
+- Duplicates
+- Orphans
+- Transaction consistency
+- Expected async behavior
+
+------------------------------------------------------------------------------
+
+21. What is your overall approach to API + DB automation?
+
+Answer:
+
+API request
+   ↓
+Validate response
+   ↓
+Extract business ID
+   ↓
+Wait/poll if async
+   ↓
+Query DB
+   ↓
+Compare API ↔ DB
+   ↓
+Validate relationships/business state
+
+------------------------------------------------------------------------------
+
+22. Customer is deleted. What happens to their orders?
+
+First identify the FK:
+    orders.customer_id → customers.id
+
+Possible expected behaviors:
+
+1. CASCADE:
+   Customer deleted → orders also deleted.
+
+2. SET NULL:
+   Customer deleted → orders remain,
+   customer_id becomes NULL.
+
+3. RESTRICT:
+   Customer deletion fails if orders exist.
+
+Test the behavior defined by the requirement.
+
+------------------------------------------------------------------------------
+
+23. Payment succeeds but order is not created. How do you test?
+
+This is an ATOMICITY problem.
+
+Expected:
+    Payment + order creation should behave as one logical transaction.
+
+Flow:
+
+    BEGIN
+    Debit account
+    Create order
+    COMMIT
+
+    If order creation fails:
+
+    ROLLBACK
+
+Test:
+1. Record initial balance.
+2. Trigger payment/order operation.
+3. Force failure during order creation.
+4. Query DB.
+5. Verify payment deduction was rolled back.
+
+Also verify:
+→ no partial order
+→ no partial payment
+
+------------------------------------------------------------------------------
+
+24. How do you test ROLLBACK behavior?
+
+Example:
+Transfer ₹100 from A → B.
+
+Steps:
+
+1. Record balances.
+2. BEGIN transaction.
+3. Debit A.
+4. Inject failure before crediting B.
+5. ROLLBACK.
+6. Query both accounts.
+
+------------------------------------------------------------------------------
+
+25. How would you test a stored procedure that calculates interest?
+
+Test:
+
+1. Valid input.
+2. Expected calculation.
+3. DB changes.
+4. Returned output.
+5. NULL/invalid inputs.
+6. Boundary values.
+7. Error handling.
+
+Also test:
+→ rate = 0
+→ NULL account
+→ non-existing account
+→ maximum balance
+
+------------------------------------------------------------------------------
+
+26. Query went from 200ms to 8 seconds. What do you check?
+
+Check:
+- Did data volume increase?
+- Is the required index present?
+- Is there a full table scan?
+- Is DB CPU/memory/IO under pressure?
+- Is connection pool exhausted?
+
+------------------------------------------------------------------------------
+
+27. How do you verify passwords are not stored in plaintext?
+
+Create a test user:
+
+password = Test@1234
+
+Query:
+
+SELECT password
+FROM users
+WHERE email = 'test@example.com';
+
+Expected:
+Stored value ≠ 'Test@1234'
+
+It should be a secure password hash.
+
+------------------------------------------------------------------------------
+
+28. How do you test SQL injection in a login form?
+
+Don't just test one payload.
+
+Try malicious input such as: ' OR '1'='1
+
+Expected:
+→ Login should NOT bypass authentication.
+
+Also test:
+→ quotes
+→ comment syntax
+→ boolean-based inputs
+→ numeric fields
+
+------------------------------------------------------------------------------
+
+29. How do you verify data integrity after migration?
+
+Validate at multiple levels:
+
+- Row count
+- Primary-key uniqueness
+- Foreign-key relationships
+- Aggregates
