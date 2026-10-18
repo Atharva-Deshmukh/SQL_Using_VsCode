@@ -53,33 +53,33 @@ PROBLEMS
 
    SELECT * FROM Employee WHERE salary > 50000;
 
-2. Find employees with salary between 40000 and 80000.
+2[Revise]. Find employees with salary between 40000 and 80000.
 
    SELECT * FROM Employee WHERE (salary >= 40000 AND salary <=80000);
                               OR
-   SELECT * FROM Employee WHERE salary BETWEEN 40000 AND 80000; --> REVISE
+   SELECT * FROM Employee WHERE salary BETWEEN 40000 AND 80000;
 
 3. Find employees belonging to department 10.
 
    SELECT * FROM Employee WHERE department_id = 10;
 
-4. Find employees not belonging to department 20.
+4[Revise]. Find employees not belonging to department 20.
 
-   SELECT * FROM Employee WHERE department_id <> 20;  --> REVISE
+   SELECT * FROM Employee WHERE department_id <> 20;
 
 5. Find employees with age > 30 AND salary > 50000.
 
    SELECT * FROM Employee WHERE (age > 30) AND (salary > 50000);
 
-6. Find employees belonging to department 10 OR 20.
+6[Revise]. Find employees belonging to department 10 OR 20.
 
    SELECT * FROM Employee WHERE department_id IN(10, 20);
                            OR
    SELECT * FROM Employee WHERE (department_id = 10) OR (department_id = 20);
 
-7. Find employees whose name starts with 'A'.
+7[Revise]. Find employees whose name starts with 'A'.
 
-   SELECT * FROM Employee WHERE name REGEXP '^A.*$';  --> Revise
+   SELECT * FROM Employee WHERE name REGEXP '^A.*$';
 
 8. Find employees whose name ends with 'n'.
 
@@ -91,12 +91,12 @@ PROBLEMS
 
 10. Find employees whose salary is 40000, 50000 or 60000.
 
-   SELECT * FROM Employee WHERE salary IN(40000, 50000, 60000);  --> Revise
+   SELECT * FROM Employee WHERE salary IN(40000, 50000, 60000);
 
-11. Find employees whose salary is NOT 40000, 50000 or 60000.
+11[Revise]. Find employees whose salary is NOT 40000, 50000 or 60000.
 
    SELECT * FROM Employee WHERE salary NOT IN(40000, 50000, 60000);
 
-12. Find employees hired after 2024-01-01.
+12[Revise]. Find employees hired after 2024-01-01.
 
-   SELECT * FROM Employee WHERE hire_date > '2024-01-01.' --> Revise
+   SELECT * FROM Employee WHERE hire_date > '2024-01-01.'
