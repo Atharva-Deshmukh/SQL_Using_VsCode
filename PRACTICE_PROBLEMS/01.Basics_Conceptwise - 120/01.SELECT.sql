@@ -11,20 +11,20 @@ Employee
 
 CREATE TABLE IF NOT EXISTS Employee (
     employee_id INT NOT NULL,
-    name VARCHAR(100),                                   --> VARCHAR must have length
+    name VARCHAR(100),                                   -- VARCHAR must have length
     age INT NOT NULL,
     department_id INT,
     manager_id INT,
     salary INT,
     experience_years INT NOT NULL,
-    status ENUM('A', 'I'),                                --> ENUMS must be single quoted
+    status ENUM('A', 'I'),                                -- ENUMS must be single quoted
     hire_date DATE
 );
 
 INSERT INTO Employee VALUES  
-(1, 'John',  35, 10, null, 90000, 8, 'A', '2018-03-15'),      --> Dates must be single quoted
+(1, 'John',  35, 10, null, 90000, 8, 'A', '2018-03-15'),      -- Dates must be single quoted
 (2, 'Alice', 29, 10, 1,    70000, 4, 'A', '2021-06-10'),
-(3, 'Bob',   31, 20, 5,    60000, 3, 'I', '2022-01-20'),      --> Single quotes are the standard SQL style
+(3, 'Bob',   31, 20, 5,    60000, 3, 'I', '2022-01-20'),      -- Single quotes are the standard SQL style
 (4, 'Carol', 24, null,   1,    50000, 1, 'A', '2025-02-05'),
 (5, 'David', 40, 20, null, 80000, 10, 'A', '2016-09-12');
 
@@ -47,8 +47,8 @@ Location
    | 400         | Finance HQ    | Delhi     | India |
 
 
-PROBLEMS
---------
+PROBLEMS (Do only [Revise] tags next time)
+------------------------------------------
 
 1. Display all employees.
 
@@ -69,7 +69,7 @@ PROBLEMS
 
    SELECT name, salary, department_id FROM Employee;
 
-3. Display distinct department_id values.
+3[Revise]. Display distinct department_id values.
 
    SELECT DISTINCT department_id FROM Employee;
 
@@ -82,7 +82,7 @@ PROBLEMS
    |          NULL |
    +---------------+
 
-4. Display employee name and salary increased by 10%.  --> Revise
+4[Revise]. Display employee name and salary increased by 10%.  --> Revise
 
     SELECT name, (salary + (0.1 * salary)) FROM Employee;
 
@@ -112,7 +112,7 @@ PROBLEMS
    | David         |
    +---------------+
 
-6. Display employee name and a constant column 'Employee'.  --> Revise
+6[Revise]. Display employee name and a constant column 'Employee'.
 
    SELECT name, 'Employee' FROM Employee;
 
@@ -146,7 +146,7 @@ PROBLEMS
 
    SELECT * FROM Employee ORDER BY salary DESC;
 
-9. Display the top 5 highest-paid employees.
+9[Revise]. Display the top 5 highest-paid employees.
 
    SELECT * FROM Employee ORDER BY salary DESC LIMIT 5;
 
@@ -161,7 +161,7 @@ PROBLEMS
    |           4 | Carol |  24 |          NULL |          1 |  50000 |                1 | A      | 2025-02-05 |
    +-------------+-------+-----+---------------+------------+--------+------------------+--------+------------+
 
-10. Display employees ordered by department_id and salary descending.  --> Revise
+10[Revise]. Display employees ordered by department_id and salary descending.
 
    SELECT * FROM Employee ORDER BY department_id ASC, salary DESC;
 
