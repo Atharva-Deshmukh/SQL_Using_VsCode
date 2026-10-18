@@ -1,6 +1,6 @@
 /*
 ===========================================================
-EQUI JOIN → JOIN condition uses = between columns.
+EQUI JOIN → JOIN condition uses "=" between columns.
 ===========================================================
 
 Example:
@@ -18,7 +18,7 @@ Most common joins using matching/foreign keys/columns are EQUI JOINS.
 NON-EQUI JOIN
 ===========================================================
 
-NON-EQUI JOIN → JOIN condition uses operators other than =.
+NON-EQUI JOIN → JOIN condition uses operators other than "=".
 
 Examples:
     <
